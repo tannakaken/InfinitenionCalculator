@@ -1,0 +1,5 @@
+Welcome to the Hypercomplex World!
+
+This application is reverse polish notation calculator of infinite dimension Hypercomplex numbers, that contains Real numbers, Complex numbers, Quorternions, Octanions, Sedenions and Every number system in the endless series of 2^n dimension Cayley-Dickson numbers.
+
+Let's Explore boundless, illimitable, immeasurable and infinite world of abstract mathematics!

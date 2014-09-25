@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- English localization -->
+    <string name="app_name">Infinitenion</string>
+    <string name="input_text">Input formula</string>
+    <string name="calculateButton">Go</string>
+    <!-- メニューのボタン -->
+    <string name="action_settings">settings…</string>
+    <string name="action_show_variables">show variables</string>
+    <string name="action_about">about</string>
+    <string name="action_help">help</string>
+    <string name="action_problem">problem collection</string>
+    <string name="action_story">math novel(japanese only)</string>
+    <!-- settingsのラベル -->
+    <string name="setting_label">setting</string>
+    <string name="real_key">real</string>
+    <string name="real_title">Real mode</string>
+    <string name="real_summary">Change to real number mode. variables will be reseted.</string>
+    <string name="scale_key">scale</string>
+    <string name="scale_title">Scale of real numbers</string>
+    <string name="scale_summary">Set scale of real numbers.</string>
+    <!-- aboutのラベル -->
+    <string name="about_label">About</string>
+    <string name="about_this_app_button_label">about this app</string>
+    <string name="about_hypercomplex_number_button_label">about Hyperconmplex numbers</string>
+    <string name="about_reverse_poland_button_label">about reverse polish notation</string>
+    <string name="about_author">about author of this app</string>
+    <!-- Textのラベル -->
+	<string name="about_this_app_label">about this app</string>
+	<string name="about_hypercomplex_number_label">about Hyperconmplex numbers</string>
+    <string name="about_reverse_poland_label">about reverse polish notation</string>
+    <string name="help_label">help</string>
+    <string name="problem_label">problem collection</string>
+    <string name="story_label">math novel</string>
+	<!-- キーパッドのボタンのラベル -->
+	<string name="keypad_1">1</string>
+	<string name="keypad_2">2</string>
+	<string name="keypad_3">3</string>
+	<string name="keypad_4">4</string>
+	<string name="keypad_5">5</string>
+	<string name="keypad_6">6</string>
+	<string name="keypad_7">7</string>
+	<string name="keypad_8">8</string>
+	<string name="keypad_9">9</string>
+	<string name="keypad_E">E</string>
+	<string name="keypad_X">X</string>
+	<string name="keypad_add">+</string>
+	<string name="keypad_sub">-</string>
+	<string name="keypad_mul">*</string>
+	<string name="keypad_div">/</string>
+	<string name="keypad_pow">^</string>
+	<string name="keypad_substitution">&lt;=</string>
+	<string name="keypad_0">0</string>
+	<string name="keypad_C">C</string>
+	<string name="keypad_up">↑</string>
+	<string name="keypad_down">↓</string>
+	<string name="keypad_next">⇒</string>
+	<string name="keypad_dot">.</string>
+	<string name="keypad_sp">□</string>
+	<string name="keypad_bs">BS</string>
+	<!-- 二つ目のキーパッドのボタンのラベル -->
+	<string name="keypad_negate">negate</string>
+	<string name="keypad_inv">inv</string>
+	<string name="keypad_conj">conj</string>
+	<string name="keypad_norm">norm</string>
+	<string name="keypad_normed">normed</string>
+	<string name="keypad_commu">commu</string>
+	<string name="keypad_assoc">assoc</string>
+	<string name="keypad_alter">alter</string>
+	<string name="keypad_prev">⇐</string>
+	<!-- プログレスダイアログのラベル -->
+	<string name="calculation_running_label">Calculating now…</string>
+	<string name="calculation_cancel_label">Cancel</string>
+	<!-- 出力メッセージ -->
+	<string name="parse_error_message">Parse failed</string>
+	<string name="calculation_error_message">Calculation failed</string>
+	<string name="calculation_canceled_message">Calculation canceled</string>
+	<string name="second">sec</string>
+	<string name="the_number_of_variables">" variables"</string>
+	<string name="divide_by_zero">Divide by 0.</string>
+	<string name="add_arity_error">\'+\' is an operator which needs 2 operands.</string>
+	<string name="multiply_arity_error">\'*\' is an operator which needs 2 operands.</string>
+	<string name="divide_arity_error">\'/\' is an operator which needs 2 operands.</string>
+	<string name="power_arity_error">\'^\' is an operator which needs 2 operands.</string>
+	<string name="power_not_integer_error">The second operand of \'^\' must be an integer.</string>
+	<string name="negate_arity_error">\'negate\' is an operator which needs 1 operand.</string>
+	<string name="substruct_arity_error">\'-\' is an operator which needs 2 operands.</string>
+	<string name="conj_arity_error">\'conj\' is an operator which needs 1 operand.</string>
+	<string name="norm_arity_error">\'norm\' is an operator which needs 1 operand.</string>
+	<string name="inv_arity_error">\'inv\' is an operator which needs 1 operand.</string>
+	<string name="commu_arity_error">\'commu\' is an operator which needs 2 operands.</string>
+	<string name="assoc_arity_error">\'assoc\' is an operator which needs 3 operands.</string>
+	<string name="normed_arity_error">\'normed\' is an operator which needs 2 operands.</string>
+	<string name="substitution_arity_error">\'&lt;=\' is an operator which needs 2 operands.</string>
+	<string name="substitution_not_variable_error">The first operand of \'&lt;=\' must be an variable, which is of the form: X or Xn(n is an positive integer).</string>
+	<string name="illegal_token">Illegal token</string>
+	<string name="radix_point_in_rational_mode">radix point \'.\' is available only in real mode</string>
+</resources>
