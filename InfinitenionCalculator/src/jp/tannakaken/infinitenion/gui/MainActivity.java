@@ -14,7 +14,6 @@ import jp.tannakaken.infinitenion.R;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
-import android.util.Log;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -208,7 +207,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		case R.id.keypad_assoc:
 		case R.id.keypad_normed:
 		case R.id.keypad_sp_2:
-			Log.d("Dentaku", "key");
 			mInputText.append(((Button) aView).getText());
 			return;
 		case R.id.keypad_C:
@@ -266,7 +264,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			mInputText.setText("");
 			return;
 		case R.id.keypad_next:
-			Log.d("Dentaku", "next");
 			getSupportFragmentManager().beginTransaction()
 			.remove(getSupportFragmentManager().getFragments().get(0))
 			.add(R.id.container, new KeypadSecond())
