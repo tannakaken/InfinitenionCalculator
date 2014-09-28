@@ -11,16 +11,13 @@ import jp.tannakaken.infinitenion.calculator.CalculatorParseException;
 import jp.tannakaken.infinitenion.operand.VariableFactory;
 import jp.tannakaken.infinitenion.R;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.widget.ScrollView;
-import android.widget.TextView;
 /**
  * 計算をbackgroundで非同期に行い、時間が掛かりすぎる場合には、キャンセルが出来るようにする。<br>
- * そのために、{@link Calc}を{@link AsyncTask}のサブクラスでラッピングする。
+ * そのために、{@link Calculator}を{@link AsyncTask}のサブクラスでラッピングする。
  * 
  * @author tannakaken
  *
@@ -34,19 +31,11 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	/**
 	 * この非同期タスクを開始した、{@link MainActivity}のインスタンスを格納する。
 	 */
-	private Context mContext;
+	private MainActivity mMain;
 	/**
 	 * タスクの進行中であることを表す{@link android.app.Dialog}。
 	 */
 	private ProgressDialog mDialog;
-	/**
-	 * 結果の出力欄。
-	 */
-	private TextView mOutputText;
-	/**
-	 * 出力欄のスクロール。
-	 */
-	private ScrollView mScroll;
 	/**
 	 * 入力されたコマンド。
 	 */
@@ -73,28 +62,25 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	 */
 	private static final String NEW_LINE = System.getProperty("line.separator"); 
 	/**
-	 * @param aContext この非同期タスクを開始した、{@link MainActivity}のインスタンス
-	 * @param aOutputText 計算の結果を表示する{@link TextView}
-	 * @param aScroll 計算結果を表示するaOutputTextを一番下まで移動させる
+	 * @param aMain この非同期タスクを開始した、{@link MainActivity}のインスタンス
 	 * @param aCalc バックグラウンドで計算を実行する{@link Calculator}
 	 * @param aLatchList 非同期処理の終了を通知するための{@link CountDownLatch}のリスト
 	 */
-	public AsyncCalculatingTask(final Context aContext, final TextView aOutputText, final ScrollView aScroll,
-								final Calculator aCalc, final List<CountDownLatch> aLatchList) {
-		mContext = aContext;
-		mOutputText = aOutputText;
-		mScroll = aScroll;
+	public AsyncCalculatingTask(final MainActivity aMain,
+								final Calculator aCalc,
+								final List<CountDownLatch> aLatchList) {
+		mMain = aMain;
 		mCalc = aCalc;
 		mLatchList = aLatchList;
 	}
 	
 	@Override
 	protected final void onPreExecute() {
-	    mDialog = new ProgressDialog(mContext);
-	    mDialog.setMessage(mContext.getText(R.string.calculation_running_label));
-	    mDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.progress_bar));
+	    mDialog = new ProgressDialog(mMain);
+	    mDialog.setMessage(mMain.getText(R.string.calculation_running_label));
+	    mDialog.setIndeterminateDrawable(mMain.getResources().getDrawable(R.drawable.progress_bar));
 	    mDialog.setOnCancelListener(this);
-	    mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, mContext.getText(R.string.calculation_cancel_label),
+	    mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, mMain.getText(R.string.calculation_cancel_label),
 	            new DialogInterface.OnClickListener() {
 	                public void onClick(final DialogInterface aDialog, final int aWhich) {
 	                	cancel(true);
@@ -111,10 +97,10 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 			return mCalc.calc(mCommand, this);
 		} catch (CalculatorParseException e) {
 			mErrorOccured = true;
-			return mContext.getString(R.string.parse_error_message) + ": " + e.getMessage();
+			return mMain.getString(R.string.parse_error_message) + ": " + e.getMessage();
 		} catch (CalculatingException e) {
 			mErrorOccured = true;
-			return mContext.getString(R.string.calculation_error_message) + ": " + e.getMessage();
+			return mMain.getString(R.string.calculation_error_message) + ": " + e.getMessage();
 		} catch (BackgroundProcessCancelledException e) {
 			return null;
 		}
@@ -122,17 +108,20 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 
 	@Override
 	protected final void onPostExecute(final String aResult) {
+		int tColor;
 		if (mErrorOccured) {
 			VariableFactory.getInstance().cancelSubstitution();
-			mOutputText.setTextColor(Color.RED);
+			tColor = Color.RED;
 		} else {
 			VariableFactory.getInstance().settleSubstitution();
-			mOutputText.setTextColor(Color.GREEN);
+			tColor = Color.GREEN;
 		}
-		mOutputText.append(mCommand + NEW_LINE + "=> ");
-		mOutputText.append(aResult + NEW_LINE
-				+ "(" + getElapsedTime() + " " + mContext.getString(R.string.second) + ")" + NEW_LINE);
-	    scrolldown();
+		mMain.output(
+				mCommand + NEW_LINE
+				+ "=> " + aResult + NEW_LINE
+				+ "(" + getElapsedTime() + " " + mMain.getString(R.string.second) + ")" + NEW_LINE,
+				tColor);
+	    mMain.scrolldown();
 	    // 登録したCountDownLatchに終了を通知
 	    for (CountDownLatch tLatch: mLatchList) {
 			tLatch.countDown();
@@ -142,11 +131,12 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	@Override
 	protected final void onCancelled() {
 		VariableFactory.getInstance().cancelSubstitution();
-		mOutputText.setTextColor(Color.YELLOW);
-		mOutputText.append(mCommand + NEW_LINE + "=> ");
-		mOutputText.append(mContext.getString(R.string.calculation_canceled_message) + NEW_LINE
-				+ "(" + getElapsedTime() + " " + mContext.getString(R.string.second) + ")" + NEW_LINE);
-		scrolldown();
+		mMain.output(
+				mCommand + NEW_LINE
+				+ "=> " + mMain.getString(R.string.calculation_canceled_message) + NEW_LINE
+				+ "(" + getElapsedTime() + " " + mMain.getString(R.string.second) + ")" + NEW_LINE,
+				Color.YELLOW);
+		mMain.scrolldown();
 		// 登録したCountDownLatchに終了を通知
 	    for (CountDownLatch tLatch: mLatchList) {
 			tLatch.countDown();
@@ -166,17 +156,5 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	private float getElapsedTime() {
 		return (System.currentTimeMillis() - mStart) / MILLISECOND_TO_SECOND;
 	}
-
-	/**
-     * 出力欄の画面を下までスクロールさせる。
-     */
-    private void scrolldown() {
-    	mScroll.post(new Runnable() {
-		    @Override
-		    public void run() {
-		        mScroll.fullScroll(ScrollView.FOCUS_DOWN);
-		    }
-		});
-    }
 	
 }

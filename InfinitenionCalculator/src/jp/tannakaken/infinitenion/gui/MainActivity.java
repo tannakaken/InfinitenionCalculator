@@ -14,6 +14,8 @@ import jp.tannakaken.infinitenion.R;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
+import android.util.Log;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -118,7 +120,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		mHistoryIterator = mCommandHistory.listIterator();
 		mIsGoingUp = true;
 
-		// {@link Fragment}の再描画はしない 
 		if (aSavedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new KeypadFirst()).commit();
@@ -139,8 +140,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			startActivity(new Intent(this, Prefs.class));
 			return true;
 		case R.id.action_show_variables:
-			mOutputText.setTextColor(Color.GREEN);
-			mOutputText.append(VariableFactory.getInstance().variablesToString(this));
+			output(VariableFactory.getInstance().variablesToString(this), Color.GREEN);
 			scrolldown();
 			return true;
 		case R.id.action_about:
@@ -208,6 +208,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		case R.id.keypad_assoc:
 		case R.id.keypad_normed:
 		case R.id.keypad_sp_2:
+			Log.d("Dentaku", "key");
 			mInputText.append(((Button) aView).getText());
 			return;
 		case R.id.keypad_C:
@@ -265,6 +266,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			mInputText.setText("");
 			return;
 		case R.id.keypad_next:
+			Log.d("Dentaku", "next");
 			getSupportFragmentManager().beginTransaction()
 			.remove(getSupportFragmentManager().getFragments().get(0))
 			.add(R.id.container, new KeypadSecond())
@@ -286,27 +288,33 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	 * @param aCommand コマンド。 
 	 */
 	private void command(final String aCommand) {
-		(new AsyncCalculatingTask(this, mOutputText, mScroll, mCalc, mLatchList)).execute(aCommand);
+		(new AsyncCalculatingTask(this, mCalc, mLatchList)).execute(aCommand);
 	}
 	/**
 	 * 一つ目のキーパッドを表すクラス。<br>
-	 * androidの定石では、これはstaticクラスにするべきだが、
-	 * onAttachで、親activityを渡して、Ｌｉｓｔｅｎｅｒとしてsetすると、
-	 * Locale変更時に落ちる。
+	 * androidの定石では、これはstaticクラスにする。
 	 * @author tannakaken
 	 *
 	 */
-	public class KeypadFirst extends Fragment {
+	public static class KeypadFirst extends Fragment {
+		/**
+		 * このFragmentを所持する{@link MainActivity}。
+		 */
+		private MainActivity mMain;
+		
 		/**
 		 * クラス生成時には何もしない。
 		 */
 		public KeypadFirst() {
 		}
 		@Override
-		public final void onCreate(final Bundle aSavedInstanceState) {
-			super.onCreate(aSavedInstanceState);
-			// 再描画しない。これをしないと落ちる。してもキーパッドを操作できないし、キーパッドの変更をしようとすると落ちる。
-			setRetainInstance(true);
+		public final void onAttach(final Activity aActivity) {
+			super.onAttach(aActivity);
+			if (aActivity instanceof MainActivity) {
+				mMain = (MainActivity) aActivity;
+			} else {
+				throw new IllegalStateException("This Fragment must attach MainActivity.");
+			}
 		}
 		
 		@Override
@@ -315,7 +323,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			View rootView = aInflater.inflate(R.layout.keypad, aContainer,
 					false);
 			setListeners(rootView);
-			scrolldown();
+			mMain.scrolldown();
 			return rootView;
 		}
 		
@@ -324,55 +332,58 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		 * @param aRootView 親のView。
 		 */
 		private void setListeners(final View aRootView) {
-			aRootView.findViewById(R.id.keypad_div).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_mul).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_sub).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_add).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_pow).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_1).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_2).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_3).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_X).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_substitution).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_4).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_5).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_6).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_E).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_sp).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_7).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_8).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_9).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_0).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_dot).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_C).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_bs).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_up).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_down).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_next).setOnClickListener(MainActivity.this);
+			aRootView.findViewById(R.id.keypad_div).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_mul).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_sub).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_add).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_pow).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_1).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_2).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_3).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_X).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_substitution).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_4).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_5).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_6).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_E).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_sp).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_7).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_8).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_9).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_0).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_dot).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_C).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_bs).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_up).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_down).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_next).setOnClickListener(mMain);
 		}
 	}
 	/**
 	 * 二つ目のキーパッドを表すクラス。<br>
-	 * androidの定石では、これはstaticクラスにするべきだが、
-	 * onAttachで、親activityを渡して、Ｌｉｓｔｅｎｅｒとしてsetすると、
-	 * Locale変更時に落ちる。
+	 * androidの定石では、これはstaticクラスにする。
 	 * @author tannakaken
 	 *
 	 */
-	public class KeypadSecond extends Fragment {
-
+	public static class KeypadSecond extends Fragment {
+		/**
+		 * このFragmentを所持する{@link MainActivity}。
+		 */
+		private MainActivity mMain;
 		/**
 		 * 生成時に何もしない。
 		 */
 		public KeypadSecond() {
 		}
 		@Override
-		public final void onCreate(final Bundle aSavedInstanceState) {
-			super.onCreate(aSavedInstanceState);
-			// 再描画しない。これをしないと落ちる。してもキーパッドを操作できないし、キーパッドの変更をしようとすると落ちる。
-			setRetainInstance(true);
+		public final void onAttach(final Activity aActivity) {
+			super.onAttach(aActivity);
+			if (aActivity instanceof MainActivity) {
+				mMain = (MainActivity) aActivity;
+			} else {
+				throw new IllegalStateException("This Fragment must attach MainActivity.");
+			}
 		}
-		
 		@Override
 		public final View onCreateView(final LayoutInflater aInflater, final ViewGroup aContainer,
 				final Bundle aSavedInstanceState) {
@@ -387,25 +398,34 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		 * @param aRootView 親のView。
 		 */
 		private void setListeners(final View aRootView) {
-			aRootView.findViewById(R.id.keypad_negate).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_inv).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_conj).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_norm).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_commu).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_assoc).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_normed).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_sp_2).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_bs_2).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_up_2).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_down_2).setOnClickListener(MainActivity.this);
-			aRootView.findViewById(R.id.keypad_prev).setOnClickListener(MainActivity.this);
+			aRootView.findViewById(R.id.keypad_negate).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_inv).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_conj).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_norm).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_commu).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_assoc).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_normed).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_sp_2).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_bs_2).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_up_2).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_down_2).setOnClickListener(mMain);
+			aRootView.findViewById(R.id.keypad_prev).setOnClickListener(mMain);
 			
 		}
+	}
+	/**
+	 * 
+	 * @param aOutput 出力される文字列
+	 * @param aColor 文字の色
+	 */
+	final void output(final String aOutput, final int aColor) {
+		mOutputText.setTextColor(aColor);
+		mOutputText.append(aOutput);
 	}
     /**
      * 出力欄の画面を下までスクロールさせる。
      */
-    private void scrolldown() {
+    final void scrolldown() {
     	mScroll.post(new Runnable() {
 		    @Override
 		    public void run() {
