@@ -17,6 +17,7 @@ import android.text.InputType;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -281,11 +282,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	}
 
 	/**
-	 * コマンドを入力する。
+	 * コマンドを入力する。<br>
+	 * キャンセルされたコマンドの処理が終了しなくても、次のコマンドが実行できるように、
+	 * {@link AsyncTask#THREAD_POOL_EXECUTOR}を指定する。
 	 * @param aCommand コマンド。 
 	 */
 	private void command(final String aCommand) {
-		(new AsyncCalculatingTask(this, mCalc, mLatchList)).execute(aCommand);
+		(new AsyncCalculatingTask(this, mCalc, mLatchList)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, aCommand);
 	}
 	/**
 	 * 一つ目のキーパッドを表すクラス。<br>

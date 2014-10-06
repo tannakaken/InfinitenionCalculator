@@ -17,7 +17,15 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 /**
  * 計算をbackgroundで非同期に行い、時間が掛かりすぎる場合には、キャンセルが出来るようにする。<br>
- * そのために、{@link Calculator}を{@link AsyncTask}のサブクラスでラッピングする。
+ * そのために、{@link Calculator}を{@link AsyncTask}のサブクラスでラッピングする。<br>
+ * {@link SryncTask#onCancelled()}は使わず、キャンセル操作後すぐに、
+ * {@link ProgressDialog}を消し、キャンセルを行った旨のメッセージを表示する。<br>
+ * {@link java.math.BigInteger}や{@link java.math.BigDecimal}の演算など、
+ * こちらで作ったフラグの届かない場所で計算に時間が掛かっている場合、
+ * キャンセルをしても、このスレッドはすぐには終わらない。<br>
+ * そこで、すぐにキャンセルが実行された振りをすることで、ユーザーにストレスを与えない選択をした。<br>
+ * 実際にはキャンセルされていないスレッドを大量に重ねることにより、負荷をかけることが可能かもしれないので、
+ * 手動で良いので、負荷テストを実行しておくこと。
  * 
  * @author tannakaken
  *
@@ -83,7 +91,7 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	    mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, mMain.getText(R.string.calculation_cancel_label),
 	            new DialogInterface.OnClickListener() {
 	                public void onClick(final DialogInterface aDialog, final int aWhich) {
-	                	cancel(true);
+	                	cancel();
 	                }
 	            });
 	    mDialog.show();
@@ -128,8 +136,23 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 		}
 	    mDialog.dismiss();
 	}
+	
 	@Override
-	protected final void onCancelled() {
+	public final void onCancel(final DialogInterface aDialog) {
+		cancel();
+	}
+	/**
+	 * 
+	 * @return 計算に掛かった時間（秒）
+	 */
+	private float getElapsedTime() {
+		return (System.currentTimeMillis() - mStart) / MILLISECOND_TO_SECOND;
+	}
+	/**
+	 * キャンセル処理を行う。
+	 */
+	private void cancel() {
+		cancel(true);
 		VariableFactory.getInstance().cancelSubstitution();
 		mMain.output(
 				mCommand + NEW_LINE
@@ -143,18 +166,4 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 		}
 	    mDialog.dismiss();
 	}
-	
-	
-	@Override
-	public final void onCancel(final DialogInterface aDialog) {
-		cancel(true);
-	}
-	/**
-	 * 
-	 * @return 計算に掛かった時間（秒）
-	 */
-	private float getElapsedTime() {
-		return (System.currentTimeMillis() - mStart) / MILLISECOND_TO_SECOND;
-	}
-	
 }
