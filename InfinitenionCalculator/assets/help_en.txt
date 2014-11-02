@@ -10,17 +10,22 @@ Usage: a b *
 /:division（binary）
 Usage:　a b /
 
-^:power（binary）
-Usage: a n ^（n is a positive integer）
+^:exponentiation（binary）
+Usage: a n ^ （n is a positive integer）
+notice: Exponentiation gets greater suddenly as its power n becomes greater.
+If that happens, not only calculation tasks but also cancel tasks will take very long time.
+When unterminated cancel tasks accumulate, new calculating tasks will be unable to start.
+So keep digit of power n below 6.
+When new calculating tasks can not start, terminate this application forcefully from the menu and restart.
 
 E:En are nth imaginary units
-Usage: En（n is a positive integer）
+Usage: En （n is a positive integer）
 
 X:X or Xn are variables
-Usage:X or Xn（n is a positive integer）
+Usage:X or Xn （n is a positive integer）
 
 <=:substitution（binary）
-Usage:Xn a <=（Xn is a variable）
+Usage:Xn a <= （Xn is a variable）
 
 negate:negation（unary）
 Usage:a negate

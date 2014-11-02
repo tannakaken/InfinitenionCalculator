@@ -33,4 +33,8 @@
         android:orderInCategory="100"
         android:title="@string/action_story"
         app:showAsAction="never"/>
+    <item android:id="@+id/action_finish"
+        android:orderInCategory="100"
+        android:title="@string/action_finish"
+        app:showAsAction="never"/>
 </menu>

@@ -162,6 +162,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			i = new Intent(this, Web.class);
 			startActivity(i);
 			return true;
+		case R.id.action_finish:
+			android.os.Process.killProcess(android.os.Process.myPid());
 		default:
 			return super.onOptionsItemSelected(aItem);
 		}

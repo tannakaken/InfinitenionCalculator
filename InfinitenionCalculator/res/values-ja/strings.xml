@@ -11,6 +11,7 @@
     <string name="action_help">ヘルプ</string>
     <string name="action_problem">問題集</string>
     <string name="action_story">数学小説</string>
+    <string name="action_finish">アプリの強制終了</string>
     <!-- settingsのラベル -->
     <string name="setting_label">設定</string>
     <string name="real_title">実数モード</string>
@@ -37,6 +38,7 @@
 	<string name="parse_error_message">パースの失敗</string>
 	<string name="calculation_error_message">計算の失敗</string>
 	<string name="calculation_canceled_message">計算がキャンセルされました。</string>
+	<string name="calculation_can_not_start">計算の実行が開始できませんでした。おそらく過去のキャンセル処理が終了できていないのが原因です。少し経ってからもう一度操作してください。それでもだめならアプリを強制終了したのち再起動してください。</string>
 	<string name="second">秒</string>
 	<string name="the_number_of_variables">個の変数</string>
 	<string name="divide_by_zero">0による除算です。</string>

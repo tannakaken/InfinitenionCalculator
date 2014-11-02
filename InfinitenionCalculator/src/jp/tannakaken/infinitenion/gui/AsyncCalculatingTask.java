@@ -149,16 +149,22 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 		return (System.currentTimeMillis() - mStart) / MILLISECOND_TO_SECOND;
 	}
 	/**
-	 * キャンセル処理を行う。
+	 * キャンセル処理を行う。<br>
+	 * 以前のキャンセル処理が終了しておらずに溜まって、{@link AsyncTask}の同時実行の限界に至るなどして、
+	 * 計算タスクが全く実行されなかった場合、その旨のメッセージを出す。
 	 */
 	private void cancel() {
-		cancel(true);
-		VariableFactory.getInstance().cancelSubstitution();
-		mMain.output(
-				mCommand + NEW_LINE
-				+ "=> " + mMain.getString(R.string.calculation_canceled_message) + NEW_LINE
-				+ "(" + getElapsedTime() + " " + mMain.getString(R.string.second) + ")" + NEW_LINE,
-				Color.YELLOW);
+		if (mCommand == null) {
+			mMain.output(mMain.getString(R.string.calculation_can_not_start) + NEW_LINE, Color.YELLOW);
+		} else {
+			cancel(true);
+			VariableFactory.getInstance().cancelSubstitution();
+			mMain.output(
+					mCommand + NEW_LINE
+					+ "=> " + mMain.getString(R.string.calculation_canceled_message) + NEW_LINE
+					+ "(" + getElapsedTime() + " " + mMain.getString(R.string.second) + ")" + NEW_LINE,
+					Color.YELLOW);
+		}
 		mMain.scrolldown();
 		// 登録したCountDownLatchに終了を通知
 	    for (CountDownLatch tLatch: mLatchList) {

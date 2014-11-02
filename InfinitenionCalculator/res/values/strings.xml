@@ -11,6 +11,7 @@
     <string name="action_help">help</string>
     <string name="action_problem">problem collection</string>
     <string name="action_story">math novel(japanese only)</string>
+    <string name="action_finish">terminate this app forcefully</string>
     <!-- settingsのラベル -->
     <string name="setting_label">setting</string>
     <string name="real_key">real</string>
@@ -75,6 +76,7 @@
 	<string name="parse_error_message">Parse failed</string>
 	<string name="calculation_error_message">Calculation failed</string>
 	<string name="calculation_canceled_message">Calculation canceled</string>
+	<string name="calculation_can_not_start">Calculation can not start. Probably it is because past cancel transactions have not finished. Please wait several seconds. And if still no good, restart application　after forceful termination.</string>
 	<string name="second">sec</string>
 	<string name="the_number_of_variables">" variables"</string>
 	<string name="divide_by_zero">Divide by 0.</string>
