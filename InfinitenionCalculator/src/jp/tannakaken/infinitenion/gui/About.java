@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 /**
- * ŠeíƒAƒoƒEƒg‚Ì‘I‘ğ‰æ–ÊB
+ * å„ç¨®ã‚¢ãƒã‚¦ãƒˆã®é¸æŠç”»é¢ã€‚
  * @author tannakaken
  *
  */

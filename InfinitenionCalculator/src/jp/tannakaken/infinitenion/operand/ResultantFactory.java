@@ -9,13 +9,13 @@ import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException;
 import jp.tannakaken.infinitenion.calculator.CalculatingException;
 /**
- * ƒXƒ^ƒbƒN‚É—­‚Ü‚Á‚½{@link Operand}‚ğì‚Á‚ÄAƒIƒyƒŒ[ƒ^‚É‡‚í‚¹‚ÄŒvZ‚µA
- * V‚µ‚¢{@link Operand}‚ğƒXƒ^ƒbƒN‚É‚Â‚ŞB<br>
- * ˆê‚Â‚µ‚©ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•K—v‚È‚¢‚Ì‚ÅASingletonƒpƒ^[ƒ“‚ğg‚¤B<br>
- * ‚Ü‚½A{@link Constant}‚Ì{@link Operand#getHeight()}‚Ì’l‚ª0‚ÅA
- * {@link Zero}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚È‚¢‚Æ‚«‚ÉA{@link Operand#add(Operand)}A
- * {@link Operand#mul(Operand)}A{@link Operand#negate()}A{@link Operand#inv()}A
- * ‚ğÀ‘•‚·‚ê‚ÎA‘S‚Ä‚Ì‰‰Z‚ªÀ‘•‚³‚ê‚é‚Ì‚ÍAˆêí‚ÌTemplate Methodƒpƒ^[ƒ“‚Å‚ ‚éB
+ * ã‚¹ã‚¿ãƒƒã‚¯ã«æºœã¾ã£ãŸ{@link Operand}ã‚’ä½œã£ã¦ã€ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã«åˆã‚ã›ã¦è¨ˆç®—ã—ã€
+ * æ–°ã—ã„{@link Operand}ã‚’ã‚¹ã‚¿ãƒƒã‚¯ã«ã¤ã‚€ã€‚<br>
+ * ä¸€ã¤ã—ã‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå¿…è¦ãªã„ã®ã§ã€Singletonãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã†ã€‚<br>
+ * ã¾ãŸã€{@link Constant}ã®{@link Operand#getHeight()}ã®å€¤ãŒ0ã§ã€
+ * {@link Zero}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ãªã„ã¨ãã«ã€{@link Operand#add(Operand)}ã€
+ * {@link Operand#mul(Operand)}ã€{@link Operand#negate()}ã€{@link Operand#inv()}ã€
+ * ã‚’å®Ÿè£…ã™ã‚Œã°ã€å…¨ã¦ã®æ¼”ç®—ãŒå®Ÿè£…ã•ã‚Œã‚‹ã®ã¯ã€ä¸€ç¨®ã®Template Methodãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚ã‚‹ã€‚
  * @author tannakaken
  * 
  * @see
@@ -25,26 +25,26 @@ import jp.tannakaken.infinitenion.calculator.CalculatingException;
  */
 public final class ResultantFactory extends Factory {
 	/**
-	 * {@link Constant}‚ğì‚é‚½‚ßB 
+	 * {@link Constant}ã‚’ä½œã‚‹ãŸã‚ã€‚ 
 	 */
 	private static ImaginaryFactory mImaginaryFactory = ImaginaryFactory.getInstance();
 	
 	/**
-	 * {@link Operator}‚ÆA‚»‚ê‚ğ‚ğ•\‚·ƒg[ƒNƒ“‚Ì‘Î‰B
+	 * {@link Operator}ã¨ã€ãã‚Œã‚’ã‚’è¡¨ã™ãƒˆãƒ¼ã‚¯ãƒ³ã®å¯¾å¿œã€‚
 	 */
 	private static final Map<String, Operator> OPERATORS = new HashMap<String, Operator>(16, 1.0f);
 	/**
-	 * ˆê‚Â‚µ‚©•K—v‚È‚¢‚Ì‚Å<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>B
+	 * ä¸€ã¤ã—ã‹å¿…è¦ãªã„ã®ã§<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>ã€‚
 	 * 
 	 */
 	private static ResultantFactory mSingleton = new ResultantFactory();
 	/**
-	 * Ÿ‚És‚¤{@link Operator}B
+	 * æ¬¡ã«è¡Œã†{@link Operator}ã€‚
 	 */
 	private Operator mOperator; 
 	
 	/**
-	 * {@link Operator#ASSOC}‚Ìarity‚Í3B
+	 * {@link Operator#ASSOC}ã®arityã¯3ã€‚
 	 */
 	private static final int ASSOC_ARRITY = 3;
 	
@@ -64,13 +64,13 @@ public final class ResultantFactory extends Factory {
 		OPERATORS.put("normed", Operator.NORMED);
 	};
 	/**
-	 * ŠO•”‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‰»‚Å‚«‚È‚¢‚æ‚¤‚É‚µ‚Ä‚¨‚­B
+	 * å¤–éƒ¨ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã§ããªã„ã‚ˆã†ã«ã—ã¦ãŠãã€‚
 	 */
 	private ResultantFactory() {
 	}
 	/**
 	 * 
-	 * @return {@link VariableFactory}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>B
+	 * @return {@link VariableFactory}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>ã€‚
 	 * 
 	 */
 	public static ResultantFactory getInstance() {
@@ -135,10 +135,10 @@ public final class ResultantFactory extends Factory {
 	}
 	
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’l‚Ì˜a
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½+‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤ã®å’Œ
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸ+ã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant add() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -159,18 +159,18 @@ public final class ResultantFactory extends Factory {
 		int tHeight1 = tOperand1.getHeight();
 		int tHeight2 = tOperand2.getHeight();
 		if (tHeight1 > tHeight2) {
-			// ÅŒã‚Éo‚³‚ê‚é‚à‚ÌB
+			// æœ€å¾Œã«å‡ºã•ã‚Œã‚‹ã‚‚ã®ã€‚
 			tStack.push(tOperand1.getImag());
-			// ‰‰Z‚³‚ê‚é‚à‚Ì
+			// æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2);
 			tOperand1 = null;
 			tOperand2 = null;
 			return mImaginaryFactory.mixRealAndImaginary(add(), tStack.pop().getInterior(), tHeight1);
 		} else if (tHeight2 > tHeight1) {
-			// ÅŒã‚Éo‚³‚ê‚é‚à‚ÌB
+			// æœ€å¾Œã«å‡ºã•ã‚Œã‚‹ã‚‚ã®ã€‚
 			tStack.push(tOperand2.getImag());
-			// ‰‰Z‚³‚ê‚é‚à‚ÌB
+			// æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®ã€‚
 			tStack.push(tOperand1);
 			tStack.push(tOperand2.getReal());
 			tOperand1 = null;
@@ -179,10 +179,10 @@ public final class ResultantFactory extends Factory {
 		} else if (tHeight1 == 0) {
 			return tOperand1.add(tOperand2);
 		} else {
-			// ÅŒã‚É‰‰Z‚³‚ê‚é‚à‚Ì
+			// æœ€å¾Œã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand1.getImag());
 			tStack.push(tOperand2.getImag());
-			// Å‰‚É‰‰Z‚³‚ê‚é‚à‚Ì
+			// æœ€åˆã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2.getReal());
 			tOperand1 = null;
@@ -191,10 +191,10 @@ public final class ResultantFactory extends Factory {
 		}
 	}
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’l‚ÌÏ
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½*‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤ã®ç©
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸ*ã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant mul() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -211,25 +211,25 @@ public final class ResultantFactory extends Factory {
 		}
 		int tHeight1 = tOperand1.getHeight();
 		int tHeight2 = tOperand2.getHeight();
-		// ‚‚³‚ğ”ä‚×‚ÄA0‚É‚æ‚éŠ|‚¯Z‚ğÈ—ª‚·‚éB
-		// (p,q)(r,s)=(p r - s^* q, s p + q r^*)‚Å‚ ‚éB
-		// ’Pƒ‚É•ª”z‘¥‚ğ“K—p‚µ‚È‚¢‚æ‚¤‚É’ˆÓB
-		if (tHeight1 > tHeight2) { // ‘Šè‚Ì‚Ù‚¤‚ªŸŒ³‚ª’á‚¢‚Æ‚«B
-			// ÅŒã‚É‰‰Z‚³‚ê‚é‚à‚Ì
+		// é«˜ã•ã‚’æ¯”ã¹ã¦ã€0ã«ã‚ˆã‚‹æ›ã‘ç®—ã‚’çœç•¥ã™ã‚‹ã€‚
+		// (p,q)(r,s)=(p r - s^* q, s p + q r^*)ã§ã‚ã‚‹ã€‚
+		// å˜ç´”ã«åˆ†é…å‰‡ã‚’é©ç”¨ã—ãªã„ã‚ˆã†ã«æ³¨æ„ã€‚
+		if (tHeight1 > tHeight2) { // ç›¸æ‰‹ã®ã»ã†ãŒæ¬¡å…ƒãŒä½ã„ã¨ãã€‚
+			// æœ€å¾Œã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand1.getImag());
 			tStack.push(tOperand2);
 			tStack.push(conj());
-			// Å‰‚É‰‰Z‚³‚ê‚é‚à‚Ì
+			// æœ€åˆã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2);
 			tOperand1 = null;
 			tOperand2 = null;
 			return mImaginaryFactory.mixRealAndImaginary(mul(), mul(), tHeight1);
-		} else if (tHeight2 > tHeight1) { // ‘Šè‚Ì‚Ù‚¤‚ªŸŒ³‚ª‚‚¢‚Æ‚«B
-			// ÅŒã‚É‰‰Z‚³‚ê‚é‚à‚Ì
+		} else if (tHeight2 > tHeight1) { // ç›¸æ‰‹ã®ã»ã†ãŒæ¬¡å…ƒãŒé«˜ã„ã¨ãã€‚
+			// æœ€å¾Œã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand2.getImag());
 			tStack.push(tOperand1);
-			// Å‰‚É‰‰Z‚³‚ê‚é‚à‚Ì
+			// æœ€åˆã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand1);
 			tStack.push(tOperand2.getReal());
 			tOperand1 = null;
@@ -238,35 +238,35 @@ public final class ResultantFactory extends Factory {
 		} else if (tHeight1 == 0) {
 			return tOperand1.mul(tOperand2);
 		} else {
-			// ÅŒã‚É‰‰Z‚³‚ê‚é‚à‚Ì
+			// æœ€å¾Œã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand2.getImag());
 			tStack.push(tOperand1.getReal());
-			tStack.push(mul()); // s p‚ğŠi”[
+			tStack.push(mul()); // s pã‚’æ ¼ç´
 			tStack.push(tOperand1.getImag());
 			tStack.push(tOperand2.getReal());
 			tStack.push(conj());
-			tStack.push(mul()); // q r^*‚ğŠi”[
-			// Å‰‚É‰‰Z‚³‚ê‚é‚à‚ÌB
+			tStack.push(mul()); // q r^*ã‚’æ ¼ç´
+			// æœ€åˆã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®ã€‚
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2.getReal());
-			tStack.push(mul()); // p r‚ğŠi”[
+			tStack.push(mul()); // p rã‚’æ ¼ç´
 			tStack.push(tOperand2.getImag());
 			tStack.push(conj());
 			tStack.push(tOperand1.getImag());
 			tOperand1 = null;
 			tOperand2 = null;
 			tStack.push(mul());
-			tStack.push(negate()); // s^* q‚ğŠi”[
+			tStack.push(negate()); // s^* qã‚’æ ¼ç´
 			return mImaginaryFactory.mixRealAndImaginary(add(), add(), tHeight1);
 		}
 	}
 	
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’l‚Ì—İæ
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½^‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB<br>
-	 * ‚Ü‚½‚ÍA“ñ‚Â–Ú‚Ìˆø”‚ª®”‚Å‚È‚¢B
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤ã®ç´¯ä¹—
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸ^ã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚<br>
+	 * ã¾ãŸã¯ã€äºŒã¤ç›®ã®å¼•æ•°ãŒæ•´æ•°ã§ãªã„ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant pow() throws CalculatingException, BackgroundProcessCancelledException {
 		Deque<Operand> tStack = getStack();
@@ -289,7 +289,7 @@ public final class ResultantFactory extends Factory {
 			if (super.isCanceled()) {
 				throw new BackgroundProcessCancelledException();
 			}
-			if (tPow.getLowestSetBit() == 0) { // ‚Qi”•\‹L‚Åˆê”Ô‰E‚ª–„‚Ü‚Á‚Ä‚¢‚éA‚Æ‚¢‚¤‚±‚Æ‚Í‚±‚ê‚ªŠï”‚Å‚ ‚é‚±‚Æ‚ğˆÓ–¡‚·‚éB
+			if (tPow.getLowestSetBit() == 0) { // ï¼’é€²æ•°è¡¨è¨˜ã§ä¸€ç•ªå³ãŒåŸ‹ã¾ã£ã¦ã„ã‚‹ã€ã¨ã„ã†ã“ã¨ã¯ã“ã‚ŒãŒå¥‡æ•°ã§ã‚ã‚‹ã“ã¨ã‚’æ„å‘³ã™ã‚‹ã€‚
 				tStack.push(tBase);
 				tStack.push(tResult);
 				tResult = mul();
@@ -305,9 +305,9 @@ public final class ResultantFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½’l‚Ì•„†‚ğ”½“]‚µ‚½‚à‚ÌB
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½minus‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸå€¤ã®ç¬¦å·ã‚’åè»¢ã—ãŸã‚‚ã®ã€‚
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸminusã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant negate() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -329,10 +329,10 @@ public final class ResultantFactory extends Factory {
 		}
 	}
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’l‚Ì·
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½-‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤ã®å·®
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸ-ã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant sub() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -347,9 +347,9 @@ public final class ResultantFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½’l‚Ì‹¤–ğB
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½conj‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸå€¤ã®å…±å½¹ã€‚
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸconjã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant conj() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -372,9 +372,9 @@ public final class ResultantFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½’l‚Ìƒmƒ‹ƒ€
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½norm‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸå€¤ã®ãƒãƒ«ãƒ 
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸnormã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant norm() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -398,9 +398,9 @@ public final class ResultantFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½’l‚Ì‹t”B
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½inv‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸå€¤ã®é€†æ•°ã€‚
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸinvã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant inv() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -422,10 +422,10 @@ public final class ResultantFactory extends Factory {
 		return div();
 	}
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’l‚Ì¤
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½/‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤ã®å•†
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸ/ã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant div() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -445,10 +445,10 @@ public final class ResultantFactory extends Factory {
 			if (tHeight == 0) {
 				return tOperand1.div(tOperand2);
 			}
-			// ÅŒã‚É‰‰Z‚³‚ê‚é‚à‚Ì
+			// æœ€å¾Œã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®
 			tStack.push(tOperand1.getImag());
 			tStack.push(tOperand2);
-			// Å‰‚É‰‰Z‚³‚ê‚é‚à‚ÌB
+			// æœ€åˆã«æ¼”ç®—ã•ã‚Œã‚‹ã‚‚ã®ã€‚
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2);
 			tOperand1 = null;
@@ -458,10 +458,10 @@ public final class ResultantFactory extends Factory {
 		return mul();
 	}
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’l‚Ìa,b‚Ìab-ba
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½commu‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤ã®a,bã®ab-ba
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸcommuã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant commu() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -483,10 +483,10 @@ public final class ResultantFactory extends Factory {
 		return sub();
 	}
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½O‚Â‚Ì’l‚Ì(ab)c-a(bc)
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½assoc‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸä¸‰ã¤ã®å€¤ã®(ab)c-a(bc)
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸassocã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant assoc() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -514,10 +514,10 @@ public final class ResultantFactory extends Factory {
 		return sub();
 	}
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’la,b‚Ì|ab|-|a||b|
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½normed‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤a,bã®|ab|-|a||b|
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸnormedã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Constant normed() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
@@ -542,10 +542,10 @@ public final class ResultantFactory extends Factory {
 		return sub();
 	}
 	/**
-	 * Java‚Ìˆø”‚Ì•]‰¿‡˜‚Í¶‚©‚ç‡‚É‚Å‚ ‚éB
-	 * @return {@link Factory#getStack()}‚©‚çæ‚èo‚³‚ê‚½“ñ‚Â‚Ì’l‚Ì“ñ‚Â–Ú‚ÉAˆê‚Â–Ú‚ğ‘ã“ü‚·‚éB
-	 * @throws CalculatingException {@link Factory#getStack()}‚ÉÏ‚Ü‚ê‚½<=‚Ì‚½‚ß‚Ìˆø”‚ª­‚È‚·‚¬‚éB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * Javaã®å¼•æ•°ã®è©•ä¾¡é †åºã¯å·¦ã‹ã‚‰é †ã«ã§ã‚ã‚‹ã€‚
+	 * @return {@link Factory#getStack()}ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸäºŒã¤ã®å€¤ã®äºŒã¤ç›®ã«ã€ä¸€ã¤ç›®ã‚’ä»£å…¥ã™ã‚‹ã€‚
+	 * @throws CalculatingException {@link Factory#getStack()}ã«ç©ã¾ã‚ŒãŸ<=ã®ãŸã‚ã®å¼•æ•°ãŒå°‘ãªã™ãã‚‹ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	private Operand substitution() throws CalculatingException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {

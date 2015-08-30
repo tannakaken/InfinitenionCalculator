@@ -1,60 +1,60 @@
 package jp.tannakaken.infinitenion.operand;
 /**
- * ƒIƒyƒŒ[ƒ^‚ð•\‚·—ñ‹“‘ÌB
+ * ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã‚’è¡¨ã™åˆ—æŒ™ä½“ã€‚
  * @author tannakaken
  *
  */
 enum Operator {
 	/**
-	 * ˜aB
+	 * å’Œã€‚
 	 */
 	ADD,
 	/**
-	 * ·B
+	 * å·®ã€‚
 	 */
 	SUB,
 	/**
-	 * ÏB
+	 * ç©ã€‚
 	 */
 	MUL,
 	/**
-	 * ¤B
+	 * å•†ã€‚
 	 */
 	DIV,
 	/**
-	 * —ÝæB
+	 * ç´¯ä¹—ã€‚
 	 */
 	POW,
 	/**
-	 * ‘ã“üB
+	 * ä»£å…¥ã€‚
 	 */
 	SUBSTITUTION,
 	/**
-	 * ƒmƒ‹ƒ€B
+	 * ãƒŽãƒ«ãƒ ã€‚
 	 */
 	NORM,
 	/**
-	 * ‹¤–ðB
+	 * å…±å½¹ã€‚
 	 */
 	CONJ,
 	/**
-	 * •„†”½“]B
+	 * ç¬¦å·åè»¢ã€‚
 	 */
 	NEGATE,
 	/**
-	 * ‹t”B
+	 * é€†æ•°ã€‚
 	 */
 	INV,
 	/**
-	 * ‰ÂŠ·B
+	 * å¯æ›ã€‚
 	 */
 	COMMU,
 	/**
-	 * Œ‹‡B
+	 * çµåˆã€‚
 	 */
 	ASSOC,
 	/**
-	 * ƒmƒ‹ƒ€•t‚¯B
+	 * ãƒŽãƒ«ãƒ ä»˜ã‘ã€‚
 	 */
 	NORMED,
 }

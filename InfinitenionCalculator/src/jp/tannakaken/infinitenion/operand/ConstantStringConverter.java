@@ -3,39 +3,39 @@ package jp.tannakaken.infinitenion.operand;
 import java.math.BigInteger;
 
 /**
- * {@link Constant}‚ğ{@link Object#toString}‚·‚é‚±‚Æ‚ğAVisitorƒpƒ^[ƒ“‚ğg‚Á‚ÄÀŒ»‚·‚éB
- * toString‚Ìƒ‚[ƒh‚ğˆêŠ‡ŠÇ—‚·‚é‚½‚ß‚ÉAsingletonƒpƒ^[ƒ“‚àg‚¤B
+ * {@link Constant}ã‚’{@link Object#toString}ã™ã‚‹ã“ã¨ã‚’ã€Visitorãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã£ã¦å®Ÿç¾ã™ã‚‹ã€‚
+ * toStringã®ãƒ¢ãƒ¼ãƒ‰ã‚’ä¸€æ‹¬ç®¡ç†ã™ã‚‹ãŸã‚ã«ã€singletonãƒ‘ã‚¿ãƒ¼ãƒ³ã‚‚ä½¿ã†ã€‚
  * @author kensaku
  * 
  * @see 
  * <a href="http://en.wikipedia.org/wiki/Visitor_pattern">http://en.wikipedia.org/wiki/Visitor_pattern</a><br>
- *@<a href="http://en.wikipedia.org/wiki/Singleton_pattern">http://en.wikipedia.org/wiki/Singleton_pattern</a>
+ *ã€€<a href="http://en.wikipedia.org/wiki/Singleton_pattern">http://en.wikipedia.org/wiki/Singleton_pattern</a>
  */
 final class ConstantStringConverter {
 	/**
-	 * ¡A‚¢‚­‚Â‚ß‚ÌŠî’ê‚ğ•¶š‚É‚µ‚Ä‚¢‚é‚©B
+	 * ä»Šã€ã„ãã¤ã‚ã®åŸºåº•ã‚’æ–‡å­—ã«ã—ã¦ã„ã‚‹ã‹ã€‚
 	 */
 	private BigInteger mNthBase = BigInteger.ZERO;
 	/**
-	 * ‚¢‚­‚Â‚ß‚ÌŒ³‚ğì‚Á‚Ä‚¢‚é‚©B
+	 * ã„ãã¤ã‚ã®å…ƒã‚’ä½œã£ã¦ã„ã‚‹ã‹ã€‚
 	 */
 	private int mCount = 0;
 	/**
-	 * {@link Constant#toString}‚ÌŒ‹‰Ê‚ğW‚ß‚Ä‚¢‚­B
+	 * {@link Constant#toString}ã®çµæœã‚’é›†ã‚ã¦ã„ãã€‚
 	 */
 	private StringBuilder mResult = new StringBuilder();
 	/**
-	 * {@link ConstantStringConverter}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>B
+	 * {@link ConstantStringConverter}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>ã€‚
 	 * 
 	 */
 	private static ConstantStringConverter mSingleton = new ConstantStringConverter();
 	/**
-	 * ŠO‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚¹‚È‚¢B
+	 * å¤–ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã›ãªã„ã€‚
 	 */
 	private ConstantStringConverter() { }
 	/**
 	 * 
-	 * @return {@link ConstantStringCOnverter}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>
+	 * @return {@link ConstantStringCOnverter}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>
 	 * 
 	 */
 	public static ConstantStringConverter getInstance() {
@@ -43,8 +43,8 @@ final class ConstantStringConverter {
 	}
 	/**
 	 * 
-	 * @param aConstant {@link Constant#toString}‚³‚ê‚é{@link Constant}B
-	 * @return toString‚ÌŒ‹‰ÊB
+	 * @param aConstant {@link Constant#toString}ã•ã‚Œã‚‹{@link Constant}ã€‚
+	 * @return toStringã®çµæœã€‚
 	 */
 	public String convertString(final Constant aConstant) {
 		visit(aConstant);
@@ -54,8 +54,8 @@ final class ConstantStringConverter {
 	}
 	/**
 	 * 
-	 * @param aConstant <a href="http://en.wikipedia.org/wiki/Visitor_pattern">Visitor</a>ƒpƒ^[ƒ“‚Å
-	 * —v‘f‚ğ{@link Constant#toString}‚µ‚Ä‚¢‚­B
+	 * @param aConstant <a href="http://en.wikipedia.org/wiki/Visitor_pattern">Visitor</a>ãƒ‘ã‚¿ãƒ¼ãƒ³ã§
+	 * è¦ç´ ã‚’{@link Constant#toString}ã—ã¦ã„ãã€‚
 	 * 
 	 */
 	private void visit(final Constant aConstant) {
@@ -85,7 +85,7 @@ final class ConstantStringConverter {
 	}
 	/**
 	 * 
-	 * @return {@link Constant#toString}‚ÌŒ‹‰Ê‚ğW‚ß‚½‚à‚ÌBB
+	 * @return {@link Constant#toString}ã®çµæœã‚’é›†ã‚ãŸã‚‚ã®ã€‚ã€‚
 	 */
 	private String getResult() {
 		StringBuilder tSuffix = new StringBuilder();
@@ -95,7 +95,7 @@ final class ConstantStringConverter {
 		return mResult.toString().trim() + tSuffix.toString();
 	}
 	/**
-	 * ‰Šú‰»B
+	 * åˆæœŸåŒ–ã€‚
 	 */
 	private void clear() {
 		mNthBase = BigInteger.ZERO;
@@ -103,17 +103,17 @@ final class ConstantStringConverter {
 		mResult.setLength(0);
 	}
 	/**
-	 * @param aCounter ‚¢‚­‚Â‚ß‚ÌŠî’ê‚©B
-	 * @return ‹L†B
+	 * @param aCounter ã„ãã¤ã‚ã®åŸºåº•ã‹ã€‚
+	 * @return è¨˜å·ã€‚
 	 */
 	private String sign(final BigInteger aCounter) {
 		return "E" + aCounter;
 	}
 	/**
 	 * 
-	 * @param aParentHeight e‚Ì‚‚³B
-	 * @param aChildHeight q‚Ì‚‚³B
-	 * @return È—ª‚³‚ê‚½Šî’ê‚Ì”B
+	 * @param aParentHeight è¦ªã®é«˜ã•ã€‚
+	 * @param aChildHeight å­ã®é«˜ã•ã€‚
+	 * @return çœç•¥ã•ã‚ŒãŸåŸºåº•ã®æ•°ã€‚
 	 */
 	private BigInteger omittedBases(final int aParentHeight, final int aChildHeight) {
 		if (aParentHeight - aChildHeight == 1) {

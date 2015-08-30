@@ -5,23 +5,23 @@ import java.math.BigInteger;
 import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.calculator.CalculatingException;
 /**
- * 0‚ğ•\‚·ƒNƒ‰ƒXB<br>
- * Èƒƒ‚ƒŠ‰»‚Ì‚½‚ß‚ÉA0‚Í‘S‚ÄA‚±‚ÌƒNƒ‰ƒX‚Ì—Bˆê‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‚æ‚Á‚Ä•\‚·B<br>
- * “–‘RASingletonƒpƒ^[ƒ“‚ğg‚¤B
+ * 0ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã€‚<br>
+ * çœãƒ¡ãƒ¢ãƒªåŒ–ã®ãŸã‚ã«ã€0ã¯å…¨ã¦ã€ã“ã®ã‚¯ãƒ©ã‚¹ã®å”¯ä¸€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã‚ˆã£ã¦è¡¨ã™ã€‚<br>
+ * å½“ç„¶ã€Singletonãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã†ã€‚
  * @author tannakaken
- *@
- *@@see 
+ *ã€€
+ *ã€€@see 
  * <a href="http://en.wikipedia.org/wiki/Singleton_pattern">http://en.wikipedia.org/wiki/Singleton_pattern</a>
  */
 final class Zero extends Constant {
 	/**
-	 * ŠO•”‚©‚ç‚ÍƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚¹‚È‚¢B
+	 * å¤–éƒ¨ã‹ã‚‰ã¯ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã›ãªã„ã€‚
 	 */
 	private Zero() {	
 	}
 	
 	/**
-	 * —Bˆê‚Ì0B
+	 * å”¯ä¸€ã®0ã€‚
 	 */
 	public static final Zero ZERO = new Zero();
 	
@@ -37,12 +37,12 @@ final class Zero extends Constant {
 
 	@Override
 	public Constant getReal() {
-		throw new UnsupportedOperationException("getImag‚Í‚‚³‚PˆÈã‚ÌConstant‚ÉÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("getImagã¯é«˜ã•ï¼‘ä»¥ä¸Šã®Constantã«å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 
 	@Override
 	public Constant getImag() {
-		throw new UnsupportedOperationException("getImag‚Í‚‚³‚PˆÈã‚ÌConstant‚ÉÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("getImagã¯é«˜ã•ï¼‘ä»¥ä¸Šã®Constantã«å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 	
 	@Override

@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.webkit.WebView;
 
 /**
- * “à•”‚âŠO•”‚Ìhtml•¶‘‚ğ‰{——‚·‚é‚½‚ß‚Ì{@link activity}B
+ * å†…éƒ¨ã‚„å¤–éƒ¨ã®htmlæ–‡æ›¸ã‚’é–²è¦§ã™ã‚‹ãŸã‚ã®{@link activity}ã€‚
  * @author tannakaken
  *
  */
 public class Web extends Activity {
 	/**
-	 * ‚±‚ÌActiciry‚Å•\¦‚·‚éhtml•¶‘‚ğ•\‚·{@link WebResource}B
+	 * ã“ã®Acticiryã§è¡¨ç¤ºã™ã‚‹htmlæ–‡æ›¸ã‚’è¡¨ã™{@link WebResource}ã€‚
 	 */
 	private static WebResource mWebResource;
 	/**
-	 * ‚±‚ÌActivity‚ª‚Ç‚Ìhtml•¶‘‚ğ•\¦‚·‚é‚©‚ğŒˆ‚ß‚éB<br>
-	 * {@link onCreate}‚·‚é‘O‚É•K‚¸‚±‚Ìƒƒ\ƒbƒh‚ğ‚·‚é‚±‚ÆB
-	 * @param aWebResource •\¦‚·‚éƒeƒLƒXƒg‚ğ•\‚·{@link WebResource}B
+	 * ã“ã®ActivityãŒã©ã®htmlæ–‡æ›¸ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã‚’æ±ºã‚ã‚‹ã€‚<br>
+	 * {@link onCreate}ã™ã‚‹å‰ã«å¿…ãšã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã™ã‚‹ã“ã¨ã€‚
+	 * @param aWebResource è¡¨ç¤ºã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ã™{@link WebResource}ã€‚
 	 */
 	public static final void setResource(final WebResource aWebResource) {
 		mWebResource = aWebResource;

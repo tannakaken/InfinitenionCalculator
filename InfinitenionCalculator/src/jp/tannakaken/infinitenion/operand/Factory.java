@@ -11,10 +11,10 @@ import jp.tannakaken.infinitenion.calculator.CalculatingException;
 import jp.tannakaken.infinitenion.calculator.CalculatorParseException;
 
 /**
- * ƒg[ƒNƒ“‚ğŒŸ¸‚µ‚ÄA‚à‚µó—e‰Â”\‚È‚ç{@link Operand}‚ğì‚éH’ö‚ğˆê–{‰»‚·‚é‚½‚ß‚ÌAFactory Methodƒpƒ^[ƒ“B<br>
- * ŒvZ‹@‚ÌŒvZƒ‚[ƒh‚ğ{@link android.preference.PreferenceManager}‚©‚çæ“¾‚·‚é‚½‚ß‚ÉA
- * ƒvƒƒOƒ‰ƒ€‚ÌŠJn‚·‚®‚ÉA{@link Factory#setContext(Context)}‚ğ‚·‚é‚±‚ÆB<br>
- * ‚»‚ê‚ğ‘Ó‚Á‚½ê‡‚Ì‹““®‚ÍˆêØ•ÛØ‚µ‚È‚¢B
+ * ãƒˆãƒ¼ã‚¯ãƒ³ã‚’æ¤œæŸ»ã—ã¦ã€ã‚‚ã—å—å®¹å¯èƒ½ãªã‚‰{@link Operand}ã‚’ä½œã‚‹å·¥ç¨‹ã‚’ä¸€æœ¬åŒ–ã™ã‚‹ãŸã‚ã®ã€Factory Methodãƒ‘ã‚¿ãƒ¼ãƒ³ã€‚<br>
+ * è¨ˆç®—æ©Ÿã®è¨ˆç®—ãƒ¢ãƒ¼ãƒ‰ã‚’{@link android.preference.PreferenceManager}ã‹ã‚‰å–å¾—ã™ã‚‹ãŸã‚ã«ã€
+ * ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®é–‹å§‹ã™ãã«ã€{@link Factory#setContext(Context)}ã‚’ã™ã‚‹ã“ã¨ã€‚<br>
+ * ãã‚Œã‚’æ€ ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¸€åˆ‡ä¿è¨¼ã—ãªã„ã€‚
  * 
  * @author tannakaken
  * @see
@@ -24,87 +24,87 @@ import jp.tannakaken.infinitenion.calculator.CalculatorParseException;
  */
 public abstract class Factory {
 	/**
-	 * Œ»İ‚Ìƒ‚[ƒh‚ğæ“¾‚·‚é‚½‚ß‚Ì{@link Context}B
+	 * ç¾åœ¨ã®ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®{@link Context}ã€‚
 	 */
 	private static Context mContext;
 	/**
-	 * Factory‚Ìproduct‚É{@link Context}‚ğ’“ü‚µ‚È‚­‚Ä‚Í‚¢‚¯‚È‚­‚È‚Á‚½‚çA
-	 * ‚»‚ê‚ç‚ÌƒNƒ‰ƒX‚ÉƒNƒ‰ƒXƒƒ\ƒbƒh‚Æ‚µ‚Äsetter‚ğ’è‹`‚µ‚ÄA‚±‚±‚ÅŒÄ‚Ño‚·B
-	 * @param aContext Œ»İ‚Ì{@link Context}B
+	 * Factoryã®productã«{@link Context}ã‚’æ³¨å…¥ã—ãªãã¦ã¯ã„ã‘ãªããªã£ãŸã‚‰ã€
+	 * ãã‚Œã‚‰ã®ã‚¯ãƒ©ã‚¹ã«ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦setterã‚’å®šç¾©ã—ã¦ã€ã“ã“ã§å‘¼ã³å‡ºã™ã€‚
+	 * @param aContext ç¾åœ¨ã®{@link Context}ã€‚
 	 */
 	public static void setContext(final Context aContext) {
 		mContext = aContext;
 		Constant.setContext(aContext);
 	}
 	/**
-	 * ƒvƒƒOƒ‰ƒ€‚ÌŠJn‚·‚®‚ÉA{@link Factory#setContext(Context)}‚ğ‚·‚é‚±‚ÆB<br>
-	 * ‚»‚ê‚ğ‘Ó‚Á‚½ê‡‚Ì‹““®‚ÍˆêØ•ÛØ‚µ‚È‚¢B
-	 * @return Œ»İ‚Ìƒ‚[ƒh‚ğæ“¾‚·‚é‚½‚ß‚Ì{@link Context}B
+	 * ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®é–‹å§‹ã™ãã«ã€{@link Factory#setContext(Context)}ã‚’ã™ã‚‹ã“ã¨ã€‚<br>
+	 * ãã‚Œã‚’æ€ ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¸€åˆ‡ä¿è¨¼ã—ãªã„ã€‚
+	 * @return ç¾åœ¨ã®ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®{@link Context}ã€‚
 	 */
 	static Context getContext() {
 		return mContext;
 	}
 	/**
-	 * ì‚Á‚½{@link Operand}‚ğ•ÛŠÇ‚µ‚Ä‚¢‚­‚½‚ß‚ÉA{@link Deque}‚ğƒXƒ^ƒbƒN‚Æ‚µ‚Äg‚¤B
+	 * ä½œã£ãŸ{@link Operand}ã‚’ä¿ç®¡ã—ã¦ã„ããŸã‚ã«ã€{@link Deque}ã‚’ã‚¹ã‚¿ãƒƒã‚¯ã¨ã—ã¦ä½¿ã†ã€‚
 	 */
 	private static Deque<Operand> mStack = new ArrayDeque<Operand>();
 	/**
-	 *  ƒvƒƒOƒ‰ƒ€‚ÌŠJn‚·‚®‚ÉA{@link Factory#setStack(Deque<Operand>)}‚ğ‚·‚é‚±‚ÆB<br>
-	 *  ‚»‚ê‚ğ‘Ó‚Á‚½ê‡‚Ì‹““®‚ÍˆêØ•ÛØ‚µ‚È‚¢B
-	 * @return {@link Operand}‚ğ’™‘ ‚·‚é‚½‚ß‚ÌƒXƒ^ƒbƒNB 
+	 *  ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®é–‹å§‹ã™ãã«ã€{@link Factory#setStack(Deque<Operand>)}ã‚’ã™ã‚‹ã“ã¨ã€‚<br>
+	 *  ãã‚Œã‚’æ€ ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¸€åˆ‡ä¿è¨¼ã—ãªã„ã€‚
+	 * @return {@link Operand}ã‚’è²¯è”µã™ã‚‹ãŸã‚ã®ã‚¹ã‚¿ãƒƒã‚¯ã€‚ 
 	 */
 	static Deque<Operand> getStack() {
 		return mStack;
 	}
 	/**
-	 * ŒvZ‚ğÀs‚µ‚Ä‚¢‚é”ñ“¯Šúƒ^ƒXƒNB
+	 * è¨ˆç®—ã‚’å®Ÿè¡Œã—ã¦ã„ã‚‹éåŒæœŸã‚¿ã‚¹ã‚¯ã€‚
 	 */
 	private static AsyncTask<String, Void, String> mTask;
 	/**
 	 * 
-	 * @param aTask ŒvZ‚ğÀs‚µ‚Ä‚¢‚é”ñ“¯Šúƒ^ƒXƒNB
+	 * @param aTask è¨ˆç®—ã‚’å®Ÿè¡Œã—ã¦ã„ã‚‹éåŒæœŸã‚¿ã‚¹ã‚¯ã€‚
 	 */
 	public static final void setTask(final AsyncTask<String, Void, String> aTask) {
 		mTask = aTask;
 	}
 	/**
 	 * 
-	 * @return ”ñ“¯Šúƒ^ƒXƒN‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚é‚ÆA‚±‚Ìƒƒ\ƒbƒh‚Ì•Ô‚èŒŒ‚ªtrue‚É‚È‚éB
+	 * @return éåŒæœŸã‚¿ã‚¹ã‚¯ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã‚‹ã¨ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®è¿”ã‚Šè¡€ãŒtrueã«ãªã‚‹ã€‚
 	 */
 	public static final boolean isCanceled() {
 		return mTask.isCancelled();
 	}
 	/**
-	 * •K‚¸{@link Factory#getOperand}‚·‚é‘O‚ÉA‚±‚Ìƒƒ\ƒbƒh‚ÅŒŸ¸‚·‚é‚±‚ÆB<br>
-	 * ‚à‚µA‚»‚ê‚ª‚±‚ÌFactory‚É‚æ‚Á‚ÄA{@link Operand}‚É•ÏŠ·‚Å‚«‚é‚È‚çA
-	 * ‚±‚Ìƒƒ\ƒbƒh‚É‚æ‚Á‚ÄAFactory‚ª€”õó‘Ô‚É“ü‚èA
-	 * {@link Factory#calc()}‚É‚æ‚Á‚ÄA{@link Operand}‚ª¶¬‚³‚êA
-	 * {@link Factory#mStack}‚É’Ç‰Á‚³‚ê‚éB<br>
-	 * ‚»‚ê‚ğç‚ç‚È‚©‚Á‚½ê‡‚Ì‹““®‚ÍˆêØ•ÛØ‚µ‚È‚¢B
-	 * @param aToken ŒŸ¸‚³‚ê‚éƒg[ƒNƒ“B
-	 * @return ‚»‚Ìƒg[ƒNƒ“‚ªù—v‰Â”\‚©‚Ç‚¤‚©B
-	 * @throws CalculatorParseException Œ»İ‚Ìƒ‚[ƒh‚Å‚Íd‚¦‚È‚¢ƒg[ƒNƒ“‚ªg—p‚³‚ê‚é‚±‚Æ‚É‚æ‚é—áŠOB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * å¿…ãš{@link Factory#getOperand}ã™ã‚‹å‰ã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§æ¤œæŸ»ã™ã‚‹ã“ã¨ã€‚<br>
+	 * ã‚‚ã—ã€ãã‚ŒãŒã“ã®Factoryã«ã‚ˆã£ã¦ã€{@link Operand}ã«å¤‰æ›ã§ãã‚‹ãªã‚‰ã€
+	 * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã‚ˆã£ã¦ã€FactoryãŒæº–å‚™çŠ¶æ…‹ã«å…¥ã‚Šã€
+	 * {@link Factory#calc()}ã«ã‚ˆã£ã¦ã€{@link Operand}ãŒç”Ÿæˆã•ã‚Œã€
+	 * {@link Factory#mStack}ã«è¿½åŠ ã•ã‚Œã‚‹ã€‚<br>
+	 * ãã‚Œã‚’å®ˆã‚‰ãªã‹ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¸€åˆ‡ä¿è¨¼ã—ãªã„ã€‚
+	 * @param aToken æ¤œæŸ»ã•ã‚Œã‚‹ãƒˆãƒ¼ã‚¯ãƒ³ã€‚
+	 * @return ãã®ãƒˆãƒ¼ã‚¯ãƒ³ãŒéœ€è¦å¯èƒ½ã‹ã©ã†ã‹ã€‚
+	 * @throws CalculatorParseException ç¾åœ¨ã®ãƒ¢ãƒ¼ãƒ‰ã§ã¯ä»•ãˆãªã„ãƒˆãƒ¼ã‚¯ãƒ³ãŒä½¿ç”¨ã•ã‚Œã‚‹ã“ã¨ã«ã‚ˆã‚‹ä¾‹å¤–ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	public abstract boolean getReady(String aToken)
 			throws CalculatorParseException, BackgroundProcessCancelledException;
 	
 	/**
-	 * •K‚¸‚±‚Ìƒƒ\ƒbƒh‚ğg‚¤‘O‚ÉA{@link Factory#getReady(String)}‚ÅŒŸ¸‚·‚é‚±‚ÆB<br>
-	 * ‚à‚µA‚»‚ê‚ª‚±‚ÌFactory‚É‚æ‚Á‚ÄA{@link Operand}‚É•ÏŠ·‚Å‚«‚é‚È‚çA
-	 * ‚»‚ê‚É‚æ‚èAFactory‚ª€”õó‘Ô‚É“ü‚èA
-	 * ‚±‚Ìƒƒ\ƒbƒh‚É‚æ‚Á‚ÄAƒg[ƒNƒ“‚ª•\‚·{@link Operand}A
-	 * ‚à‚µ‚­‚Íƒg[ƒNƒ“‚Ì•\‚·ƒIƒyƒŒ[ƒ^‚ğ{@link Factory#mStack}‚©‚çæ‚èo‚µ‚½{@link Operand}‚É“K—p‚µ‚½{@link Operand}‚ª¶¬‚³‚êA
-	 * {@link Factory#mStack}‚É’Ç‰Á‚³‚ê‚éB<br>
-	 * ‚»‚ê‚ğç‚ç‚È‚©‚Á‚½ê‡‚Ì‹““®‚ÍˆêØ•ÛØ‚µ‚È‚¢B
-	 * @throws CalculatingException ƒIƒyƒŒ[ƒ^‚Ì—v‹‚·‚é•¶–@‚Ìˆá”½‚É‚æ‚é—áŠOB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * å¿…ãšã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ã†å‰ã«ã€{@link Factory#getReady(String)}ã§æ¤œæŸ»ã™ã‚‹ã“ã¨ã€‚<br>
+	 * ã‚‚ã—ã€ãã‚ŒãŒã“ã®Factoryã«ã‚ˆã£ã¦ã€{@link Operand}ã«å¤‰æ›ã§ãã‚‹ãªã‚‰ã€
+	 * ãã‚Œã«ã‚ˆã‚Šã€FactoryãŒæº–å‚™çŠ¶æ…‹ã«å…¥ã‚Šã€
+	 * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã‚ˆã£ã¦ã€ãƒˆãƒ¼ã‚¯ãƒ³ãŒè¡¨ã™{@link Operand}ã€
+	 * ã‚‚ã—ãã¯ãƒˆãƒ¼ã‚¯ãƒ³ã®è¡¨ã™ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã‚’{@link Factory#mStack}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸ{@link Operand}ã«é©ç”¨ã—ãŸ{@link Operand}ãŒç”Ÿæˆã•ã‚Œã€
+	 * {@link Factory#mStack}ã«è¿½åŠ ã•ã‚Œã‚‹ã€‚<br>
+	 * ãã‚Œã‚’å®ˆã‚‰ãªã‹ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¸€åˆ‡ä¿è¨¼ã—ãªã„ã€‚
+	 * @throws CalculatingException ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã®è¦æ±‚ã™ã‚‹æ–‡æ³•ã®é•åã«ã‚ˆã‚‹ä¾‹å¤–ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	public abstract void calc() throws CalculatingException, BackgroundProcessCancelledException;
 	
 	/**
 	 * 
-	 * @return ƒXƒ^ƒbƒN‚ÉŠi”[‚³‚ê‚½ŒvZŒ‹‰Ê‚ğ•¶š—ñ‚É‚·‚éB
+	 * @return ã‚¹ã‚¿ãƒƒã‚¯ã«æ ¼ç´ã•ã‚ŒãŸè¨ˆç®—çµæœã‚’æ–‡å­—åˆ—ã«ã™ã‚‹ã€‚
 	 */
 	public static String getResult() {
 		StringBuilder tResult = new StringBuilder();
@@ -114,7 +114,7 @@ public abstract class Factory {
 		return tResult.toString().replaceFirst(",", "").trim();
 	}
 	/**
-	 * ƒXƒ^ƒbƒN‚ğƒNƒŠƒA‚·‚éB
+	 * ã‚¹ã‚¿ãƒƒã‚¯ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚
 	 */
 	public static void clearStack() {
 		mStack.clear();

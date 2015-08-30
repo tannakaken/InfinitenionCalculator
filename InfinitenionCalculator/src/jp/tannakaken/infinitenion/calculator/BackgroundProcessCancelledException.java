@@ -1,6 +1,6 @@
 package jp.tannakaken.infinitenion.calculator;
 /**
- * ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒXƒgƒbƒv‚³‚ê‚½‚Æ‚«‚É“Š‚°‚ç‚ê‚é—áŠOB
+ * ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚¹ãƒˆãƒƒãƒ—ã•ã‚ŒãŸã¨ãã«æŠ•ã’ã‚‰ã‚Œã‚‹ä¾‹å¤–ã€‚
  * @author tannakaken
  *
  */

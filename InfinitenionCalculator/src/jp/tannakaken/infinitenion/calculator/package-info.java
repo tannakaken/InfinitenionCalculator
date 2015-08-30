@@ -1,9 +1,9 @@
 /**
- * “ü—Í‚ğƒg[ƒNƒ“‚É•ª‰ğ‚µ‚ÄA{@link jp.tannakaken.infinitenion.operand.Factory}‚ÌƒTƒuƒNƒ‰ƒX‚Éó‚¯“n‚·BpackageB<br>
- * MVC‚Å‚¢‚¤Controller‚Å‚ ‚éB<br>
- * ÀÛ‚ÌŒvZ‚Í,{@link jp.tannakaken.infinitenion.operand.Factory}‚ÌƒTƒuƒNƒ‰ƒX‚âA
- * {@link jp.tannakaken.infinitenion.operand.Operand}‚ÌÀ‘•ƒNƒ‰ƒX‚ªs‚¤‚Ì‚ÅA
- * Controller‚Í”äŠr“IŠÈ’P‚Å‚ ‚éB
+ * å…¥åŠ›ã‚’ãƒˆãƒ¼ã‚¯ãƒ³ã«åˆ†è§£ã—ã¦ã€{@link jp.tannakaken.infinitenion.operand.Factory}ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«å—ã‘æ¸¡ã™ã€‚packageã€‚<br>
+ * MVCã§ã„ã†Controllerã§ã‚ã‚‹ã€‚<br>
+ * å®Ÿéš›ã®è¨ˆç®—ã¯,{@link jp.tannakaken.infinitenion.operand.Factory}ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã‚„ã€
+ * {@link jp.tannakaken.infinitenion.operand.Operand}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ãŒè¡Œã†ã®ã§ã€
+ * Controllerã¯æ¯”è¼ƒçš„ç°¡å˜ã§ã‚ã‚‹ã€‚
  * @author tannakaken
  * @see
  * <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">

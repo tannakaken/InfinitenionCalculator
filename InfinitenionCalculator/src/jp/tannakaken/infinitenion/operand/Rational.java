@@ -3,9 +3,9 @@ package jp.tannakaken.infinitenion.operand;
 import java.math.BigInteger;
 
 /**
- * —L—”‚ğ•\‚·ƒNƒ‰ƒXB<br>
- * {@link Constant}‚Ì¬‚·“ñ•ª–Ø‚Ì—t‚ğ¬‚µ‚Ä‚¢‚éB<br>
- * –Ø\‘¢‚ğjava‚ÅÀ‘•‚·‚é’èÎ‚É‚æ‚èACompositeƒpƒ^[ƒ“‚ğg—p‚µ‚Ä‚¢‚éB
+ * æœ‰ç†æ•°ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã€‚<br>
+ * {@link Constant}ã®æˆã™äºŒåˆ†æœ¨ã®è‘‰ã‚’æˆã—ã¦ã„ã‚‹ã€‚<br>
+ * æœ¨æ§‹é€ ã‚’javaã§å®Ÿè£…ã™ã‚‹å®šçŸ³ã«ã‚ˆã‚Šã€Compositeãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ã€‚
  * 
  * @author tannakaken
  *
@@ -14,23 +14,23 @@ import java.math.BigInteger;
 class Rational extends Constant {
 
 	/**
-	 * •ªqBÈƒƒ‚ƒŠ‰»‚Ì‚½‚ß‚Éfinal‚É‚Í‚µ‚È‚¢B
+	 * åˆ†å­ã€‚çœãƒ¡ãƒ¢ãƒªåŒ–ã®ãŸã‚ã«finalã«ã¯ã—ãªã„ã€‚
 	 */
 	private final BigInteger mNumerator;
 	/**
-	 * •ª•êBÈƒƒ‚ƒŠ‰»‚Ì‚½‚ß‚Éfinal‚É‚Í‚µ‚È‚¢B
+	 * åˆ†æ¯ã€‚çœãƒ¡ãƒ¢ãƒªåŒ–ã®ãŸã‚ã«finalã«ã¯ã—ãªã„ã€‚
 	 */
 	private final BigInteger mDenominator;
 	
 	/**
-	 * —^‚¦‚ç‚ê‚½•ªq‚Æ•ª•ê‚ğ–ñ•ª‚µ‚Äû”[‚·‚éB•„†‚Í•ªq‚É‚Â‚¯‚éB
-	 * @param aNumerator •ªqB
-	 * @param aDenominator •ª•êB
+	 * ä¸ãˆã‚‰ã‚ŒãŸåˆ†å­ã¨åˆ†æ¯ã‚’ç´„åˆ†ã—ã¦åç´ã™ã‚‹ã€‚ç¬¦å·ã¯åˆ†å­ã«ã¤ã‘ã‚‹ã€‚
+	 * @param aNumerator åˆ†å­ã€‚
+	 * @param aDenominator åˆ†æ¯ã€‚
 	 * 
 	 */
 	Rational(final BigInteger aNumerator, final BigInteger aDenominator) {
 		if (aDenominator.equals(BigInteger.ZERO)) {
-			throw new IllegalArgumentException("•ª•ê‚ª0‚Ì—L—”‚Íì¬‚Å‚«‚Ü‚¹‚ñB");
+			throw new IllegalArgumentException("åˆ†æ¯ãŒ0ã®æœ‰ç†æ•°ã¯ä½œæˆã§ãã¾ã›ã‚“ã€‚");
 		}
 		if (aNumerator.equals(BigInteger.ZERO)) {
 			mNumerator = BigInteger.ZERO;
@@ -40,15 +40,15 @@ class Rational extends Constant {
 		BigInteger tNum = aNumerator.abs();
 		BigInteger tDen = aDenominator.abs();
 		BigInteger tCommon = aNumerator.gcd(aDenominator);
-		// tSig‚Í‚±‚Ì•ª”‚Ì•„†B
+		// tSigã¯ã“ã®åˆ†æ•°ã®ç¬¦å·ã€‚
 		BigInteger tSig = BigInteger.valueOf(aNumerator.signum() * aDenominator.signum());
-		// •ªq‚É•„†‚ğ‚Â‚¯A•ª•ê•ªq‚ğ–ñ•ª‚·‚éB 
+		// åˆ†å­ã«ç¬¦å·ã‚’ã¤ã‘ã€åˆ†æ¯åˆ†å­ã‚’ç´„åˆ†ã™ã‚‹ã€‚ 
 		mNumerator = tSig.multiply(tNum).divide(tCommon);
 		mDenominator = tDen.divide(tCommon);
 	}
 	/**
 	 * 
-	 * @param aInteger —L—”‚Æ‚İ‚È‚³‚ê‚é®”B
+	 * @param aInteger æœ‰ç†æ•°ã¨ã¿ãªã•ã‚Œã‚‹æ•´æ•°ã€‚
 	 */
 	Rational(final BigInteger aInteger) {
 		mNumerator = aInteger;

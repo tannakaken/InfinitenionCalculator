@@ -6,10 +6,10 @@ import java.util.regex.Pattern;
 import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException;
 
 /**
- * ƒg[ƒNƒ“‚©‚ç’´•¡‘f”‚Ì‹•”’PˆÊ‚ğ¶¬‚·‚éFactoryB<br>
- * ˆê‚Â‚µ‚©•K—v‚È‚¢‚Ì‚ÅASingletonƒpƒ^[ƒ“‚ğg‚¤B<br>
- * •K‚¸{@link Factory#setContext(Context)}“à‚ÅA{@link ImaginaryFactory#setContexttoConstant(Context)}‚ğ‚·‚é‚±‚ÆB<br>
- * ‚»‚ê‚ğ‘Ó‚Á‚½ê‡‚Ì‹““®‚Í•ÛØ‚µ‚È‚¢B
+ * ãƒˆãƒ¼ã‚¯ãƒ³ã‹ã‚‰è¶…è¤‡ç´ æ•°ã®è™šæ•°å˜ä½ã‚’ç”Ÿæˆã™ã‚‹Factoryã€‚<br>
+ * ä¸€ã¤ã—ã‹å¿…è¦ãªã„ã®ã§ã€Singletonãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã†ã€‚<br>
+ * å¿…ãš{@link Factory#setContext(Context)}å†…ã§ã€{@link ImaginaryFactory#setContexttoConstant(Context)}ã‚’ã™ã‚‹ã“ã¨ã€‚<br>
+ * ãã‚Œã‚’æ€ ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¿è¨¼ã—ãªã„ã€‚
  * 
  * @author tannakaken
  * @see 
@@ -19,33 +19,33 @@ import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException
  */
 public final class ImaginaryFactory extends Factory {
 	/**
-	 * À”ˆÈŠO‚ÌConstant‚ğ‚ ‚ç‚í‚·‹L†‰»‚Ç‚¤‚©‚ğ”»’è‚·‚é³‹K•\Œ»B
+	 * å®Ÿæ•°ä»¥å¤–ã®Constantã‚’ã‚ã‚‰ã‚ã™è¨˜å·åŒ–ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ­£è¦è¡¨ç¾ã€‚
 	 */
 	private static String mRegex = "^E[1-9][0-9]*$";
 	/**
-	 * ³‹K•\Œ»‚ğƒRƒ“ƒpƒCƒ‹B
+	 * æ­£è¦è¡¨ç¾ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã€‚
 	 */
 	private static Pattern mPattern = Pattern.compile(mRegex);
 	/**
-	 * 1‚ğ¶¬‚·‚é‚½‚ß‚ÌFactoryB
+	 * 1ã‚’ç”Ÿæˆã™ã‚‹ãŸã‚ã®Factoryã€‚
 	 */
 	private static BaseFieldFactory mRealFactory = BaseFieldFactory.getInstance();
 	/**
-	 * {@link ImaginaryFactroy}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>B
+	 * {@link ImaginaryFactroy}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>ã€‚
 	 * 
 	 */
 	private static ImaginaryFactory mSingleton = new ImaginaryFactory();
 	/**
-	 * {@link CayleyDickson}‚ğì‚é‚½‚ß‚ÌAó‚¯“ü‚ê‰Â”\‚Èƒg[ƒNƒ“B
+	 * {@link CayleyDickson}ã‚’ä½œã‚‹ãŸã‚ã®ã€å—ã‘å…¥ã‚Œå¯èƒ½ãªãƒˆãƒ¼ã‚¯ãƒ³ã€‚
 	 */
 	private String mToken;
 	/**
-	 * ŠO‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚¹‚È‚¢B
+	 * å¤–ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã›ãªã„ã€‚
 	 */
 	private ImaginaryFactory() { }
 	/**
 	 * 
-	 * @return {@link ImaginaryFactory}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>
+	 * @return {@link ImaginaryFactory}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>
 	 * 
 	 */
 	public static ImaginaryFactory getInstance() {
@@ -68,26 +68,26 @@ public final class ImaginaryFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @param aToken {@link Constant}‚Æ‰ğß‚³‚ê‚éƒg[ƒNƒ“B
-	 * @return ‚»‚Ìƒg[ƒNƒ“‚ª•\‚µ‚Ä‚¢‚é‹•”’PˆÊ‚Ì”Ô†B
+	 * @param aToken {@link Constant}ã¨è§£é‡ˆã•ã‚Œã‚‹ãƒˆãƒ¼ã‚¯ãƒ³ã€‚
+	 * @return ãã®ãƒˆãƒ¼ã‚¯ãƒ³ãŒè¡¨ã—ã¦ã„ã‚‹è™šæ•°å˜ä½ã®ç•ªå·ã€‚
 	 */
 	private BigInteger number(final String aToken) {
 		return new BigInteger(aToken.substring(1));
 	}
 	/**
-	 * ‹•”’PˆÊ‚Ì”Ô†‚©‚çA–Ø\‘¢‚ğŒvZ‚µA‚»‚Ì‹•”’PˆÊ‚ğ•\‚·{@link CayleyDickson}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·B
-	 * @param aNumber ‹•”’PˆÊ‚Ì”Ô†B
-	 * @return aNumber”Ô–Ú‚Ì‹•”’PˆÊB
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB 
+	 * è™šæ•°å˜ä½ã®ç•ªå·ã‹ã‚‰ã€æœ¨æ§‹é€ ã‚’è¨ˆç®—ã—ã€ãã®è™šæ•°å˜ä½ã‚’è¡¨ã™{@link CayleyDickson}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ã€‚
+	 * @param aNumber è™šæ•°å˜ä½ã®ç•ªå·ã€‚
+	 * @return aNumberç•ªç›®ã®è™šæ•°å˜ä½ã€‚
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚ 
 	 */
 	private Constant buildConstant(final BigInteger aNumber) throws BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
-		// –Ú“I‚Ì}‚É‚½‚Ç‚è’…‚¢‚½‚çAŒW”‚É1‚ğ‘ã“üB
+		// ç›®çš„ã®æã«ãŸã©ã‚Šç€ã„ãŸã‚‰ã€ä¿‚æ•°ã«1ã‚’ä»£å…¥ã€‚
 		if (aNumber.equals(BigInteger.ZERO)) {
 			return mRealFactory.getOne();
-		// –Ú“I‚Ì}‚É‚½‚Ç‚è’…‚­‚Ü‚ÅAaNumber‚ğ“ñi“WŠJ‚µ‚Ä‚¢‚­B
+		// ç›®çš„ã®æã«ãŸã©ã‚Šç€ãã¾ã§ã€aNumberã‚’äºŒé€²å±•é–‹ã—ã¦ã„ãã€‚
 		} else {
 			int tHeight = calculateHeight(aNumber);
 			return new CayleyDickson(Zero.ZERO,
@@ -97,8 +97,8 @@ public final class ImaginaryFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @param aNumber ‹•”’PˆÊ‚Ì”Ô†B
-	 * @return ‚»‚Ì‹•”’PˆÊ‚ª‘®‚·‚é2^nŒ³”‚Ìn
+	 * @param aNumber è™šæ•°å˜ä½ã®ç•ªå·ã€‚
+	 * @return ãã®è™šæ•°å˜ä½ãŒå±ã™ã‚‹2^nå…ƒæ•°ã®n
 	 */
 	private int calculateHeight(final BigInteger aNumber) {
 		int tHeight = 0;
@@ -110,11 +110,11 @@ public final class ImaginaryFactory extends Factory {
 		return tHeight;
 	}
 	/**
-	 * {@link CayleyDickson}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğÄ—˜—p‚·‚é‚±‚Æ‚É‚È‚Á‚½‚Æ‚«‚Ì‚½‚ß‚ÉA‚±‚Ìƒƒ\ƒbƒh‚ğ—pˆÓ‚µ‚Ä‚¢‚éB
-	 * @param aReal À¬•ª
-	 * @param aImag ‹•”¬•ª
-	 * @param aHeight ‚‚³
-	 * @return \¬‚³‚êAÅ“K‰»‚³‚ê‚½{@link Constant}
+	 * {@link CayleyDickson}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å†åˆ©ç”¨ã™ã‚‹ã“ã¨ã«ãªã£ãŸã¨ãã®ãŸã‚ã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç”¨æ„ã—ã¦ã„ã‚‹ã€‚
+	 * @param aReal å®Ÿæˆåˆ†
+	 * @param aImag è™šæ•°æˆåˆ†
+	 * @param aHeight é«˜ã•
+	 * @return æ§‹æˆã•ã‚Œã€æœ€é©åŒ–ã•ã‚ŒãŸ{@link Constant}
 	 */
 	Constant mixRealAndImaginary(final Constant aReal, final Constant aImag, final int aHeight) {
 		return (new CayleyDickson(aReal, aImag, aHeight)).drop();

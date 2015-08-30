@@ -1,31 +1,31 @@
 package jp.tannakaken.infinitenion.gui;
 /**
- * {@link Text}�̒��g��\���񋓑́B
+ * {@link Text}の中身を表す列挙体。
  * @author tannakaken
  *
  */
 enum TextResource {
 	/**
 	 * assets/about.txt.
-	 * ���̃A�v���ɂ��Đ������Ă���B
+	 * このアプリについて説明している。
 	 */
 	ABOUT_THIS_APP,
 	/**
-	 * �����f���ɂ��Đ������Ă���B
+	 * 超複素数について説明している。
 	 */
 	ABOUT_HYPERCOMPLEX_NUMBES,
 	/**
-	 * �t�|�[�����h�L�@�ɂ��Đ������Ă���B
+	 * 逆ポーランド記法について説明している。
 	 */
 	ABOUT_REVERSE_POLAND,
 	/**
 	 * assets/help.txt.
-	 * ���̃A�v���̎g������������Ă���B
+	 * このアプリの使い方を説明している。
 	 */
 	HELP,
 	/**
 	 * assets/problem.txt.
-	 * �T������l�����肷�邽�߂̖��W�B
+	 * 探したり考えたりするための問題集。
 	 */
 	PROBLEM,
 }

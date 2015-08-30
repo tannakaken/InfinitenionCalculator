@@ -5,97 +5,97 @@ import java.math.BigInteger;
 import jp.tannakaken.infinitenion.calculator.CalculatingException;
 
 /**
- * ”í‰‰Zq‚ğ•\‚·ƒNƒ‰ƒXB
+ * è¢«æ¼”ç®—å­ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã€‚
  * @author tannakaken
  *
  */
 interface Operand {
 
 	/**
-	 * {@link Operand#getHeight()}‚Ì’l‚ª1ˆÈã‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‚Ì‚İ’è‹`‚³‚ê‚éB
-	 * @return ‚±‚ÌŒ³‚ÌÀ•”
+	 * {@link Operand#getHeight()}ã®å€¤ãŒ1ä»¥ä¸Šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
+	 * @return ã“ã®å…ƒã®å®Ÿéƒ¨
 	 */
 	Constant getReal();
 	/**
-	 * {@link Operand#getHeight()}‚Ì’l‚ª1ˆÈã‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‚Ì‚İ’è‹`‚³‚ê‚éB
-	 * @return ‚±‚ÌŒ³‚Ì‹••”
+	 * {@link Operand#getHeight()}ã®å€¤ãŒ1ä»¥ä¸Šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
+	 * @return ã“ã®å…ƒã®è™šéƒ¨
 	 */
 	Constant getImag();
 	/**
-	 * {@link Constant#drop}‚Å–Ø‚Ì‚‚³‚ª•Ï‚í‚Á‚Ä‚àA”‚Ì‰ğß‚ª•Ï‚í‚ç‚È‚¢‚æ‚¤‚ÉA–Ø‚Ì‚‚³‚ğ•Û‚·‚éƒƒ\ƒbƒhB<br>
-	 * ‚±‚Ì’l‚ğ”äŠr‚·‚é‚±‚Æ‚É‚æ‚èA0‚É‚æ‚é‘«‚µZ‚â0‚É‚æ‚éŠ|‚¯Z‚ğo—ˆ‚é‚¾‚¯È—ª‚·‚é‚×‚«‚Å‚ ‚éB
+	 * {@link Constant#drop}ã§æœ¨ã®é«˜ã•ãŒå¤‰ã‚ã£ã¦ã‚‚ã€æ•°ã®è§£é‡ˆãŒå¤‰ã‚ã‚‰ãªã„ã‚ˆã†ã«ã€æœ¨ã®é«˜ã•ã‚’ä¿æŒã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã€‚<br>
+	 * ã“ã®å€¤ã‚’æ¯”è¼ƒã™ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€0ã«ã‚ˆã‚‹è¶³ã—ç®—ã‚„0ã«ã‚ˆã‚‹æ›ã‘ç®—ã‚’å‡ºæ¥ã‚‹ã ã‘çœç•¥ã™ã‚‹ã¹ãã§ã‚ã‚‹ã€‚
 	 * 
-	 * @return ‚±‚Ì‘ã”‚ÌŠK‘wB‚·‚È‚í‚¿A—L—”ã2^nŸŒ³‚È‚ç‚ÎAn‚ğ•Ô‚·B
+	 * @return ã“ã®ä»£æ•°ã®éšå±¤ã€‚ã™ãªã‚ã¡ã€æœ‰ç†æ•°ä¸Š2^næ¬¡å…ƒãªã‚‰ã°ã€nã‚’è¿”ã™ã€‚
 	 */
 	int getHeight();
 	/**
-	 * ‚à‚µ‚±‚ÌŒ³‚ª•Ï”{@link Variable}‚È‚çA ’è” aInterior ‚ğ‘ã“ü‚·‚éB<br>
-	 * ’è”{@link Constant}‚È‚çA—áŠO‚ğ“Š‚°‚éB
+	 * ã‚‚ã—ã“ã®å…ƒãŒå¤‰æ•°{@link Variable}ãªã‚‰ã€ å®šæ•° aInterior ã‚’ä»£å…¥ã™ã‚‹ã€‚<br>
+	 * å®šæ•°{@link Constant}ãªã‚‰ã€ä¾‹å¤–ã‚’æŠ•ã’ã‚‹ã€‚
 	 * 
-	 * @param aInterior ‘ã“ü‚³‚ê‚é’è”
-	 * @throws CalculatingException •Ï”‚Å‚È‚¢Œ³‚É‘ã“ü‚ğs‚¨‚¤‚Æ‚µ‚½‚Æ‚«‚É”­¶‚·‚é—áŠOB
+	 * @param aInterior ä»£å…¥ã•ã‚Œã‚‹å®šæ•°
+	 * @throws CalculatingException å¤‰æ•°ã§ãªã„å…ƒã«ä»£å…¥ã‚’è¡ŒãŠã†ã¨ã—ãŸã¨ãã«ç™ºç”Ÿã™ã‚‹ä¾‹å¤–ã€‚
 	 */
 	void setInterior(Constant aInterior) throws CalculatingException;
 	/**
-	 * ‚±‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒg‚ª•Ï”{@link Variable}‚È‚çA‚»‚Ì’†g‚ğA
-	 * ’è”{@link Constant}‚È‚çA©•ª©g‚ğ•Ô‚·B
-	 * @return •Ï”{@link Variable}‚Ì’†gB‚à‚µ‚­‚Í’è”{@link Constant}‚Ì©•ª©gB
+	 * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ãƒˆãŒå¤‰æ•°{@link Variable}ãªã‚‰ã€ãã®ä¸­èº«ã‚’ã€
+	 * å®šæ•°{@link Constant}ãªã‚‰ã€è‡ªåˆ†è‡ªèº«ã‚’è¿”ã™ã€‚
+	 * @return å¤‰æ•°{@link Variable}ã®ä¸­èº«ã€‚ã‚‚ã—ãã¯å®šæ•°{@link Constant}ã®è‡ªåˆ†è‡ªèº«ã€‚
 	 */
 	Constant getInterior();
 	/**
-	 * ®”‚ª•K—v‚È‚Æ‚«‚ÉA®”‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éƒƒ\ƒbƒhB<br>
-	 * ®”‚ª•K—v‚Èê–Ê‚ÅA®”‚Å‚È‚¢Œ³‚ª‚ ‚Á‚½ê‡‚É“KØ‚È—áŠO‚ğ“Š‚°‚é‚½‚ß‚É•K—vB<br>A
-	 * {@link Operand#getInteger()}‚ğ‚·‚é’¼‘O‚ÉA•K‚¸‚±‚Ìƒƒ\ƒbƒh‚ÅŒŸ¸‚·‚é‚±‚ÆB<br>
-	 * ‚»‚ê‚ğ‚µ‚È‚©‚Á‚½ê‡‚Ì‹““®‚ÍˆêØ•ÛØ‚µ‚È‚¢B<br>
-	 * ‹ï‘Ì“I‚É‚ÍA{@link UnsupportedOperationException}“™‚Ì”ñƒ`ƒFƒbƒN—áŠO‚ªo‚é‚È‚Ç‚µ‚ÄAƒAƒvƒŠ‚ªˆÙí’â~‚·‚éB
-	 * @return ®”‚©‚Ç‚¤‚©B
+	 * æ•´æ•°ãŒå¿…è¦ãªã¨ãã«ã€æ•´æ•°ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã€‚<br>
+	 * æ•´æ•°ãŒå¿…è¦ãªå ´é¢ã§ã€æ•´æ•°ã§ãªã„å…ƒãŒã‚ã£ãŸå ´åˆã«é©åˆ‡ãªä¾‹å¤–ã‚’æŠ•ã’ã‚‹ãŸã‚ã«å¿…è¦ã€‚<br>ã€
+	 * {@link Operand#getInteger()}ã‚’ã™ã‚‹ç›´å‰ã«ã€å¿…ãšã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§æ¤œæŸ»ã™ã‚‹ã“ã¨ã€‚<br>
+	 * ãã‚Œã‚’ã—ãªã‹ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¸€åˆ‡ä¿è¨¼ã—ãªã„ã€‚<br>
+	 * å…·ä½“çš„ã«ã¯ã€{@link UnsupportedOperationException}ç­‰ã®éãƒã‚§ãƒƒã‚¯ä¾‹å¤–ãŒå‡ºã‚‹ãªã©ã—ã¦ã€ã‚¢ãƒ—ãƒªãŒç•°å¸¸åœæ­¢ã™ã‚‹ã€‚
+	 * @return æ•´æ•°ã‹ã©ã†ã‹ã€‚
 	 */
 	boolean isInteger();
 	/**
-	 * ‚±‚Ìƒƒ\ƒbƒh‚ğg—p‚·‚é’¼‘O‚É•K‚¸A{@link Operand#isInteger()}‚Å®”‚©‚Ç‚¤‚©ŒŸ¸‚·‚é‚±‚ÆB<br>
-	 * ‚»‚ê‚ğ‚µ‚È‚©‚Á‚½ê‡‚Ì‹““®‚ÍˆêØ•ÛØ‚µ‚È‚¢B<br>
-	 * ‹ï‘Ì“I‚É‚ÍAˆÓ–¡‚Ì‚È‚¢’l‚ğ•Ô‚µ‚½‚èA{@link UnsupportedOperationException}“™‚Ì”ñƒ`ƒFƒbƒN—áŠO‚ªo‚é‚È‚Ç‚µ‚ÄAƒAƒvƒŠ‚ªˆÙí’â~‚·‚éB
-	 * @return ‚à‚µ‚±‚ê‚ª®”‚È‚çA®”‚ğ•Ô‚·B
+	 * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹ç›´å‰ã«å¿…ãšã€{@link Operand#isInteger()}ã§æ•´æ•°ã‹ã©ã†ã‹æ¤œæŸ»ã™ã‚‹ã“ã¨ã€‚<br>
+	 * ãã‚Œã‚’ã—ãªã‹ã£ãŸå ´åˆã®æŒ™å‹•ã¯ä¸€åˆ‡ä¿è¨¼ã—ãªã„ã€‚<br>
+	 * å…·ä½“çš„ã«ã¯ã€æ„å‘³ã®ãªã„å€¤ã‚’è¿”ã—ãŸã‚Šã€{@link UnsupportedOperationException}ç­‰ã®éãƒã‚§ãƒƒã‚¯ä¾‹å¤–ãŒå‡ºã‚‹ãªã©ã—ã¦ã€ã‚¢ãƒ—ãƒªãŒç•°å¸¸åœæ­¢ã™ã‚‹ã€‚
+	 * @return ã‚‚ã—ã“ã‚ŒãŒæ•´æ•°ãªã‚‰ã€æ•´æ•°ã‚’è¿”ã™ã€‚
 	 * 
 	 */
 	BigInteger getInteger();
 	/**
 	 * 
-	 * @return ƒCƒ“ƒXƒ^ƒ“ƒX‚ª0‚ğ•\‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©B
+	 * @return ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒ0ã‚’è¡¨ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã€‚
 	 */
 	boolean isZero();
 	/**
-	 * {@link Operand#getHeight()}‚Ì’l‚ª0‚ÌƒCƒ“ƒXƒ^ƒ“ƒX“¯m‚É‚Ì‚İ’è‹`‚³‚ê‚éB
-	 * ‚»‚êˆÈŠO‚ÍAstaticƒƒ\ƒbƒh{@link ResultantFactory#add()}‚É‚æ‚Á‚ÄŒvZ‚³‚ê‚éB
-	 * @param aOperand ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‘«‚³‚ê‚éƒCƒ“ƒXƒ^ƒ“ƒX
-	 * @return ˜a
+	 * {@link Operand#getHeight()}ã®å€¤ãŒ0ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒå£«ã«ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
+	 * ãã‚Œä»¥å¤–ã¯ã€staticãƒ¡ã‚½ãƒƒãƒ‰{@link ResultantFactory#add()}ã«ã‚ˆã£ã¦è¨ˆç®—ã•ã‚Œã‚‹ã€‚
+	 * @param aOperand ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«è¶³ã•ã‚Œã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	 * @return å’Œ
 	 */
 	Constant add(Operand aOperand);
 	/**
-	 * {@link Operand#getHeight()}‚Ì’l‚ª0‚ÌƒCƒ“ƒXƒ^ƒ“ƒX“¯m‚É‚Ì‚İ’è‹`‚³‚ê‚éB
-	 * ‚»‚êˆÈŠO‚ÍAstaticƒƒ\ƒbƒh{@link ResultantFactory#mul()}‚É‚æ‚Á‚ÄŒvZ‚³‚ê‚éB
-	 * @param aOperand ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÉŠ|‚¯‚ç‚ê‚éƒCƒ“ƒXƒ^ƒ“ƒX
-	 * @return Ï
+	 * {@link Operand#getHeight()}ã®å€¤ãŒ0ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒå£«ã«ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
+	 * ãã‚Œä»¥å¤–ã¯ã€staticãƒ¡ã‚½ãƒƒãƒ‰{@link ResultantFactory#mul()}ã«ã‚ˆã£ã¦è¨ˆç®—ã•ã‚Œã‚‹ã€‚
+	 * @param aOperand ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«æ›ã‘ã‚‰ã‚Œã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	 * @return ç©
 	 */
 	Constant mul(Operand aOperand);
 	/**
-	 * {@link Operand#getHeight()}‚Ì’l‚ª0‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‚Ì‚İ’è‹`‚³‚ê‚éB
-	 * ‚»‚êˆÈŠO‚ÍAstaticƒƒ\ƒbƒh{@link ResultantFactory#negate()}‚É‚æ‚Á‚ÄŒvZ‚³‚ê‚éB
-	 * @return •„†”½“]
+	 * {@link Operand#getHeight()}ã®å€¤ãŒ0ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
+	 * ãã‚Œä»¥å¤–ã¯ã€staticãƒ¡ã‚½ãƒƒãƒ‰{@link ResultantFactory#negate()}ã«ã‚ˆã£ã¦è¨ˆç®—ã•ã‚Œã‚‹ã€‚
+	 * @return ç¬¦å·åè»¢
 	 */
 	Constant negate();
 	/**
-	 * {@link Operand#getHeight()}‚Ì’l‚ª0‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‚Ì‚İ’è‹`‚³‚ê‚éB
-	 * ‚»‚êˆÈŠO‚ÍAstaticƒƒ\ƒbƒh{@link ResultantFactory#div()}‚É‚æ‚Á‚ÄŒvZ‚³‚ê‚éB
-	 * * @param aOperand ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠ„‚éƒCƒ“ƒXƒ^ƒ“ƒX
-	 * @return ¤
+	 * {@link Operand#getHeight()}ã®å€¤ãŒ0ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
+	 * ãã‚Œä»¥å¤–ã¯ã€staticãƒ¡ã‚½ãƒƒãƒ‰{@link ResultantFactory#div()}ã«ã‚ˆã£ã¦è¨ˆç®—ã•ã‚Œã‚‹ã€‚
+	 * * @param aOperand ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å‰²ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	 * @return å•†
 	 */
 	Constant div(Operand aOperand);
 	/**
-	 * {@link Operand#getHeight()}‚Ì’l‚ª0‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‚Ì‚İ’è‹`‚³‚ê‚éB
-	 * ‚»‚êˆÈŠO‚ÍAstaticƒƒ\ƒbƒh{@link ResultantFactory#inv()}‚É‚æ‚Á‚ÄŒvZ‚³‚ê‚éB
-	 * @return ‹t”
-	 * @throws CalculatingException 0‚Ì‹t”‚ğ‹‚ß‚æ‚¤‚Æ‚µ‚½‚Æ‚«‚É”­¶‚·‚é—áŠO
+	 * {@link Operand#getHeight()}ã®å€¤ãŒ0ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
+	 * ãã‚Œä»¥å¤–ã¯ã€staticãƒ¡ã‚½ãƒƒãƒ‰{@link ResultantFactory#inv()}ã«ã‚ˆã£ã¦è¨ˆç®—ã•ã‚Œã‚‹ã€‚
+	 * @return é€†æ•°
+	 * @throws CalculatingException 0ã®é€†æ•°ã‚’æ±‚ã‚ã‚ˆã†ã¨ã—ãŸã¨ãã«ç™ºç”Ÿã™ã‚‹ä¾‹å¤–
 	 */
 	Constant inv() throws CalculatingException;
 }

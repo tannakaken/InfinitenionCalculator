@@ -1,8 +1,8 @@
 /**
- * —L—”‚¨‚æ‚Ñ•‚“®¬”“_ŽÀ”‚ÉCayley-Dickson‚Ì\¬–@‚ð”CˆÓ‰ñŒJ‚è•Ô‚µ‚Äo—ˆ‚½—LŒÀŽŸŒ³‘½Œ³ŠÂ‚Ì‹A”[‹ÉŒÀ‚Å‚ ‚é
- * –³ŒÀŽŸŒ³‘ã”‚ÌŒvŽZ‚ðA‹tƒ|[ƒ‰ƒ“ƒh‹L–@‚ÆƒRƒ}ƒ“ƒhƒvƒƒ“ƒvƒg•—‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚Å’ñ‹Ÿ‚·‚éƒAƒvƒŠuInfitenionv‚ÌGUI•”•ª‚ÌpackageB<br>
- * MVC‚Å‚¢‚¤‚Æ‚±‚ë‚ÌViewB<br>
- * ‚à‚¿‚ë‚ñ•¡‘f”AŽlŒ³”A”ªŒ³”A\˜ZŒ³”‚ÌŒvŽZ‚ào—ˆ‚éB
+ * æœ‰ç†æ•°ãŠã‚ˆã³æµ®å‹•å°æ•°ç‚¹å®Ÿæ•°ã«Cayley-Dicksonã®æ§‹æˆæ³•ã‚’ä»»æ„å›žç¹°ã‚Šè¿”ã—ã¦å‡ºæ¥ãŸæœ‰é™æ¬¡å…ƒå¤šå…ƒç’°ã®å¸°ç´æ¥µé™ã§ã‚ã‚‹
+ * ç„¡é™æ¬¡å…ƒä»£æ•°ã®è¨ˆç®—ã‚’ã€é€†ãƒãƒ¼ãƒ©ãƒ³ãƒ‰è¨˜æ³•ã¨ã‚³ãƒžãƒ³ãƒ‰ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆé¢¨ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§æä¾›ã™ã‚‹ã‚¢ãƒ—ãƒªã€ŒInfitenionã€ã®GUIéƒ¨åˆ†ã®packageã€‚<br>
+ * MVCã§ã„ã†ã¨ã“ã‚ã®Viewã€‚<br>
+ * ã‚‚ã¡ã‚ã‚“è¤‡ç´ æ•°ã€å››å…ƒæ•°ã€å…«å…ƒæ•°ã€åå…­å…ƒæ•°ã®è¨ˆç®—ã‚‚å‡ºæ¥ã‚‹ã€‚
  * @author tannakaken
  *
  * @see 

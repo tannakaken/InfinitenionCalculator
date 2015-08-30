@@ -2,17 +2,17 @@ package jp.tannakaken.infinitenion.operand;
 
 import java.math.BigInteger;
 /**
- * Cayley-Dickson‚Ì\¬–@‚É‚æ‚èA–³ŒÀŸŒ³‚Ì’´•¡‘f”‚ğÀ‘•‚·‚éƒNƒ‰ƒXB<br>
- * À•”‚Æ‹••”‚ª‰Â”\–³ŒÀ“I‚É‘±‚­“ñ•ª–Ø\‘¢‚ğÀ‘•‚µA}‚Å‚ ‚é‚±‚ÌƒNƒ‰ƒX‚ÆA—t‚Å‚ ‚é{@link Rational}‚ğƒX[ƒp[ƒNƒ‰ƒX{@link Constant}‚Æ‚µ‚Ä“¯ˆê‹‚·‚é‚½‚ß‚ÉA
- * Compositeƒpƒ^[ƒ“‚ğg—p‚µ‚Ä‚¢‚éB<br>
- * Ú‚µ‚­‚ÍApackage-info‚ğQÆB<br>
- * –{—ˆ‚ÌJava‚Ìv‘z‚©‚çŒ¾‚¦‚ÎA‚±‚ÌƒNƒ‰ƒX‚Íimmutable‚É‚·‚é‚×‚«‚¾‚ªAAndroidã‚Å“®‚©‚·‚½‚ß‚É‚ÍA
- * ’Z–½‚ÈƒIƒuƒWƒFƒNƒg‚ğ‚½‚­‚³‚ñì‚é‚ÆAƒƒ‚ƒŠ‚ª‘«‚ç‚È‚­‚È‚èAƒƒ‚ƒŠŠm•Û‚Ì‚½‚ß‚Édarvik‚ÌƒKƒx[ƒWƒRƒŒƒNƒ^‚ªGC_FOR_ALLOC‚ğ‘å—Ê”­¶‚³‚¹A
- * ƒAƒvƒŠ‚ª~‚Ü‚Á‚Ä‚µ‚Ü‚¤B<br>
- * ÀÛA‚±‚ê‚ğimmutable‚É‚µ‚½İŒv‚Å‚àAƒfƒXƒNƒgƒbƒvƒAƒvƒŠ‚È‚çA\•ª‚ÈƒXƒs[ƒh‚Å“®‚­‚ªAandroid‚¾‚ÆAE11111111‚Ì10æ’ö“x‚Å‚à~‚Ü‚Á‚Ä‚µ‚Ü‚¤B<br>
- * ‚æ‚Á‚ÄA‚±‚ÌƒNƒ‰ƒX‚Ímutable‚É‚µ‚Ä‚ ‚èA‰‰Z‚ğ‚·‚é‚ÆAoperand‚É”j‰ó“I‚È•›ì—p‚ª‹N‚±‚éB<br>
- * ‚Ç‚Ìoperand‚É”j‰ó“I•›ì—p‚ª‹N‚±‚é‚©‚Í‚í‚©‚ç‚È‚¢‚Ì‚ÅA‰‰Z‚Ég‚Á‚½Object‚ÍÄ—˜—p‚µ‚Ä‚Í‚¢‚¯‚È‚¢B<br>
- * ‚à‚¤ˆê“xAg—p‚µ‚È‚­‚Ä‚Í‚¢‚¯‚È‚¢‚Æ‚«‚ÍA{@link Constant#copy()}‚ğs‚¤B
+ * Cayley-Dicksonã®æ§‹æˆæ³•ã«ã‚ˆã‚Šã€ç„¡é™æ¬¡å…ƒã®è¶…è¤‡ç´ æ•°ã‚’å®Ÿè£…ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
+ * å®Ÿéƒ¨ã¨è™šéƒ¨ãŒå¯èƒ½ç„¡é™çš„ã«ç¶šãäºŒåˆ†æœ¨æ§‹é€ ã‚’å®Ÿè£…ã—ã€æã§ã‚ã‚‹ã“ã®ã‚¯ãƒ©ã‚¹ã¨ã€è‘‰ã§ã‚ã‚‹{@link Rational}ã‚’ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹{@link Constant}ã¨ã—ã¦åŒä¸€è¦–ã™ã‚‹ãŸã‚ã«ã€
+ * Compositeãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ã€‚<br>
+ * è©³ã—ãã¯ã€package-infoã‚’å‚ç…§ã€‚<br>
+ * æœ¬æ¥ã®Javaã®æ€æƒ³ã‹ã‚‰è¨€ãˆã°ã€ã“ã®ã‚¯ãƒ©ã‚¹ã¯immutableã«ã™ã‚‹ã¹ãã ãŒã€Androidä¸Šã§å‹•ã‹ã™ãŸã‚ã«ã¯ã€
+ * çŸ­å‘½ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãŸãã•ã‚“ä½œã‚‹ã¨ã€ãƒ¡ãƒ¢ãƒªãŒè¶³ã‚‰ãªããªã‚Šã€ãƒ¡ãƒ¢ãƒªç¢ºä¿ã®ãŸã‚ã«darvikã®ã‚¬ãƒ™ãƒ¼ã‚¸ã‚³ãƒ¬ã‚¯ã‚¿ãŒGC_FOR_ALLOCã‚’å¤§é‡ç™ºç”Ÿã•ã›ã€
+ * ã‚¢ãƒ—ãƒªãŒæ­¢ã¾ã£ã¦ã—ã¾ã†ã€‚<br>
+ * å®Ÿéš›ã€ã“ã‚Œã‚’immutableã«ã—ãŸè¨­è¨ˆã§ã‚‚ã€ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚¢ãƒ—ãƒªãªã‚‰ã€ååˆ†ãªã‚¹ãƒ”ãƒ¼ãƒ‰ã§å‹•ããŒã€androidã ã¨ã€E11111111ã®10ä¹—ç¨‹åº¦ã§ã‚‚æ­¢ã¾ã£ã¦ã—ã¾ã†ã€‚<br>
+ * ã‚ˆã£ã¦ã€ã“ã®ã‚¯ãƒ©ã‚¹ã¯mutableã«ã—ã¦ã‚ã‚Šã€æ¼”ç®—ã‚’ã™ã‚‹ã¨ã€operandã«ç ´å£Šçš„ãªå‰¯ä½œç”¨ãŒèµ·ã“ã‚‹ã€‚<br>
+ * ã©ã®operandã«ç ´å£Šçš„å‰¯ä½œç”¨ãŒèµ·ã“ã‚‹ã‹ã¯ã‚ã‹ã‚‰ãªã„ã®ã§ã€æ¼”ç®—ã«ä½¿ã£ãŸObjectã¯å†åˆ©ç”¨ã—ã¦ã¯ã„ã‘ãªã„ã€‚<br>
+ * ã‚‚ã†ä¸€åº¦ã€ä½¿ç”¨ã—ãªãã¦ã¯ã„ã‘ãªã„ã¨ãã¯ã€{@link Constant#copy()}ã‚’è¡Œã†ã€‚
  * 
  * @author tannakaken
  *
@@ -25,22 +25,22 @@ import java.math.BigInteger;
 class CayleyDickson extends Constant {
 
 	/**
-	 * À•”BÈƒƒ‚ƒŠ‰»‚Ì‚½‚ß‚Éfinal‚É‚Í‚µ‚È‚¢B
+	 * å®Ÿéƒ¨ã€‚çœãƒ¡ãƒ¢ãƒªåŒ–ã®ãŸã‚ã«finalã«ã¯ã—ãªã„ã€‚
 	 */
 	private final Constant mReal;
 	/**
-	 * ‹••”BÈƒƒ‚ƒŠ‰»‚Ì‚½‚ß‚Éfinal‚É‚Í‚µ‚È‚¢B
+	 * è™šéƒ¨ã€‚çœãƒ¡ãƒ¢ãƒªåŒ–ã®ãŸã‚ã«finalã«ã¯ã—ãªã„ã€‚
 	 */
 	private final Constant mImag;
 	/**
-	 * ‚‚³B‚±‚ê‚ªint‚ÌŒÀŠE2147483647‚ğ’´‚¦‚é‚±‚Æ‚Í‚È‚¢‚ÆM‚¶‚é——R‚ª‚ ‚éB<br>
-	 * ‚±‚Ì‚æ‚¤‚È‚‚³‚ğ‚Â‹•”’PˆÊ‚Ì“Y‚¦š‚Í2^2147483647‚Å‚ ‚èA‚»‚Ì‚æ‚¤‚È”š‚ğ‘Å‚¿‚Ş‚É‚Í‰F’ˆ‚Ìõ–½‚Å‚à‚Ü‚¾‘«‚è‚È‚¢‚©‚ç‚Å‚ ‚éB
+	 * é«˜ã•ã€‚ã“ã‚ŒãŒintã®é™ç•Œ2147483647ã‚’è¶…ãˆã‚‹ã“ã¨ã¯ãªã„ã¨ä¿¡ã˜ã‚‹ç†ç”±ãŒã‚ã‚‹ã€‚<br>
+	 * ã“ã®ã‚ˆã†ãªé«˜ã•ã‚’æŒã¤è™šæ•°å˜ä½ã®æ·»ãˆå­—ã¯2^2147483647ã§ã‚ã‚Šã€ãã®ã‚ˆã†ãªæ•°å­—ã‚’æ‰“ã¡è¾¼ã‚€ã«ã¯å®‡å®™ã®å¯¿å‘½ã§ã‚‚ã¾ã è¶³ã‚Šãªã„ã‹ã‚‰ã§ã‚ã‚‹ã€‚
 	 */
 	private final int mHeight;
 	/**
-	 * ‚±‚ÌƒNƒ‰ƒX‚ğ{@link Object#toString}‚·‚é‚½‚ß‚ÌƒNƒ‰ƒXBVisitorƒpƒ^[ƒ“‚ğg—pB<br>
-	 * ‚µ‚©‚à‚±‚ê‚ÍSingleton‚È‚Ì‚ÅA‘¼‚ÌêŠ‚Å‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É{@link ConstantStringConverter#setLimited(boolean)}‚·‚é‚ÆA
-	 * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‚à‰e‹¿‚·‚éB
+	 * ã“ã®ã‚¯ãƒ©ã‚¹ã‚’{@link Object#toString}ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹ã€‚Visitorãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ç”¨ã€‚<br>
+	 * ã—ã‹ã‚‚ã“ã‚Œã¯Singletonãªã®ã§ã€ä»–ã®å ´æ‰€ã§ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«{@link ConstantStringConverter#setLimited(boolean)}ã™ã‚‹ã¨ã€
+	 * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã‚‚å½±éŸ¿ã™ã‚‹ã€‚
 	 * 
 	 * @see 
 	 * <a href="http://en.wikipedia.org/wiki/Visitor_pattern">http://en.wikipedia.org/wiki/Visitor_pattern</a><br>
@@ -51,19 +51,19 @@ class CayleyDickson extends Constant {
 	
 	/**
 	 * 
-	 * @param aReal À•”B
-	 * @param aImag ‹••”B
-	 * @param aHeight ‚‚³B
+	 * @param aReal å®Ÿéƒ¨ã€‚
+	 * @param aImag è™šéƒ¨ã€‚
+	 * @param aHeight é«˜ã•ã€‚
 	 */
 	CayleyDickson(final Constant aReal, final Constant aImag, final int aHeight) {
 		if (aReal == null) {
-			throw new IllegalArgumentException("À•”‚ªnull‚Å‚Í‚¢‚¯‚Ü‚¹‚ñB");
+			throw new IllegalArgumentException("å®Ÿéƒ¨ãŒnullã§ã¯ã„ã‘ã¾ã›ã‚“ã€‚");
 		}
 		if (aImag == null) {
-			throw new IllegalArgumentException("‹••”‚ªnull‚Å‚Í‚¢‚¯‚Ü‚¹‚ñB");
+			throw new IllegalArgumentException("è™šéƒ¨ãŒnullã§ã¯ã„ã‘ã¾ã›ã‚“ã€‚");
 		}
 		if (aReal.getHeight() >= aHeight || aImag.getHeight() >= aHeight) {
-			throw new IllegalArgumentException("À•”‚Æ‹••”‚Ì‚‚³‚ÍA‚»‚Ì”‚Ì‚‚³‚æ‚è’á‚­‚È‚¢‚Æ‚¢‚¯‚Ü‚¹‚ñB");
+			throw new IllegalArgumentException("å®Ÿéƒ¨ã¨è™šéƒ¨ã®é«˜ã•ã¯ã€ãã®æ•°ã®é«˜ã•ã‚ˆã‚Šä½ããªã„ã¨ã„ã‘ã¾ã›ã‚“ã€‚");
 		}
 		mReal = aReal;
 		mImag = aImag;
@@ -72,27 +72,27 @@ class CayleyDickson extends Constant {
 
 	@Override
 	public final Constant add(final Operand aOperand) {
-		throw new UnsupportedOperationException("ƒCƒ“ƒXƒ^ƒ“ƒXƒƒ\ƒbƒh‚Ìadd‚Í‚‚³0‚ÌŒ³‚É‚Ì‚İÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã®addã¯é«˜ã•0ã®å…ƒã«ã®ã¿å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 
 	@Override
 	public final Constant mul(final Operand aOperand) {
-		throw new UnsupportedOperationException("ƒCƒ“ƒXƒ^ƒ“ƒXƒƒ\ƒbƒh‚Ìmul‚Í‚‚³0‚ÌŒ³‚É‚Ì‚İÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã®mulã¯é«˜ã•0ã®å…ƒã«ã®ã¿å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 
 	@Override
 	public final Constant negate() {
-		throw new UnsupportedOperationException("ƒCƒ“ƒXƒ^ƒ“ƒXƒƒ\ƒbƒh‚Ìnegate‚Í‚‚³0‚ÌŒ³‚É‚Ì‚İÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã®negateã¯é«˜ã•0ã®å…ƒã«ã®ã¿å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 
 	@Override
 	public final Constant div(final Operand aOperand) {
-		throw new UnsupportedOperationException("ƒCƒ“ƒXƒ^ƒ“ƒXƒƒ\ƒbƒh‚Ìdiv‚Í‚‚³0‚ÌŒ³‚É‚Ì‚İÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã®divã¯é«˜ã•0ã®å…ƒã«ã®ã¿å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 	
 	@Override
 	public final Constant inv() {
-		throw new UnsupportedOperationException("ƒCƒ“ƒXƒ^ƒ“ƒXƒƒ\ƒbƒh‚Ìinv‚Í‚‚³0‚ÌŒ³‚É‚Ì‚İÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã®invã¯é«˜ã•0ã®å…ƒã«ã®ã¿å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 
 	@Override
@@ -140,7 +140,7 @@ class CayleyDickson extends Constant {
 
 	@Override
 	public final BigInteger getInteger() {
-		throw new UnsupportedOperationException("‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Í®”‚Å‚Í‚ ‚è‚Ü‚¹‚ñB");
+		throw new UnsupportedOperationException("ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯æ•´æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
 	}
 	
 	@Override

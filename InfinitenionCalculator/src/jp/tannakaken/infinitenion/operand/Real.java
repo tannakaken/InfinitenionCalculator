@@ -6,8 +6,8 @@ import java.math.BigInteger;
 import jp.tannakaken.infinitenion.gui.Prefs;
 
 /**
- * À”‚ğƒ‰ƒbƒsƒ“ƒO‚µ‚ÄA{@link Constant}Œ^‚É“K‡‚³‚¹‚éAdapterƒpƒ^[ƒ“B<br>
- * ‚Ü‚½ACompositeƒpƒ^[ƒ“‚ğ—p‚¢‚Ä\¬‚³‚ê‚é–Ø\‘¢‚ğ‚Â{@link Constant}ƒNƒ‰ƒX‚Ì—t‚Ì–ğŠ„‚ğ‚Á‚Ä‚¢‚éB
+ * å®Ÿæ•°ã‚’ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã—ã¦ã€{@link Constant}å‹ã«é©åˆã•ã›ã‚‹Adapterãƒ‘ã‚¿ãƒ¼ãƒ³ã€‚<br>
+ * ã¾ãŸã€Compositeãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ç”¨ã„ã¦æ§‹æˆã•ã‚Œã‚‹æœ¨æ§‹é€ ã‚’æŒã¤{@link Constant}ã‚¯ãƒ©ã‚¹ã®è‘‰ã®å½¹å‰²ã‚’æŒã£ã¦ã„ã‚‹ã€‚
  * 
  * @author tannakaken
  *
@@ -18,31 +18,31 @@ import jp.tannakaken.infinitenion.gui.Prefs;
 class Real extends Constant {
 
 	/**
-	 * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª•\‚·”B
+	 * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¡¨ã™æ•°ã€‚
 	 */
 	private final BigDecimal mNumber;
 	/**
 	 * 
-	 * @param aNumber ƒ‰ƒbƒsƒ“ƒO‚³‚ê‚éÀ”Œ^B
+	 * @param aNumber ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã‚‹å®Ÿæ•°å‹ã€‚
 	 */
 	Real(final BigDecimal aNumber) {
 		mNumber = aNumber.setScale(getCalculationScale(), BigDecimal.ROUND_DOWN);
 	}
 	/**
-	 * ƒXƒP[ƒ‹‚ğV‚µ‚­İ’è‚µ‚ÄAƒCƒ“ƒXƒ^ƒ“ƒX‚ğì‚éB
-	 * @param aNumber ƒ‰ƒbƒsƒ“ƒO‚³‚ê‚éÀ”Œ^
-	 * @param aScale V‚µ‚­İ’è‚³‚ê‚éƒXƒP[ƒ‹B
+	 * ã‚¹ã‚±ãƒ¼ãƒ«ã‚’æ–°ã—ãè¨­å®šã—ã¦ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œã‚‹ã€‚
+	 * @param aNumber ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã‚‹å®Ÿæ•°å‹
+	 * @param aScale æ–°ã—ãè¨­å®šã•ã‚Œã‚‹ã‚¹ã‚±ãƒ¼ãƒ«ã€‚
 	 */
 	Real(final BigDecimal aNumber, final int aScale) {
 		mNumber = aNumber.setScale(aScale, BigDecimal.ROUND_DOWN);
 	}
 	@Override
 	public final Constant getReal() {
-		throw new UnsupportedOperationException("getReal‚Í‚‚³‚PˆÈã‚ÌConstant‚ÉÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("getRealã¯é«˜ã•ï¼‘ä»¥ä¸Šã®Constantã«å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 	@Override
 	public final Constant getImag() {
-		throw new UnsupportedOperationException("getImag‚Í‚‚³‚PˆÈã‚ÌConstant‚ÉÀ‘•‚³‚ê‚Ü‚·B");
+		throw new UnsupportedOperationException("getImagã¯é«˜ã•ï¼‘ä»¥ä¸Šã®Constantã«å®Ÿè£…ã•ã‚Œã¾ã™ã€‚");
 	}
 
 	@Override
@@ -94,11 +94,11 @@ class Real extends Constant {
 		return isInteger(mNumber); 
 	}
 	/**
-	 * {@link Real#isInteger()}‚Ì“à•”‚Å‚Ìè‘±‚«B<br>
-	 * {@link Real}‚Å‚Í‚È‚­A{@link BigDecimal}‚É’¼Ú“K—p‚µ‚½‚¢‚Æ‚«‚Ég‚¤B
+	 * {@link Real#isInteger()}ã®å†…éƒ¨ã§ã®æ‰‹ç¶šãã€‚<br>
+	 * {@link Real}ã§ã¯ãªãã€{@link BigDecimal}ã«ç›´æ¥é©ç”¨ã—ãŸã„ã¨ãã«ä½¿ã†ã€‚
 	 * 
-	 * @param aDecimal ®”‚©‚Ç‚¤‚©”»’è‚³‚ê‚é{@link BigDecimal}
-	 * @return aDecimal‚ª®”‚©‚Ç‚¤‚©B
+	 * @param aDecimal æ•´æ•°ã‹ã©ã†ã‹åˆ¤å®šã•ã‚Œã‚‹{@link BigDecimal}
+	 * @return aDecimalãŒæ•´æ•°ã‹ã©ã†ã‹ã€‚
 	 */
 	private static boolean isInteger(final BigDecimal aDecimal) {
 		return aDecimal.compareTo(aDecimal.setScale(0, BigDecimal.ROUND_DOWN)) == 0; 
@@ -135,14 +135,14 @@ class Real extends Constant {
 	
 	/**
 	 * 
-	 * @return ŒvZ‚ÌÀ”¸“xBo—Í‚æ‚è‚à­‚µ‘½‚ß‚É‚Æ‚éB
+	 * @return è¨ˆç®—æ™‚ã®å®Ÿæ•°ç²¾åº¦ã€‚å‡ºåŠ›æ™‚ã‚ˆã‚Šã‚‚å°‘ã—å¤šã‚ã«ã¨ã‚‹ã€‚
 	 */
 	private static int getCalculationScale() {
 		return Prefs.getScale(getContext()) + 1;
 	}
 	/**
 	 * 
-	 * @return o—Í‚ÌÀ”¸“x
+	 * @return å‡ºåŠ›æ™‚ã®å®Ÿæ•°ç²¾åº¦
 	 */
 	private static int getOutputScale() {
 		return Prefs.getScale(getContext());

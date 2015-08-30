@@ -1,11 +1,11 @@
-Hypercomplex Numbers(�����G�Ȑ�)�̐��E�ɂ悤�����I
-���̃A�v���́A�����A���f���A�l�����A�������A�\�Z�����A�Ƃǂ��܂ł�����2^n�挳���A�������́u�����f���v�̌n���S�Ċ܂񂾎����㖳�������㐔�̋t�|�[�����h���d��ł��B
-�L��Ȓ��ې��w�̐��E��T�����܂��傤�I
+Hypercomplex Numbers(超複雑な数)の世界にようこそ！
+このアプリは、実数、複素数、四元数、八元数、十六元数、とどこまでも続く2^n乗元数、もしくは「超複素数」の系列を全て含んだ実数上無限次元代数の逆ポーランド式電卓です。
+広大な抽象数学の世界を探検しましょう！
 
-���̃A�v���̃A�C�R���́AC(Complex:���f���j�AH(Hamilton:�l����)�AO(Octanion:������)�Ɛ��̐��E���L�����Ă������Ƃ�\���ƂƂ��ɁACHO�A�܂萢�E�̕ǂ��u���v���Ă������Ƃ�\�����Ă��܂��B
-�����ʟ������A����Ȃ����āH�@
-����Ⴛ�����B
-�I�������͂悤�₭�o��n�߂��΂��肾����ȁB
-���̉ʂĂ��Ȃ������̒����f�����c�c
+このアプリのアイコンは、C(Complex:複素数）、H(Hamilton:四元数)、O(Octanion:八元数)と数の世界が広がっていくことを表すとともに、CHO、つまり世界の壁を「超」えていくことを表現しています。
+何だ駄洒落か、下らないって？　
+そりゃそうさ。
+オレたちはようやく登り始めたばかりだからな。
+この果てしなく遠いの超複素坂をよ……
 
 Over HyperComplex

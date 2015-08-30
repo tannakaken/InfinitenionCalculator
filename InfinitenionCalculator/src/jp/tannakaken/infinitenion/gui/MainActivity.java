@@ -30,66 +30,66 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 /**
- * “d‘ì‰æ–ÊB
+ * é›»å“ç”»é¢ã€‚
  * @author tannakaken
  *
  */
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 	/**
-	 * ®‚Ì“ü—Í—“B
+	 * å¼ã®å…¥åŠ›æ¬„ã€‚
 	 */
 	private EditText mInputText;
 	/**
-	 * ŒvZŠJn‚Ìƒ{ƒ^ƒ“B
+	 * è¨ˆç®—é–‹å§‹ã®ãƒœã‚¿ãƒ³ã€‚
 	 */
 	private Button mCalcButton;
 	/**
-	 * ŒvZŒ‹‰Ê‚Ìo—Í—“B
+	 * è¨ˆç®—çµæœã®å‡ºåŠ›æ¬„ã€‚
 	 */
 	private TextView mOutputText;
 	/**
-	 * o—Í—“‚ÌƒXƒNƒ[ƒ‹B
+	 * å‡ºåŠ›æ¬„ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã€‚
 	 */
 	private ScrollView mScroll;
 	
 	/**
-	 * ƒRƒ}ƒ“ƒh‚Ì—š—ğB
+	 * ã‚³ãƒãƒ³ãƒ‰ã®å±¥æ­´ã€‚
 	 */
 	private LinkedList<String> mCommandHistory = new LinkedList<String>();
 	/**
-	 * ƒRƒ}ƒ“ƒh—š—ğ‚ÌƒCƒeƒŒ[ƒ^B
+	 * ã‚³ãƒãƒ³ãƒ‰å±¥æ­´ã®ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã€‚
 	 */
 	private ListIterator<String> mHistoryIterator;
 	/**
-	 * Œ»İ—š—ğ‚ğ‚³‚©‚Ì‚Ú‚è’†‚©‚Ç‚¤‚©B
+	 * ç¾åœ¨å±¥æ­´ã‚’ã•ã‹ã®ã¼ã‚Šä¸­ã‹ã©ã†ã‹ã€‚
 	 */
 	private boolean mIsGoingUp;
 	/**
-	 * ¶–½A‰F’ˆA‘S‚Ä‚Ì“š‚¦B•¶š”‚ğ42‚É‚ ‚í‚¹‚é‚½‚ß‚ÉAlife‚ÉThe‚ª•t‚¢‚Ä‚¢‚éB
+	 * ç”Ÿå‘½ã€å®‡å®™ã€å…¨ã¦ã®ç­”ãˆã€‚æ–‡å­—æ•°ã‚’42ã«ã‚ã‚ã›ã‚‹ãŸã‚ã«ã€lifeã«TheãŒä»˜ã„ã¦ã„ã‚‹ã€‚
 	 */
 	private static final String ANSWER = "TheAnswerToTheLifeTheUniverseAndEverything";
 	
 	/**
-	 * ŒvZ‚ğˆ—‚·‚éƒCƒ“ƒXƒ^ƒ“ƒXB
+	 * è¨ˆç®—ã‚’å‡¦ç†ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã€‚
 	 */
 	private Calculator mCalc;
 	/**
-	 * ”ñ“¯Šúˆ—‚ÌI—¹‚ğ’Ê’m‚·‚é‚½‚ß‚Ì{@link CountDownLatch}‚ÌƒŠƒXƒgB<br>
-	 * ‚½‚Æ‚¦‚ÎƒeƒXƒg‚È‚Ç‚Ég‚¤B
+	 * éåŒæœŸå‡¦ç†ã®çµ‚äº†ã‚’é€šçŸ¥ã™ã‚‹ãŸã‚ã®{@link CountDownLatch}ã®ãƒªã‚¹ãƒˆã€‚<br>
+	 * ãŸã¨ãˆã°ãƒ†ã‚¹ãƒˆãªã©ã«ä½¿ã†ã€‚
 	 */
 	private List<CountDownLatch> mLatchList = new ArrayList<CountDownLatch>();
 	/**
-	 * ”ñ“¯Šúˆ—‚ÌI—¹‚ğ’Ê’m‚·‚é‚½‚ß‚Ì{@link CountDownLatch}‚ğƒŠƒXƒg‚É‰Á‚¦‚éB<br>
-	 * ƒeƒXƒg‚È‚Ç‚Ég‚¤B
-	 * @param aLatch ‰Á‚¦‚ç‚ê‚é{@link CountDownLatch}
+	 * éåŒæœŸå‡¦ç†ã®çµ‚äº†ã‚’é€šçŸ¥ã™ã‚‹ãŸã‚ã®{@link CountDownLatch}ã‚’ãƒªã‚¹ãƒˆã«åŠ ãˆã‚‹ã€‚<br>
+	 * ãƒ†ã‚¹ãƒˆãªã©ã«ä½¿ã†ã€‚
+	 * @param aLatch åŠ ãˆã‚‰ã‚Œã‚‹{@link CountDownLatch}
 	 */
 	public final void addLatch(final CountDownLatch aLatch) {
 		mLatchList.add(aLatch);
 	}
 	/**
-	 * ”ñ“¯Šúˆ—‚ÌI—¹‚ğ’Ê’m‚·‚é‚½‚ß‚Ì{@link CountDownLatch}‚ğƒŠƒXƒg‚©‚ç‚³‹ìœ‚·‚éB
-	 * @param aLatch íœ‚·‚é{@link CountDownLatch}
-	 * @return aLatch‚ªƒŠƒXƒg“à‚É‚ ‚ê‚ÎtrueA‚È‚¯‚ê‚Îfalse‚ğ•Ô‚·B
+	 * éåŒæœŸå‡¦ç†ã®çµ‚äº†ã‚’é€šçŸ¥ã™ã‚‹ãŸã‚ã®{@link CountDownLatch}ã‚’ãƒªã‚¹ãƒˆã‹ã‚‰ã•é§†é™¤ã™ã‚‹ã€‚
+	 * @param aLatch å‰Šé™¤ã™ã‚‹{@link CountDownLatch}
+	 * @return aLatchãŒãƒªã‚¹ãƒˆå†…ã«ã‚ã‚Œã°trueã€ãªã‘ã‚Œã°falseã‚’è¿”ã™ã€‚
 	 */
 	public final boolean removeLatch(final CountDownLatch aLatch) {
 		return mLatchList.remove(aLatch);
@@ -112,10 +112,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		mCalc = new Calculator();
 		
 		mCalcButton.setOnClickListener(this);
-		// ƒ\ƒtƒgƒL[ƒ{[ƒh‚Ío‚³‚È‚¢B
+		// ã‚½ãƒ•ãƒˆã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã¯å‡ºã•ãªã„ã€‚
 		mInputText.setRawInputType(InputType.TYPE_NULL); 
 		mInputText.setCursorVisible(true);
-		//@—š—ğ‚Ì€”õ
+		//ã€€å±¥æ­´ã®æº–å‚™
 		mCommandHistory.addFirst(ANSWER);
 		mHistoryIterator = mCommandHistory.listIterator();
 		mIsGoingUp = true;
@@ -225,13 +225,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		case R.id.keypad_up:
 		case R.id.keypad_up_2:
 			if (mHistoryIterator.hasNext()) {
-				if (mIsGoingUp) { // —š—ğ‚ğ‚³‚©‚Ì‚Ú‚è’†‚Ì‚Æ‚«‚Íˆê‚Â‚¸‚Â“o‚éB
+				if (mIsGoingUp) { // å±¥æ­´ã‚’ã•ã‹ã®ã¼ã‚Šä¸­ã®ã¨ãã¯ä¸€ã¤ãšã¤ç™»ã‚‹ã€‚
 					mInputText.setText(mHistoryIterator.next());
 					mInputText.setSelection(mInputText.length());
 					mIsGoingUp = true;
 					return;
 				}
-				// —š—ğ‚ğ~‚è‚Ä‚¢‚­‚Æ‚«‚ÉAÜ‚è•Ô‚µ‚Ä“o‚é‚Æ‚«‚ÍA‚à‚µ“o‚ê‚ê‚Î“ñ‚Â‚³‚©‚Ì‚Ú‚éB
+				// å±¥æ­´ã‚’é™ã‚Šã¦ã„ãã¨ãã«ã€æŠ˜ã‚Šè¿”ã—ã¦ç™»ã‚‹ã¨ãã¯ã€ã‚‚ã—ç™»ã‚Œã‚Œã°äºŒã¤ã•ã‹ã®ã¼ã‚‹ã€‚
 				mIsGoingUp = true;
 				mHistoryIterator.next();
 				if (mHistoryIterator.hasNext()) {
@@ -240,20 +240,20 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 					return;
 				}
 			}
-			// ã‚Ì’[‚Å‚Í¶–½A‰F’ˆA‘S‚Ä‚Ì“š‚¦‚ğ•\¦BŸ~‚è‚é‚Æ‚«‚ÍA‚»‚Ì“š‚¦‚ÍƒXƒLƒbƒv‚·‚éB
+			// ä¸Šã®ç«¯ã§ã¯ç”Ÿå‘½ã€å®‡å®™ã€å…¨ã¦ã®ç­”ãˆã‚’è¡¨ç¤ºã€‚æ¬¡é™ã‚Šã‚‹ã¨ãã¯ã€ãã®ç­”ãˆã¯ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ã€‚
 			mInputText.setText(ANSWER);
 			mInputText.setSelection(mInputText.length());
 			return;
 		case R.id.keypad_down:
 		case R.id.keypad_down_2:
 			if (mHistoryIterator.hasPrevious()) {
-				if (!mIsGoingUp) { // —š—ğ‚ğ~‚è‚Ä‚¢‚é“r’†‚È‚çAˆê‚Â‚¸‚Â~‚è‚éB
+				if (!mIsGoingUp) { // å±¥æ­´ã‚’é™ã‚Šã¦ã„ã‚‹é€”ä¸­ãªã‚‰ã€ä¸€ã¤ãšã¤é™ã‚Šã‚‹ã€‚
 					mInputText.setText(mHistoryIterator.previous());
 					mInputText.setSelection(mInputText.length());
 					mIsGoingUp = false;
 					return;
 				}
-				// —š—ğ‚ğ‚³‚©‚Ì‚Ú‚é“r’†‚ÅÜ‚è•Ô‚·‚Æ‚«‚ÍA‚à‚µ~‚è‚ê‚ê‚Î“ñ‚Â~‚è‚éB
+				// å±¥æ­´ã‚’ã•ã‹ã®ã¼ã‚‹é€”ä¸­ã§æŠ˜ã‚Šè¿”ã™ã¨ãã¯ã€ã‚‚ã—é™ã‚Šã‚Œã‚Œã°äºŒã¤é™ã‚Šã‚‹ã€‚
 				mHistoryIterator.previous();
 				if (mHistoryIterator.hasPrevious()) {
 					mInputText.setText(mHistoryIterator.previous());
@@ -262,7 +262,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 					return;
 				}
 			}
-			// ‰º‚Ì’[‚Å‚Í‹ó”’‚ğ•\¦@Ÿ‚Í“o‚é‚µ‚©‚È‚¢
+			// ä¸‹ã®ç«¯ã§ã¯ç©ºç™½ã‚’è¡¨ç¤ºã€€æ¬¡ã¯ç™»ã‚‹ã—ã‹ãªã„
 			mIsGoingUp = true;
 			mInputText.setText("");
 			return;
@@ -270,13 +270,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			getSupportFragmentManager().beginTransaction()
 			.remove(getSupportFragmentManager().getFragments().get(0))
 			.add(R.id.container, new KeypadSecond())
-			.commitAllowingStateLoss(); // ƒL[ƒpƒbƒh‚Íî•ñ‚ğ‚½‚È‚¢‚Ì‚ÅAState‚ğ•Û‘¶‚·‚é•K—v‚È‚µB
+			.commitAllowingStateLoss(); // ã‚­ãƒ¼ãƒ‘ãƒƒãƒ‰ã¯æƒ…å ±ã‚’æŒãŸãªã„ã®ã§ã€Stateã‚’ä¿å­˜ã™ã‚‹å¿…è¦ãªã—ã€‚
 			return;
 		case R.id.keypad_prev:
 			getSupportFragmentManager().beginTransaction()
 			.remove(getSupportFragmentManager().getFragments().get(0))
 			.add(R.id.container, new KeypadFirst())
-			.commitAllowingStateLoss(); // ƒL[ƒpƒbƒh‚Íî•ñ‚ğ‚½‚È‚¢‚Ì‚ÅAState‚ğ•Û‘¶‚·‚é•K—v‚È‚µB
+			.commitAllowingStateLoss(); // ã‚­ãƒ¼ãƒ‘ãƒƒãƒ‰ã¯æƒ…å ±ã‚’æŒãŸãªã„ã®ã§ã€Stateã‚’ä¿å­˜ã™ã‚‹å¿…è¦ãªã—ã€‚
 			return;
 		default:
 			throw new IllegalStateException("Unknown view exists.");
@@ -284,28 +284,28 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	}
 
 	/**
-	 * ƒRƒ}ƒ“ƒh‚ğ“ü—Í‚·‚éB<br>
-	 * ƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½ƒRƒ}ƒ“ƒh‚Ìˆ—‚ªI—¹‚µ‚È‚­‚Ä‚àAŸ‚ÌƒRƒ}ƒ“ƒh‚ªÀs‚Å‚«‚é‚æ‚¤‚ÉA
-	 * {@link AsyncTask#THREAD_POOL_EXECUTOR}‚ğw’è‚·‚éB
-	 * @param aCommand ƒRƒ}ƒ“ƒhB 
+	 * ã‚³ãƒãƒ³ãƒ‰ã‚’å…¥åŠ›ã™ã‚‹ã€‚<br>
+	 * ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã‚³ãƒãƒ³ãƒ‰ã®å‡¦ç†ãŒçµ‚äº†ã—ãªãã¦ã‚‚ã€æ¬¡ã®ã‚³ãƒãƒ³ãƒ‰ãŒå®Ÿè¡Œã§ãã‚‹ã‚ˆã†ã«ã€
+	 * {@link AsyncTask#THREAD_POOL_EXECUTOR}ã‚’æŒ‡å®šã™ã‚‹ã€‚
+	 * @param aCommand ã‚³ãƒãƒ³ãƒ‰ã€‚ 
 	 */
 	private void command(final String aCommand) {
 		(new AsyncCalculatingTask(this, mCalc, mLatchList)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, aCommand);
 	}
 	/**
-	 * ˆê‚Â–Ú‚ÌƒL[ƒpƒbƒh‚ğ•\‚·ƒNƒ‰ƒXB<br>
-	 * android‚Ì’èÎ‚Å‚ÍA‚±‚ê‚ÍstaticƒNƒ‰ƒX‚É‚·‚éB
+	 * ä¸€ã¤ç›®ã®ã‚­ãƒ¼ãƒ‘ãƒƒãƒ‰ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã€‚<br>
+	 * androidã®å®šçŸ³ã§ã¯ã€ã“ã‚Œã¯staticã‚¯ãƒ©ã‚¹ã«ã™ã‚‹ã€‚
 	 * @author tannakaken
 	 *
 	 */
 	public static class KeypadFirst extends Fragment {
 		/**
-		 * ‚±‚ÌFragment‚ğŠ‚·‚é{@link MainActivity}B
+		 * ã“ã®Fragmentã‚’æ‰€æŒã™ã‚‹{@link MainActivity}ã€‚
 		 */
 		private MainActivity mMain;
 		
 		/**
-		 * ƒNƒ‰ƒX¶¬‚É‚Í‰½‚à‚µ‚È‚¢B
+		 * ã‚¯ãƒ©ã‚¹ç”Ÿæˆæ™‚ã«ã¯ä½•ã‚‚ã—ãªã„ã€‚
 		 */
 		public KeypadFirst() {
 		}
@@ -330,8 +330,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		}
 		
 		/**
-		 * ƒ{ƒ^ƒ“‚ÌView‚ğæ“¾‚µAListener‚ğset‚µ‚Ä‚¢‚­ƒƒ\ƒbƒhB
-		 * @param aRootView e‚ÌViewB
+		 * ãƒœã‚¿ãƒ³ã®Viewã‚’å–å¾—ã—ã€Listenerã‚’setã—ã¦ã„ããƒ¡ã‚½ãƒƒãƒ‰ã€‚
+		 * @param aRootView è¦ªã®Viewã€‚
 		 */
 		private void setListeners(final View aRootView) {
 			aRootView.findViewById(R.id.keypad_div).setOnClickListener(mMain);
@@ -362,18 +362,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		}
 	}
 	/**
-	 * “ñ‚Â–Ú‚ÌƒL[ƒpƒbƒh‚ğ•\‚·ƒNƒ‰ƒXB<br>
-	 * android‚Ì’èÎ‚Å‚ÍA‚±‚ê‚ÍstaticƒNƒ‰ƒX‚É‚·‚éB
+	 * äºŒã¤ç›®ã®ã‚­ãƒ¼ãƒ‘ãƒƒãƒ‰ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã€‚<br>
+	 * androidã®å®šçŸ³ã§ã¯ã€ã“ã‚Œã¯staticã‚¯ãƒ©ã‚¹ã«ã™ã‚‹ã€‚
 	 * @author tannakaken
 	 *
 	 */
 	public static class KeypadSecond extends Fragment {
 		/**
-		 * ‚±‚ÌFragment‚ğŠ‚·‚é{@link MainActivity}B
+		 * ã“ã®Fragmentã‚’æ‰€æŒã™ã‚‹{@link MainActivity}ã€‚
 		 */
 		private MainActivity mMain;
 		/**
-		 * ¶¬‚É‰½‚à‚µ‚È‚¢B
+		 * ç”Ÿæˆæ™‚ã«ä½•ã‚‚ã—ãªã„ã€‚
 		 */
 		public KeypadSecond() {
 		}
@@ -396,8 +396,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		}
 		
 		/**
-		 * ƒ{ƒ^ƒ“‚ÌView‚ğæ“¾‚µAListener‚ğset‚µ‚Ä‚¢‚­ƒƒ\ƒbƒhB
-		 * @param aRootView e‚ÌViewB
+		 * ãƒœã‚¿ãƒ³ã®Viewã‚’å–å¾—ã—ã€Listenerã‚’setã—ã¦ã„ããƒ¡ã‚½ãƒƒãƒ‰ã€‚
+		 * @param aRootView è¦ªã®Viewã€‚
 		 */
 		private void setListeners(final View aRootView) {
 			aRootView.findViewById(R.id.keypad_negate).setOnClickListener(mMain);
@@ -417,15 +417,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	}
 	/**
 	 * 
-	 * @param aOutput o—Í‚³‚ê‚é•¶š—ñ
-	 * @param aColor •¶š‚ÌF
+	 * @param aOutput å‡ºåŠ›ã•ã‚Œã‚‹æ–‡å­—åˆ—
+	 * @param aColor æ–‡å­—ã®è‰²
 	 */
 	final void output(final String aOutput, final int aColor) {
 		mOutputText.setTextColor(aColor);
 		mOutputText.append(aOutput);
 	}
     /**
-     * o—Í—“‚Ì‰æ–Ê‚ğ‰º‚Ü‚ÅƒXƒNƒ[ƒ‹‚³‚¹‚éB
+     * å‡ºåŠ›æ¬„ã®ç”»é¢ã‚’ä¸‹ã¾ã§ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã•ã›ã‚‹ã€‚
      */
     final void scrolldown() {
     	mScroll.post(new Runnable() {

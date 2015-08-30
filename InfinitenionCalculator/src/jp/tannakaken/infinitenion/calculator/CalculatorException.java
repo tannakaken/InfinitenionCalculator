@@ -3,7 +3,7 @@ package jp.tannakaken.infinitenion.calculator;
 import android.content.Context;
 
 /**
- * ŒvZ‚Ì“r’†‚Å”­¶‚·‚é—áŠO‚ÌeƒNƒ‰ƒXB
+ * è¨ˆç®—ã®é€”ä¸­ã§ç™ºç”Ÿã™ã‚‹ä¾‹å¤–ã®è¦ªã‚¯ãƒ©ã‚¹ã€‚
  * @author tannakaken
  *
  */
@@ -14,27 +14,27 @@ public abstract class CalculatorException extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * o—Í‚·‚éƒGƒ‰[ƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚½‚ß‚ÌA{@link Context}B
+	 * å‡ºåŠ›ã™ã‚‹ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ã€{@link Context}ã€‚
 	 */
 	private static Context mContext;
 	/**
-	 * •K‚¸{@link jp.tannakaken.infinitenion.gui.MainActivity}‚Ì‹N“®‚É‚±‚Ìƒƒ\ƒbƒh‚Å‰Šú‰»‚·‚é‚±‚ÆBB
-	 * @param aContext o—Í‚·‚éƒGƒ‰[ƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚½‚ß‚ÌA{@link Context}B
+	 * å¿…ãš{@link jp.tannakaken.infinitenion.gui.MainActivity}ã®èµ·å‹•æ™‚ã«ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§åˆæœŸåŒ–ã™ã‚‹ã“ã¨ã€‚ã€‚
+	 * @param aContext å‡ºåŠ›ã™ã‚‹ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ã€{@link Context}ã€‚
 	 */
 	public static void setContext(final Context aContext) {
 		mContext = aContext;
 	}
 	/**
 	 * 
-	 * @param aMessageId •\¦‚·‚éƒGƒ‰[ƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚½‚ß‚ÌƒŠƒ\[ƒXIDB
+	 * @param aMessageId è¡¨ç¤ºã™ã‚‹ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒªã‚½ãƒ¼ã‚¹IDã€‚
 	 */
 	public CalculatorException(final int aMessageId) {
 		super(mContext.getString(aMessageId));
 	}
 	/**
 	 * 
-	 * @param aMessageId •\¦‚·‚éƒGƒ‰[ƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚½‚ß‚ÌƒŠƒ\[ƒXIDB
-	 * @param aCause ƒGƒ‰[‚ÌŒ´ˆö‚Æ‚È‚Á‚½ƒg[ƒNƒ“B
+	 * @param aMessageId è¡¨ç¤ºã™ã‚‹ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒªã‚½ãƒ¼ã‚¹IDã€‚
+	 * @param aCause ã‚¨ãƒ©ãƒ¼ã®åŸå› ã¨ãªã£ãŸãƒˆãƒ¼ã‚¯ãƒ³ã€‚
 	 */
 	public CalculatorException(final int aMessageId, final Object aCause) {
 		super(mContext.getString(aMessageId) + ":" + aCause);

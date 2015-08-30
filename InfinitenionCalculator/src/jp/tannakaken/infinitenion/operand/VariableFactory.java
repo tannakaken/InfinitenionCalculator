@@ -10,14 +10,14 @@ import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException
 import android.content.Context;
 
 /**
- * ƒg[ƒNƒ“‚©‚ç{@link Variable}‚ğ¶¬‚µ‚Ä“o˜^‚·‚éFactoryB<br>
- * ‚»‚ÌÛAƒg[ƒNƒ“‚Ì‘å•¶š¬•¶š‚Í‹æ•Ê‚µ‚È‚¢B<br>
- * ƒg[ƒNƒ“‚ÌŒŸ¸‚ğ‚µ‚Ä‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‚ğ\¬‚·‚é—¬‚ê‚ğFactory Methodƒpƒ^[ƒ“‚ğ—˜—p‚µ‚Ä\¬B<br>
- * “o˜^‚Ì‚µ‚©‚½‚ÉFlyWeightƒpƒ^[ƒ“‚ğg‚¤B<br>
- * ˆê‚Â‚µ‚©ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•K—v‚È‚¢‚Ì‚ÅASingletonƒpƒ^[ƒ“‚ğg‚¤B
+ * ãƒˆãƒ¼ã‚¯ãƒ³ã‹ã‚‰{@link Variable}ã‚’ç”Ÿæˆã—ã¦ç™»éŒ²ã™ã‚‹Factoryã€‚<br>
+ * ãã®éš›ã€ãƒˆãƒ¼ã‚¯ãƒ³ã®å¤§æ–‡å­—å°æ–‡å­—ã¯åŒºåˆ¥ã—ãªã„ã€‚<br>
+ * ãƒˆãƒ¼ã‚¯ãƒ³ã®æ¤œæŸ»ã‚’ã—ã¦ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ§‹æˆã™ã‚‹æµã‚Œã‚’Factory Methodãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’åˆ©ç”¨ã—ã¦æ§‹æˆã€‚<br>
+ * ç™»éŒ²ã®ã—ã‹ãŸã«FlyWeightãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã†ã€‚<br>
+ * ä¸€ã¤ã—ã‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå¿…è¦ãªã„ã®ã§ã€Singletonãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã†ã€‚
  * 
  * @author tannakaken
- *@
+ *ã€€
  * @see 
  * <a href="http://en.wikipedia.org/wiki/Factory_method_pattern">http://en.wikipedia.org/wiki/Factory_method_pattern</a>
  * <a href="http://en.wikipedia.org/wiki/Flyweight_pattern">http://en.wikipedia.org/wiki/Flyweight_pattern</a>
@@ -26,18 +26,18 @@ import android.content.Context;
  */
 public final class VariableFactory extends Factory {
 	/**
-	 * ‚±‚ÌŠÂ‹«‚Å‚Ì‰üsB
+	 * ã“ã®ç’°å¢ƒã§ã®æ”¹è¡Œã€‚
 	 */
 	private static final String NEW_LINE = System.getProperty("line.separator"); 
 	/**
-	 * ˆê‚Â‚µ‚©•K—v‚È‚¢‚Ì‚Å<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>B
+	 * ä¸€ã¤ã—ã‹å¿…è¦ãªã„ã®ã§<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>ã€‚
 	 * 
 	 */
 	private static VariableFactory mSingleton = new VariableFactory();
 	
 	/**
-	 * {@link Variable}‚ğŠi”[‚µ‚Ä‚¨‚­ƒv[ƒ‹B
-	 * {@link Variable}‚ğ•\‚·ƒg[ƒNƒ“uX‚à‚µ‚­‚ÍXnin‚Í³‚Ì®”)v‚Ì“Y‚¦š‚É‚æ‚é‡˜‚Å®—ñ‚³‚¹‚éB
+	 * {@link Variable}ã‚’æ ¼ç´ã—ã¦ãŠããƒ—ãƒ¼ãƒ«ã€‚
+	 * {@link Variable}ã‚’è¡¨ã™ãƒˆãƒ¼ã‚¯ãƒ³ã€ŒXã‚‚ã—ãã¯Xnï¼ˆnã¯æ­£ã®æ•´æ•°)ã€ã®æ·»ãˆå­—ã«ã‚ˆã‚‹é †åºã§æ•´åˆ—ã•ã›ã‚‹ã€‚
 	 */
 	private static Map<String, Variable> mPool = new TreeMap<String, Variable>(new Comparator<String>() {
 		@Override
@@ -54,25 +54,25 @@ public final class VariableFactory extends Factory {
 		}
 	});
 	/**
-	 * {@link Variable}‚Ìƒg[ƒNƒ“‚Ìˆê”ÊŒ`‚ğ‚ ‚ç‚í‚·³‹K•\Œ»B
+	 * {@link Variable}ã®ãƒˆãƒ¼ã‚¯ãƒ³ã®ä¸€èˆ¬å½¢ã‚’ã‚ã‚‰ã‚ã™æ­£è¦è¡¨ç¾ã€‚
 	 */
 	private static String mRegex = "^X$|^X[1-9][0-9]*$";
 	/**
-	 * {@link Variable}‚ª•Ï”‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é³‹K•\Œ»‚Ìƒpƒ^[ƒ“B
+	 * {@link Variable}ãŒå¤‰æ•°ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ­£è¦è¡¨ç¾ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã€‚
 	 */
 	private static Pattern mPattern = Pattern.compile(mRegex);
 	/**
-	 * {@link Variable}‚ğì‚é‚½‚ß‚ÌAó‚¯“ü‚ê‰Â”\‚Èƒg[ƒNƒ“B
+	 * {@link Variable}ã‚’ä½œã‚‹ãŸã‚ã®ã€å—ã‘å…¥ã‚Œå¯èƒ½ãªãƒˆãƒ¼ã‚¯ãƒ³ã€‚
 	 */
 	private static String mToken;
 	/**
-	 * ŠO•”‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‰»‚Å‚«‚È‚¢‚æ‚¤‚É‚µ‚Ä‚¨‚­B
+	 * å¤–éƒ¨ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã§ããªã„ã‚ˆã†ã«ã—ã¦ãŠãã€‚
 	 */
 	private VariableFactory() { }
 	
 	/**
 	 * 
-	 * @return {@link VariableFactory}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>B
+	 * @return {@link VariableFactory}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>ã€‚
 	 * 
 	 */
 	public static VariableFactory getInstance() {
@@ -100,14 +100,14 @@ public final class VariableFactory extends Factory {
 	}
 	
 	/**
-	 * ¶¬‚µ‚½{@link Variable}‚ğ‘S‚ÄƒNƒŠƒA‚·‚éB
+	 * ç”Ÿæˆã—ãŸ{@link Variable}ã‚’å…¨ã¦ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚
 	 */
 	public void clearVariable() {
 		mPool.clear();
 	}
 	
 	/**
-	 * ‘ã“ü‚ğ‚·‚×‚ÄƒLƒƒƒ“ƒZƒ‹‚·‚éB
+	 * ä»£å…¥ã‚’ã™ã¹ã¦ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã™ã‚‹ã€‚
 	 */
 	public void cancelSubstitution() {
 		for (Variable tVariable : mPool.values()) {
@@ -115,7 +115,7 @@ public final class VariableFactory extends Factory {
 		}
 	}
 	/**
-	 * ‘ã“ü‚ğ‚·‚×‚ÄŠm’è‚·‚éB
+	 * ä»£å…¥ã‚’ã™ã¹ã¦ç¢ºå®šã™ã‚‹ã€‚
 	 */
 	public void settleSubstitution() {
 		for (Variable tVariable : mPool.values()) {
@@ -123,9 +123,9 @@ public final class VariableFactory extends Factory {
 		}
 	}
 	/**
-	 * ˆê“xˆÈãg—p‚·‚é‚±‚Æ‚É‚æ‚èAŒ»İ“o˜^‚³‚ê‚½{@link Variable}‚ğ“Y‚¦š‚Ì‡”Ô‚Åˆê——‚ğ•\¦‚·‚éB
-	 * @param aContext •\¦‚·‚éƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚½‚ß‚Ì{@link Context}BLocalization‚Ì‚½‚ß‚É•K—vB
-	 * @return mPool‚Ì’†g‚ğ•¶š—ñ‚É‚µ‚½‚à‚ÌB
+	 * ä¸€åº¦ä»¥ä¸Šä½¿ç”¨ã™ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€ç¾åœ¨ç™»éŒ²ã•ã‚ŒãŸ{@link Variable}ã‚’æ·»ãˆå­—ã®é †ç•ªã§ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
+	 * @param aContext è¡¨ç¤ºã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®{@link Context}ã€‚Localizationã®ãŸã‚ã«å¿…è¦ã€‚
+	 * @return mPoolã®ä¸­èº«ã‚’æ–‡å­—åˆ—ã«ã—ãŸã‚‚ã®ã€‚
 	 */
 	public String variablesToString(final Context aContext) {
 		StringBuilder tBuffer = new StringBuilder();

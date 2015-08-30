@@ -11,24 +11,24 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 /**
- * ‚³‚Ü‚´‚Ü‚ÈƒeƒLƒXƒg‚ğ•\¦‚·‚é‚½‚ß‚ÌActivityB
+ * ã•ã¾ã–ã¾ãªãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®Activityã€‚
  * @author tannakaken
  *
  */
 public class Text extends Activity {
 	/**
-	 * ‚Ç‚ÌƒeƒLƒXƒg‚ğ•\¦‚·‚é‚©‚ğ•\‚·{@link TextResource}B
+	 * ã©ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã‹ã‚’è¡¨ã™{@link TextResource}ã€‚
 	 */
 	private static TextResource mTextResource;
 	
 	/**
-	 * ‚±‚ÌŠÂ‹«‚Å‚Ì‰üsB
+	 * ã“ã®ç’°å¢ƒã§ã®æ”¹è¡Œã€‚
 	 */
 	private static final String NEW_LINE = System.getProperty("line.separator"); 
 	/**
-	 * ‚±‚ÌActivity‚ª‚Ç‚ÌƒeƒLƒXƒg‚ğ•\¦‚·‚é‚©‚ğŒˆ‚ß‚éB<br>
-	 * {@link onCreate}‚·‚é‘O‚É•K‚¸‚±‚Ìƒƒ\ƒbƒh‚ğ‚·‚é‚±‚ÆB
-	 * @param aTextResource •\¦‚·‚éƒeƒLƒXƒg‚ğ•\‚·{@link TextResource}B
+	 * ã“ã®ActivityãŒã©ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã‹ã‚’æ±ºã‚ã‚‹ã€‚<br>
+	 * {@link onCreate}ã™ã‚‹å‰ã«å¿…ãšã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã™ã‚‹ã“ã¨ã€‚
+	 * @param aTextResource è¡¨ç¤ºã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ã™{@link TextResource}ã€‚
 	 */
 	public static void setResource(final TextResource aTextResource) {
 		mTextResource = aTextResource;
@@ -83,7 +83,7 @@ public class Text extends Activity {
 				tContent.append(tLine + NEW_LINE);
 			}
 		} catch (IOException e) {
-			Toast.makeText(this, "ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ", Toast.LENGTH_SHORT).show();
 		}
 	}
 }

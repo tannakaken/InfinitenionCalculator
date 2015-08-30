@@ -5,12 +5,12 @@ import java.math.BigInteger;
 import jp.tannakaken.infinitenion.calculator.CalculatingException;
 
 /**
- * {@link Operand}‚ğû”[‚·‚é•Ï”B<br>
- * ‚±‚ÌƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğû”[‚µ‚È‚¢‚æ‚¤‚É’ˆÓB–³ŒÀƒ‹[ƒv‚ª‹N‚±‚é‰Â”\«‚ª‚ ‚éB<br>
- * ƒƒ“ƒo[‚Æ‚µ‚Ä{@link Operand}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX{@link Variable#mInterior}‚ğˆê‚Â‚¿A
- *@substitution‚·‚È‚í‚¿‘ã“üˆÈŠO‚Ì‰‰Zq‚ÉŠÖ‚µ‚Ä‚ÍA‚»‚Ì{@link Variable#mInterior}‚ÉˆÏ÷‚·‚éB<br>
- * ‘¼‚Ì{@link Operand}‚Æ“¯ˆê‹‚µ‚È‚ª‚çA‚¢‚ë‚¢‚ë‚È’l‚ğ‚Æ‚è‚¤‚é‹@”\‚ğAˆÏ÷‚ÆDecoratorƒpƒ^[ƒ“‚ğg‚Á‚ÄÀŒ»B
- * @author tannakakenB
+ * {@link Operand}ã‚’åç´ã™ã‚‹å¤‰æ•°ã€‚<br>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åç´ã—ãªã„ã‚ˆã†ã«æ³¨æ„ã€‚ç„¡é™ãƒ«ãƒ¼ãƒ—ãŒèµ·ã“ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã€‚<br>
+ * ãƒ¡ãƒ³ãƒãƒ¼ã¨ã—ã¦{@link Operand}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹{@link Variable#mInterior}ã‚’ä¸€ã¤æŒã¡ã€
+ *ã€€substitutionã™ãªã‚ã¡ä»£å…¥ä»¥å¤–ã®æ¼”ç®—å­ã«é–¢ã—ã¦ã¯ã€ãã®{@link Variable#mInterior}ã«å§”è­²ã™ã‚‹ã€‚<br>
+ * ä»–ã®{@link Operand}ã¨åŒä¸€è¦–ã—ãªãŒã‚‰ã€ã„ã‚ã„ã‚ãªå€¤ã‚’ã¨ã‚Šã†ã‚‹æ©Ÿèƒ½ã‚’ã€å§”è­²ã¨Decoratorãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã£ã¦å®Ÿç¾ã€‚
+ * @author tannakakenã€‚
  *
  * @see
  * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">http://en.wikipedia.org/wiki/Decorator_pattern</a><br>
@@ -21,11 +21,11 @@ import jp.tannakaken.infinitenion.calculator.CalculatingException;
 class Variable implements Operand {
 	
 	/**
-	 * •Ï”‚Ì’†gB‰Šú’l‚Í0B
+	 * å¤‰æ•°ã®ä¸­èº«ã€‚åˆæœŸå€¤ã¯0ã€‚
 	 */
 	private Constant mInterior = Zero.ZERO;
 	/**
-	 * ŒvZ‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Ì‚½‚ß‚ÉAˆÈ‘O‚Ìó‘Ô‚ğ•Û‘¶‚µ‚Ä‚¨‚­B
+	 * è¨ˆç®—ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸæ™‚ã®ãŸã‚ã«ã€ä»¥å‰ã®çŠ¶æ…‹ã‚’ä¿å­˜ã—ã¦ãŠãã€‚
 	 */
 	private Constant mFormerInterior;
 	
@@ -41,7 +41,7 @@ class Variable implements Operand {
 		return mInterior;
 	}
 	/**
-	 * ‘ã“ü‚ğƒLƒƒƒ“ƒZƒ‹‚·‚éB
+	 * ä»£å…¥ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã™ã‚‹ã€‚
 	 */
 	public void cancel() {
 		if (mFormerInterior != null) {
@@ -50,7 +50,7 @@ class Variable implements Operand {
 		}
 	}
 	/**
-	 * ‘ã“ü‚ğŠm’è‚·‚éB
+	 * ä»£å…¥ã‚’ç¢ºå®šã™ã‚‹ã€‚
 	 */
 	public void settle() {
 		mFormerInterior = null;
@@ -108,7 +108,7 @@ class Variable implements Operand {
 		return mInterior.getInteger();
 	}
 	/**
-	 * @return {@link Variable#mInterior}‚Ì•¶š—ñ•\Œ»
+	 * @return {@link Variable#mInterior}ã®æ–‡å­—åˆ—è¡¨ç¾
 	 */
 	@Override
 	public String toString() {

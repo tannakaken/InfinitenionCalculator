@@ -9,9 +9,9 @@ import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException
 import jp.tannakaken.infinitenion.calculator.CalculatorParseException;
 import jp.tannakaken.infinitenion.gui.Prefs;
 /**
- * ƒg[ƒNƒ“‚©‚ç”‚ğ¶¬‚·‚éFactoryB<br/>
- * •K‚¸ƒg[ƒNƒ“‚ªù—v‰Â”\‚©ŒŸ¸‚µ‚Ä‚©‚çAƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éH’ö‚ğˆê–{‰»‚·‚é‚½‚ß‚ÉAFactory Methodƒpƒ^[ƒ“‚ğg—pB<br/>
- * ˆê‚Â‚µ‚©•K—v‚È‚¢‚Ì‚ÅASingletonƒpƒ^[ƒ“‚ğg‚¤B
+ * ãƒˆãƒ¼ã‚¯ãƒ³ã‹ã‚‰æ•°ã‚’ç”Ÿæˆã™ã‚‹Factoryã€‚<br/>
+ * å¿…ãšãƒˆãƒ¼ã‚¯ãƒ³ãŒéœ€è¦å¯èƒ½ã‹æ¤œæŸ»ã—ã¦ã‹ã‚‰ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å·¥ç¨‹ã‚’ä¸€æœ¬åŒ–ã™ã‚‹ãŸã‚ã«ã€Factory Methodãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ç”¨ã€‚<br/>
+ * ä¸€ã¤ã—ã‹å¿…è¦ãªã„ã®ã§ã€Singletonãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ã†ã€‚
  * @author tannakaken
  * @see
  * <a href="http://en.wikipedia.org/wiki/Factory_method_pattern">
@@ -22,36 +22,36 @@ import jp.tannakaken.infinitenion.gui.Prefs;
 public final class BaseFieldFactory extends Factory {
 
 	/**
-	 * ®”‚ğ•\‚·³‹K•\Œ»B
+	 * æ•´æ•°ã‚’è¡¨ã™æ­£è¦è¡¨ç¾ã€‚
 	 */
 	private static String mIntegerRegexp = "^0$|^-?[1-9]\\d*$";
 	/**
-	 * ®”‚ğ•\‚·ƒpƒ^[ƒ“B
+	 * æ•´æ•°ã‚’è¡¨ã™ãƒ‘ã‚¿ãƒ¼ãƒ³ã€‚
 	 */
 	private static Pattern mIntegerPattern = Pattern.compile(mIntegerRegexp);
 	/**
-	 * À”‚ğ•\‚·³‹K•\Œ»B
+	 * å®Ÿæ•°ã‚’è¡¨ã™æ­£è¦è¡¨ç¾ã€‚
 	 */
 	private static String mRealRegexp = "^(0|(-?[1-9]\\d*))(\\.\\d*)?$";
 	/**
-	 * À”‚ğ•\‚·ƒpƒ^[ƒ“B
+	 * å®Ÿæ•°ã‚’è¡¨ã™ãƒ‘ã‚¿ãƒ¼ãƒ³ã€‚
 	 */
 	private static Pattern mRealPattern = Pattern.compile(mRealRegexp);
 	/**
-	 * {@link BaseFieldFactory}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>B
+	 * {@link BaseFieldFactory}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>ã€‚
 	 */
 	private static BaseFieldFactory mSingleton = new BaseFieldFactory();
 	/**
-	 * {@link Rational}‚Ü‚½‚Í{@link Real}‚ğì‚é‚½‚ß‚ÌAó‚¯“ü‚ê‰Â”\‚Èƒg[ƒNƒ“B
+	 * {@link Rational}ã¾ãŸã¯{@link Real}ã‚’ä½œã‚‹ãŸã‚ã®ã€å—ã‘å…¥ã‚Œå¯èƒ½ãªãƒˆãƒ¼ã‚¯ãƒ³ã€‚
 	 */
 	private String mToken;
 	/**
-	 * À”ƒ‚[ƒh‚Ì‚Æ‚«A—^‚¦‚ç‚ê‚½ƒg[ƒNƒ“‚ª®”‚©‚Ç‚¤‚©‚ğ”»’èB
+	 * å®Ÿæ•°ãƒ¢ãƒ¼ãƒ‰ã®ã¨ãã€ä¸ãˆã‚‰ã‚ŒãŸãƒˆãƒ¼ã‚¯ãƒ³ãŒæ•´æ•°ã‹ã©ã†ã‹ã‚’åˆ¤å®šã€‚
 	 */
 	private boolean mIsInteger;
 	/**
 	 * 
-	 * @return {@link BaseFieldFactory}‚Ì<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>
+	 * @return {@link BaseFieldFactory}ã®<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>
 	 */
 	public static BaseFieldFactory getInstance() {
 		return mSingleton;
@@ -68,7 +68,7 @@ public final class BaseFieldFactory extends Factory {
 			mIsInteger = true;
 			return true;
 		}
-		// ŒŸ¸‚Ì‡”Ô‚É’ˆÓ@©‘R”‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚µ‚Ä‚©‚çAÀ”‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚éB
+		// æ¤œæŸ»ã®é †ç•ªã«æ³¨æ„ã€€è‡ªç„¶æ•°ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦ã‹ã‚‰ã€å®Ÿæ•°ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚
 		if (isReal()) {
 			if (mIntegerPattern.matcher(aToken).find()) {
 				mIsInteger = true;
@@ -108,7 +108,7 @@ public final class BaseFieldFactory extends Factory {
 	
 	/**
 	 * 
-	 * @return Œ»İ‚Ìƒ‚[ƒh‚Ì1B
+	 * @return ç¾åœ¨ã®ãƒ¢ãƒ¼ãƒ‰ã®1ã€‚
 	 */
 	Constant getOne() {
 		if (isReal()) {
@@ -120,7 +120,7 @@ public final class BaseFieldFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @return Œ»İ—L—”ƒ‚[ƒh‚©‚Ç‚¤‚©B
+	 * @return ç¾åœ¨æœ‰ç†æ•°ãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹ã€‚
 	 */
 	private static boolean isReal() {
 		return Prefs.getIsReal(getContext());

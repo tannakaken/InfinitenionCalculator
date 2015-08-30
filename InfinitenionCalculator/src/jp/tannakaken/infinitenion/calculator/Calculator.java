@@ -11,12 +11,12 @@ import jp.tannakaken.infinitenion.operand.VariableFactory;
 import jp.tannakaken.infinitenion.operand.ResultantFactory;
 
 /**
- * “ü—Í‚³‚ê‚½•¶š—ñ‚ğ‰ğß‚µAÀs‚µAo—Í‚³‚ê‚é•¶š—ñ‚ğ•Ô‚·ƒNƒ‰ƒXB<br>
- * ÀÛ‚ÌŒvZ‚ÍA‚³‚Ü‚´‚Ü‚ÈƒNƒ‰ƒX‚ÉˆÏ÷‚³‚ê‚éB<br>
- * ‹ï‘Ì“I‚É‚ÍAŠeí{@link Operand}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬‚ÍA‚»‚ê‚É‘Î‰‚µ‚½{@link Factory}‚ÌƒTƒuƒNƒ‰ƒX‚ÉAˆÏ÷‚³‚êA<br>
- * ‰‰Z‚ÌŒ^ƒ`ƒFƒbƒN‚Í{@link Operator}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ªs‚¢AŒvZ‚Í{@link Constant}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª©•ª‚Ås‚¤B<br>
- * ‚±‚ê‚É‚æ‚Á‚ÄA‚±‚ÌƒNƒ‰ƒX©g‚ÍA”ñí‚É’Pƒ‚É‚È‚Á‚Ä‚¢‚éB<br>
- * ‚±‚ê‚ÍA{@link MainActivity}‚ğƒNƒ‰ƒCƒAƒ“ƒg‚Æ‚µ‚½AFacadeƒpƒ^[ƒ“‚Ì—˜—p‚É‚æ‚é‚à‚Ì‚Å‚ ‚éB
+ * å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£é‡ˆã—ã€å®Ÿè¡Œã—ã€å‡ºåŠ›ã•ã‚Œã‚‹æ–‡å­—åˆ—ã‚’è¿”ã™ã‚¯ãƒ©ã‚¹ã€‚<br>
+ * å®Ÿéš›ã®è¨ˆç®—ã¯ã€ã•ã¾ã–ã¾ãªã‚¯ãƒ©ã‚¹ã«å§”è­²ã•ã‚Œã‚‹ã€‚<br>
+ * å…·ä½“çš„ã«ã¯ã€å„ç¨®{@link Operand}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆã¯ã€ãã‚Œã«å¯¾å¿œã—ãŸ{@link Factory}ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«ã€å§”è­²ã•ã‚Œã€<br>
+ * æ¼”ç®—ã®å‹ãƒã‚§ãƒƒã‚¯ã¯{@link Operator}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¡Œã„ã€è¨ˆç®—ã¯{@link Constant}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè‡ªåˆ†ã§è¡Œã†ã€‚<br>
+ * ã“ã‚Œã«ã‚ˆã£ã¦ã€ã“ã®ã‚¯ãƒ©ã‚¹è‡ªèº«ã¯ã€éå¸¸ã«å˜ç´”ã«ãªã£ã¦ã„ã‚‹ã€‚<br>
+ * ã“ã‚Œã¯ã€{@link MainActivity}ã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¨ã—ãŸã€Facadeãƒ‘ã‚¿ãƒ¼ãƒ³ã®åˆ©ç”¨ã«ã‚ˆã‚‹ã‚‚ã®ã§ã‚ã‚‹ã€‚
  * 
  * @author tannakaken
  * 
@@ -25,39 +25,39 @@ import jp.tannakaken.infinitenion.operand.ResultantFactory;
 public class Calculator {
 	
 	/**
-	 * •Ï”‚ğì‚éFactoryB
+	 * å¤‰æ•°ã‚’ä½œã‚‹Factoryã€‚
 	 */
 	private VariableFactory mVariableFactory = VariableFactory.getInstance();
 	/**
-	 * ’è”‚ğì‚éFactoryB
+	 * å®šæ•°ã‚’ä½œã‚‹Factoryã€‚
 	 */
 	private ImaginaryFactory mConstantFactory = ImaginaryFactory.getInstance();
 	/**
-	 * ”‚ğì‚éFactoryB
+	 * æ•°ã‚’ä½œã‚‹Factoryã€‚
 	 */
 	private BaseFieldFactory mNumberFactory = BaseFieldFactory.getInstance();
 	/**
-	 * ƒXƒ^ƒbƒN‚É—­‚Ü‚Á‚½ƒIƒyƒ‰ƒ“ƒh‚©‚çAƒIƒyƒŒ[ƒ^‚É‘Î‰‚µ‚½‘€ì‚ÅAV‚µ‚¢ƒIƒyƒ‰ƒ“ƒh‚ğì‚éFactoryB
+	 * ã‚¹ã‚¿ãƒƒã‚¯ã«æºœã¾ã£ãŸã‚ªãƒšãƒ©ãƒ³ãƒ‰ã‹ã‚‰ã€ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ã«å¯¾å¿œã—ãŸæ“ä½œã§ã€æ–°ã—ã„ã‚ªãƒšãƒ©ãƒ³ãƒ‰ã‚’ä½œã‚‹Factoryã€‚
 	 */
 	private ResultantFactory mResultantFactory = ResultantFactory.getInstance();
 	
 	/**
 	 * 
-	 * @param aFormula ŒvZ‚³‚ê‚é®B
-	 * @param aTask ‚±‚ÌŒvZ‚ğÀs‚µ‚Ä‚¢‚é”ñ“¯Šúƒ^ƒXƒNB
-	 * @return ®‚ğŒvZ‚µ‚½’l‚Ì•¶š—ñB
-	 * @throws CalculatorParseException ƒp[ƒX‚Ì¸”s
-	 * @throws CalculatingException ŒvZ‚Ì¸”s
-	 * @throws BackgroundProcessCancelledException ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Æ‚«‚Ì—áŠOB
+	 * @param aFormula è¨ˆç®—ã•ã‚Œã‚‹å¼ã€‚
+	 * @param aTask ã“ã®è¨ˆç®—ã‚’å®Ÿè¡Œã—ã¦ã„ã‚‹éåŒæœŸã‚¿ã‚¹ã‚¯ã€‚
+	 * @return å¼ã‚’è¨ˆç®—ã—ãŸå€¤ã®æ–‡å­—åˆ—ã€‚
+	 * @throws CalculatorParseException ãƒ‘ãƒ¼ã‚¹ã®å¤±æ•—
+	 * @throws CalculatingException è¨ˆç®—ã®å¤±æ•—
+	 * @throws BackgroundProcessCancelledException ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸã¨ãã®ä¾‹å¤–ã€‚
 	 */
 	public final String calc(final String aFormula, final AsyncTask<String, Void, String> aTask)
 			throws CalculatorParseException, CalculatingException, BackgroundProcessCancelledException {
 		try {
-			String tTrimed =  aFormula.replaceFirst("^[ ]*", "");
-			if (tTrimed == "") { // ƒC[ƒXƒ^[ƒGƒbƒO
+			String tTrimed =  aFormula.replaceFirst("^[â–¡]*", "");
+			if (tTrimed == "") { // ã‚¤ãƒ¼ã‚¹ã‚¿ãƒ¼ã‚¨ãƒƒã‚°
 				return randomAphorism();
 			}
-			String[] tTokens = tTrimed.split("[ ]+");
+			String[] tTokens = tTrimed.split("[â–¡]+");
 			Factory.setTask(aTask);
 			for (String tToken: tTokens) {
 				if (aTask.isCancelled()) {
@@ -85,7 +85,7 @@ public class Calculator {
 	
 	
 	/**
-	 * ƒC[ƒXƒ^[ƒGƒbƒO—p‚ÌŠiŒ¾WB
+	 * ã‚¤ãƒ¼ã‚¹ã‚¿ãƒ¼ã‚¨ãƒƒã‚°ç”¨ã®æ ¼è¨€é›†ã€‚
 	 */
 	private String[] mAphorisms = {"There's more than one way to do it.",
 								   "The world is full of fascinating problems waiting to be solved.",
@@ -93,13 +93,13 @@ public class Calculator {
 								   "And now for something completely different ...",
 								   "... and yes I said yes I will Yes."};
 	/**
-	 * ƒC[ƒXƒ^[ƒGƒbƒO—p‚Ì—”B
+	 * ã‚¤ãƒ¼ã‚¹ã‚¿ãƒ¼ã‚¨ãƒƒã‚°ç”¨ã®ä¹±æ•°ã€‚
 	 */
 	private Random mRandom = new Random();
 	/**
-	 * ƒC[ƒXƒ^[ƒGƒbƒO—p‚Ìƒƒ\ƒbƒhB<br>
-	 * “ü—Í‚ª‹ó‚Ì‚Æ‚«AŠiŒ¾‚ğƒ‰ƒ“ƒ_ƒ€‚É•Ô‚·B
-	 * @return ƒ‰ƒ“ƒ_ƒ€‚ÈŠiŒ¾
+	 * ã‚¤ãƒ¼ã‚¹ã‚¿ãƒ¼ã‚¨ãƒƒã‚°ç”¨ã®ãƒ¡ã‚½ãƒƒãƒ‰ã€‚<br>
+	 * å…¥åŠ›ãŒç©ºã®ã¨ãã€æ ¼è¨€ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«è¿”ã™ã€‚
+	 * @return ãƒ©ãƒ³ãƒ€ãƒ ãªæ ¼è¨€
 	 */
 	private String randomAphorism() {
 		return mAphorisms[mRandom.nextInt(mAphorisms.length)];

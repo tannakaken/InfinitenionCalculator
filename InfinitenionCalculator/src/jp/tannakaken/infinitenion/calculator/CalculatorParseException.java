@@ -1,6 +1,6 @@
 package jp.tannakaken.infinitenion.calculator;
 /**
- * ƒp[ƒX‚Ì“r’†‚Å‹N‚«‚½—áŠOB
+ * ãƒ‘ãƒ¼ã‚¹ã®é€”ä¸­ã§èµ·ããŸä¾‹å¤–ã€‚
  * @author tannakaken
  *
  */
@@ -12,8 +12,8 @@ public class CalculatorParseException extends CalculatorException {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 
-	 * @param aMessageId —áŠO‚ÌÚ×‚ğ•\‚·ƒƒbƒZ[ƒWIDB“ü—Í•¶š—ñ‚ğtoken‚É•ª‰ğ‚µ‚½ÛAó‚¯“ü‚ê•s‰Â”\‚Ètoken‚ª‚ ‚Á‚½‚±‚Æ“`‚¦‚éBB
-	 * @param aToken ó‚¯“ü‚ê•s‰Â”\‚Èƒg[ƒNƒ“B
+	 * @param aMessageId ä¾‹å¤–ã®è©³ç´°ã‚’è¡¨ã™ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚å…¥åŠ›æ–‡å­—åˆ—ã‚’tokenã«åˆ†è§£ã—ãŸéš›ã€å—ã‘å…¥ã‚Œä¸å¯èƒ½ãªtokenãŒã‚ã£ãŸã“ã¨ä¼ãˆã‚‹ã€‚ã€‚
+	 * @param aToken å—ã‘å…¥ã‚Œä¸å¯èƒ½ãªãƒˆãƒ¼ã‚¯ãƒ³ã€‚
 	 */
 	public CalculatorParseException(final int aMessageId, final String aToken) {
 		super(aMessageId, aToken);

@@ -12,26 +12,26 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.widget.Toast;
 /**
- * İ’è‰æ–ÊB
+ * è¨­å®šç”»é¢ã€‚
  * @author tannakaken
  *
  */
 public class Prefs extends PreferenceActivity {
 	
 	/**
-	 * À”ƒ‚[ƒh‚©‚Ç‚¤‚©‚ÌƒIƒvƒVƒ‡ƒ“B
+	 * å®Ÿæ•°ãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã€‚
 	 */
 	private static final String OPT_REAL = "real";
 	/**
-	 * À”ƒ‚[ƒh‚ÌƒfƒtƒHƒ‹ƒg’l‚ÍfalseB
+	 * å®Ÿæ•°ãƒ¢ãƒ¼ãƒ‰ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯falseã€‚
 	 */
 	private static final boolean OPT_REAL_DEF = false;
 	/**
-	 * À”ƒ‚[ƒh‚Ì¸“xB
+	 * å®Ÿæ•°ãƒ¢ãƒ¼ãƒ‰ã®ç²¾åº¦ã€‚
 	 */
 	private static final String OPT_SCALE = "scale";
 	/**
-	 * À”¸“x‚ÌƒfƒtƒHƒ‹ƒg’l‚Í7B
+	 * å®Ÿæ•°ç²¾åº¦ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯7ã€‚
 	 */
 	private static final String OPT_SCALE_DEF = "7";
 	
@@ -41,17 +41,17 @@ public class Prefs extends PreferenceActivity {
 		getFragmentManager().beginTransaction().replace(android.R.id.content, new PrefsFragment()).commit();
 	}
 	/**
-	 * Œ»İ—L—”ƒ‚[ƒh‚©‚Ç‚¤‚©‚Ì”»’è‚·‚éƒƒ\ƒbƒhB
-	 * @param aContext ”»’è‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚éContextB
-	 * @return ‚»‚ÌContext‚É‚¨‚¢‚Ä—L—”ƒ‚[ƒh‚©‚Ç‚¤‚©B
+	 * ç¾åœ¨æœ‰ç†æ•°ãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹ã®åˆ¤å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã€‚
+	 * @param aContext åˆ¤å®šã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹Contextã€‚
+	 * @return ãã®Contextã«ãŠã„ã¦æœ‰ç†æ•°ãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹ã€‚
 	 */
 	public static boolean getIsReal(final Context aContext) {
 		return PreferenceManager.getDefaultSharedPreferences(aContext).getBoolean(OPT_REAL, OPT_REAL_DEF);
 	}
 	/**
 	 * 
-	 * @param aContext ”»’è‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚éContextB
-	 * @return ‚»‚ÌContext‚É‚¨‚¢‚Ä‚ÌÀ”‚Ì¸“xB
+	 * @param aContext åˆ¤å®šã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹Contextã€‚
+	 * @return ãã®Contextã«ãŠã„ã¦ã®å®Ÿæ•°ã®ç²¾åº¦ã€‚
 	 */
 	public static int getScale(final Context aContext) {
 		return Integer.parseInt(
@@ -59,7 +59,7 @@ public class Prefs extends PreferenceActivity {
 				);
 	}
 	/**
-	 * İ’è‰æ–Ê‚ğ\¬‚·‚éFragmentB
+	 * è¨­å®šç”»é¢ã‚’æ§‹æˆã™ã‚‹Fragmentã€‚
 	 * @author tannakaken
 	 *
 	 */
@@ -77,10 +77,10 @@ public class Prefs extends PreferenceActivity {
 		public final boolean onPreferenceChange(final Preference aPreference, final Object aNewValue) {
 			if (((Boolean) aNewValue).booleanValue()) {
 				VariableFactory.getInstance().clearVariable();
-				Toast.makeText(getActivity(), "À”ƒ‚[ƒh‚É“ü‚è‚Ü‚µ‚½B•Ï”‚Í‘S‚ÄƒNƒŠƒA‚³‚ê‚Ü‚·B", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), "å®Ÿæ•°ãƒ¢ãƒ¼ãƒ‰ã«å…¥ã‚Šã¾ã—ãŸã€‚å¤‰æ•°ã¯å…¨ã¦ã‚¯ãƒªã‚¢ã•ã‚Œã¾ã™ã€‚", Toast.LENGTH_SHORT).show();
 			} else {
 				VariableFactory.getInstance().clearVariable();
-				Toast.makeText(getActivity(), "—L—”ƒ‚[ƒh‚É“ü‚è‚Ü‚µ‚½B•Ï”‚Í‘S‚ÄƒNƒŠƒA‚³‚ê‚Ü‚·B", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), "æœ‰ç†æ•°ãƒ¢ãƒ¼ãƒ‰ã«å…¥ã‚Šã¾ã—ãŸã€‚å¤‰æ•°ã¯å…¨ã¦ã‚¯ãƒªã‚¢ã•ã‚Œã¾ã™ã€‚", Toast.LENGTH_SHORT).show();
 			}
 			return true;
 		}

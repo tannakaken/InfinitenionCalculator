@@ -7,18 +7,18 @@ import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.calculator.CalculatingException;
 
 /**
- * ’è”‚ğŒ»‚·’ŠÛƒNƒ‰ƒXB<br>
- * ‚±‚ÌƒNƒ‰ƒX‚ÍA—L—”‚ğ•\‚·{@link Rational}‚ÆA
- * Cayley-Dickson‚Ì\¬–@‚É‚æ‚è\¬‚³‚ê‚½‘½Œ³ŠÂ‚Ì‹A”[‹ÉŒÀ‚Å‚ ‚é—L—”ã‚Ì–³ŒÀŸŒ³‘ã”‚ğ•\‚·{@link CayleyDickson}‚Ì“ñ‚Â‚Ì‹ïÛƒTƒuƒNƒ‰ƒX‚ğ‚ÂB<br>
- * ‚±‚ê‚ç‚ÍAÀ•”‚Æ‹••”‚Ì“ñ‚Â‚Ì}‚ğ‚ÂCayleyDickson‚ÆÀ•”‚µ‚©‚½‚È‚¢—t‚Å‚ ‚éRational‚É‚æ‚é“ñ•ª–Ø‚Ì\‘¢‚ğ‚Á‚Ä‚¢‚éB<br>
- * java‚Å–Ø\‘¢‚ğ’è‹`‚·‚é’èÎ‚É‚æ‚èACompositeƒpƒ^[ƒ“‚ğg—p‚µ‚Ä‚¢‚éB
- * ‚Ü‚½‚±‚ÌƒNƒ‰ƒX‚Í{@link Operand}‚ÌÀ‘•‚Å‚à‚ ‚éBB<br>
- * ‚Ü‚½ACayley-Dickson‚Ì\¬–@‚É•K—v‚Èƒƒ\ƒbƒhA
- * ‚¨‚æ‚Ñ{@link ConstantStringConverter}‚É‚æ‚é{@link Object#toString}‚É•K—v‚Èƒƒ\ƒbƒh‚à‘S‚Ä’ŠÛƒƒ\ƒbƒh‚Æ‚µ‚Ä—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
- * ‚Ü‚½{@link Constant#drop()}‚É‚æ‚èA‚¢‚Â‚Å‚àA–³‘Ê‚Èƒƒ‚ƒŠ‚Ì‚È‚¢Å“K‚Èó‘Ô‚É•Û‚½‚ê‚Ä‚¢‚éB<br>
- * ‚È‚º‚È‚ç{@link ImaginaryFactory}‚Å¶¬‚³‚ê‚½‚Æ‚«‚ÍÅ“K‚ÅA{@link Constant#calc(Operand[], String)}‚ÌŒvZ‚ÌÅŒã‚Ì{@link Constant#drop()}
- * ‚É‚æ‚èAÅ“K‰»‚³‚ê‚Ä‚¢‚é‚©‚ç‚Å‚ ‚éB<br>
- * ‚±‚ê‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚ÍA{@link Object#equals}‚ğ“KØ‚Éoverride‚·‚é‚×‚«‚Å‚ ‚éB
+ * å®šæ•°ã‚’ç¾ã™æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<br>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã¯ã€æœ‰ç†æ•°ã‚’è¡¨ã™{@link Rational}ã¨ã€
+ * Cayley-Dicksonã®æ§‹æˆæ³•ã«ã‚ˆã‚Šæ§‹æˆã•ã‚ŒãŸå¤šå…ƒç’°ã®å¸°ç´æ¥µé™ã§ã‚ã‚‹æœ‰ç†æ•°ä¸Šã®ç„¡é™æ¬¡å…ƒä»£æ•°ã‚’è¡¨ã™{@link CayleyDickson}ã®äºŒã¤ã®å…·è±¡ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã‚’æŒã¤ã€‚<br>
+ * ã“ã‚Œã‚‰ã¯ã€å®Ÿéƒ¨ã¨è™šéƒ¨ã®äºŒã¤ã®æã‚’æŒã¤CayleyDicksonã¨å®Ÿéƒ¨ã—ã‹æŒãŸãªã„è‘‰ã§ã‚ã‚‹Rationalã«ã‚ˆã‚‹äºŒåˆ†æœ¨ã®æ§‹é€ ã‚’æŒã£ã¦ã„ã‚‹ã€‚<br>
+ * javaã§æœ¨æ§‹é€ ã‚’å®šç¾©ã™ã‚‹å®šçŸ³ã«ã‚ˆã‚Šã€Compositeãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ã€‚
+ * ã¾ãŸã“ã®ã‚¯ãƒ©ã‚¹ã¯{@link Operand}ã®å®Ÿè£…ã§ã‚‚ã‚ã‚‹ã€‚ã€‚<br>
+ * ã¾ãŸã€Cayley-Dicksonã®æ§‹æˆæ³•ã«å¿…è¦ãªãƒ¡ã‚½ãƒƒãƒ‰ã€
+ * ãŠã‚ˆã³{@link ConstantStringConverter}ã«ã‚ˆã‚‹{@link Object#toString}ã«å¿…è¦ãªãƒ¡ã‚½ãƒƒãƒ‰ã‚‚å…¨ã¦æŠ½è±¡ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
+ * ã¾ãŸ{@link Constant#drop()}ã«ã‚ˆã‚Šã€ã„ã¤ã§ã‚‚ã€ç„¡é§„ãªãƒ¡ãƒ¢ãƒªã®ãªã„æœ€é©ãªçŠ¶æ…‹ã«ä¿ãŸã‚Œã¦ã„ã‚‹ã€‚<br>
+ * ãªãœãªã‚‰{@link ImaginaryFactory}ã§ç”Ÿæˆã•ã‚ŒãŸã¨ãã¯æœ€é©ã§ã€{@link Constant#calc(Operand[], String)}ã®è¨ˆç®—ã®æœ€å¾Œã®{@link Constant#drop()}
+ * ã«ã‚ˆã‚Šã€æœ€é©åŒ–ã•ã‚Œã¦ã„ã‚‹ã‹ã‚‰ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã‚Œã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã¯ã€{@link Object#equals}ã‚’é©åˆ‡ã«overrideã™ã‚‹ã¹ãã§ã‚ã‚‹ã€‚
  * @author tannakaken
  *
  * @see 
@@ -31,21 +31,21 @@ import jp.tannakaken.infinitenion.calculator.CalculatingException;
 abstract class Constant implements Operand {
 
 	/**
-	 * {@link ImaginaryFactory}‚â{@link ConstantStringConverter}‚ÅA<br>
-	 * {@link CayleyDickson}‚ğ\¬‚µ‚½‚èA•ª‰ğ‚µ‚½‚è‚·‚é‚Æ‚«‚Ég‚¤’è”B
+	 * {@link ImaginaryFactory}ã‚„{@link ConstantStringConverter}ã§ã€<br>
+	 * {@link CayleyDickson}ã‚’æ§‹æˆã—ãŸã‚Šã€åˆ†è§£ã—ãŸã‚Šã™ã‚‹ã¨ãã«ä½¿ã†å®šæ•°ã€‚
 	 */
 	static final BigInteger TWO = BigInteger.valueOf(2);
 
 	/**
 	 * 
-	 * @return Ï‚Ì’PˆÊŒ³‚©‚Ç‚¤‚©B
+	 * @return ç©ã®å˜ä½å…ƒã‹ã©ã†ã‹ã€‚
 	 */
 	abstract boolean isOne();
 	
 	/**
-	 * ’l‚ª0‚Å‚ ‚é}‚ğo—ˆ‚é‚¾‚¯—‚Æ‚µ‚½‚à‚ÌB<br>
-	 * ƒƒ‚ƒŠ[‚Ìß–ñ‚Ì‚½‚ßB
-	 * @return –³‘Ê‚È•”•ª‚ğ—‚Æ‚µ‚½‚à‚ÌB
+	 * å€¤ãŒ0ã§ã‚ã‚‹æã‚’å‡ºæ¥ã‚‹ã ã‘è½ã¨ã—ãŸã‚‚ã®ã€‚<br>
+	 * ãƒ¡ãƒ¢ãƒªãƒ¼ã®ç¯€ç´„ã®ãŸã‚ã€‚
+	 * @return ç„¡é§„ãªéƒ¨åˆ†ã‚’è½ã¨ã—ãŸã‚‚ã®ã€‚
 	 */
 	abstract Constant drop();
 	
@@ -59,28 +59,28 @@ abstract class Constant implements Operand {
 		return this;
 	}
 	/**
-	 * @return {@link Constant}‚ğ•¶š—ñ‚É‚µ‚½‚à‚ÌB<br/>
-	 * {@link Rational}‚È‚ç‚ÎA‹tƒ|[ƒ‰ƒ“ƒh®•ª”•\¦ua b /v<br/>
-	 * {@link Real}‚È‚ç‚ÎA¬”•\‹L<br/>
-	 * ‚ŸŒ³‚Ì{@link CayleyDickson}‚È‚ç‚ÎAŠî’êƒNƒ‰ƒX‚É‹•”’PˆÊEn‚ğŠ|‚¯‚½‚à‚Ì‚ÌˆêŸŒ‹‡‚ğA
-	 * ‹tƒ|[ƒ‰ƒ“ƒh®‚É•\¦‚µ‚½‚à‚Ì‚Å‚ ‚éB
+	 * @return {@link Constant}ã‚’æ–‡å­—åˆ—ã«ã—ãŸã‚‚ã®ã€‚<br/>
+	 * {@link Rational}ãªã‚‰ã°ã€é€†ãƒãƒ¼ãƒ©ãƒ³ãƒ‰å¼åˆ†æ•°è¡¨ç¤ºã€Œa b /ã€<br/>
+	 * {@link Real}ãªã‚‰ã°ã€å°æ•°è¡¨è¨˜<br/>
+	 * é«˜æ¬¡å…ƒã®{@link CayleyDickson}ãªã‚‰ã°ã€åŸºåº•ã‚¯ãƒ©ã‚¹ã«è™šæ•°å˜ä½Enã‚’æ›ã‘ãŸã‚‚ã®ã®ä¸€æ¬¡çµåˆã‚’ã€
+	 * é€†ãƒãƒ¼ãƒ©ãƒ³ãƒ‰å¼ã«è¡¨ç¤ºã—ãŸã‚‚ã®ã§ã‚ã‚‹ã€‚
 	 */
 	@Override
 	public abstract String toString();
 	
 	/**
-	 * À”¸“x‚Ìİ’è‚ğæ‚èo‚·‚½‚ß‚Ì{@link Context}B
+	 * å®Ÿæ•°ç²¾åº¦ã®è¨­å®šã‚’å–ã‚Šå‡ºã™ãŸã‚ã®{@link Context}ã€‚
 	 */
 	private static Context mContext;
 	/** 
-	 * @param aContext Œ»İ‚Ì{@link Context}B
+	 * @param aContext ç¾åœ¨ã®{@link Context}ã€‚
 	 */
 	static void setContext(final Context aContext) {
 		mContext = aContext;
 	}
 	/**
 	 * 
-	 * @return Œ»İ‚Ì{@link Context}
+	 * @return ç¾åœ¨ã®{@link Context}
 	 */
 	static Context getContext() {
 		return mContext;

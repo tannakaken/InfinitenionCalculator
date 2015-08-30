@@ -16,16 +16,16 @@ import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
 import android.os.AsyncTask;
 /**
- * ŒvZ‚ğbackground‚Å”ñ“¯Šú‚És‚¢AŠÔ‚ªŠ|‚©‚è‚·‚¬‚éê‡‚É‚ÍAƒLƒƒƒ“ƒZƒ‹‚ªo—ˆ‚é‚æ‚¤‚É‚·‚éB<br>
- * ‚»‚Ì‚½‚ß‚ÉA{@link Calculator}‚ğ{@link AsyncTask}‚ÌƒTƒuƒNƒ‰ƒX‚Åƒ‰ƒbƒsƒ“ƒO‚·‚éB<br>
- * {@link SryncTask#onCancelled()}‚Íg‚í‚¸AƒLƒƒƒ“ƒZƒ‹‘€ìŒã‚·‚®‚ÉA
- * {@link ProgressDialog}‚ğÁ‚µAƒLƒƒƒ“ƒZƒ‹‚ğs‚Á‚½|‚ÌƒƒbƒZ[ƒW‚ğ•\¦‚·‚éB<br>
- * {@link java.math.BigInteger}‚â{@link java.math.BigDecimal}‚Ì‰‰Z‚È‚ÇA
- * ‚±‚¿‚ç‚Åì‚Á‚½ƒtƒ‰ƒO‚Ì“Í‚©‚È‚¢êŠ‚ÅŒvZ‚ÉŠÔ‚ªŠ|‚©‚Á‚Ä‚¢‚éê‡A
- * ƒLƒƒƒ“ƒZƒ‹‚ğ‚µ‚Ä‚àA‚±‚ÌƒXƒŒƒbƒh‚Í‚·‚®‚É‚ÍI‚í‚ç‚È‚¢B<br>
- * ‚»‚±‚ÅA‚·‚®‚ÉƒLƒƒƒ“ƒZƒ‹‚ªÀs‚³‚ê‚½U‚è‚ğ‚·‚é‚±‚Æ‚ÅAƒ†[ƒU[‚ÉƒXƒgƒŒƒX‚ğ—^‚¦‚È‚¢‘I‘ğ‚ğ‚µ‚½B<br>
- * ÀÛ‚É‚ÍƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ä‚¢‚È‚¢ƒXƒŒƒbƒh‚ğ‘å—Ê‚Éd‚Ë‚é‚±‚Æ‚É‚æ‚èA•‰‰×‚ğ‚©‚¯‚é‚±‚Æ‚ª‰Â”\‚©‚à‚µ‚ê‚È‚¢‚Ì‚ÅA
- * è“®‚Å—Ç‚¢‚Ì‚ÅA•‰‰×ƒeƒXƒg‚ğÀs‚µ‚Ä‚¨‚­‚±‚ÆB
+ * è¨ˆç®—ã‚’backgroundã§éåŒæœŸã«è¡Œã„ã€æ™‚é–“ãŒæ›ã‹ã‚Šã™ãã‚‹å ´åˆã«ã¯ã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãŒå‡ºæ¥ã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚<br>
+ * ãã®ãŸã‚ã«ã€{@link Calculator}ã‚’{@link AsyncTask}ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<br>
+ * {@link SryncTask#onCancelled()}ã¯ä½¿ã‚ãšã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«æ“ä½œå¾Œã™ãã«ã€
+ * {@link ProgressDialog}ã‚’æ¶ˆã—ã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚’è¡Œã£ãŸæ—¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã€‚<br>
+ * {@link java.math.BigInteger}ã‚„{@link java.math.BigDecimal}ã®æ¼”ç®—ãªã©ã€
+ * ã“ã¡ã‚‰ã§ä½œã£ãŸãƒ•ãƒ©ã‚°ã®å±Šã‹ãªã„å ´æ‰€ã§è¨ˆç®—ã«æ™‚é–“ãŒæ›ã‹ã£ã¦ã„ã‚‹å ´åˆã€
+ * ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚’ã—ã¦ã‚‚ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã¯ã™ãã«ã¯çµ‚ã‚ã‚‰ãªã„ã€‚<br>
+ * ãã“ã§ã€ã™ãã«ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãŒå®Ÿè¡Œã•ã‚ŒãŸæŒ¯ã‚Šã‚’ã™ã‚‹ã“ã¨ã§ã€ãƒ¦ãƒ¼ã‚¶ãƒ¼ã«ã‚¹ãƒˆãƒ¬ã‚¹ã‚’ä¸ãˆãªã„é¸æŠã‚’ã—ãŸã€‚<br>
+ * å®Ÿéš›ã«ã¯ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¦ã„ãªã„ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å¤§é‡ã«é‡ã­ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€è² è·ã‚’ã‹ã‘ã‚‹ã“ã¨ãŒå¯èƒ½ã‹ã‚‚ã—ã‚Œãªã„ã®ã§ã€
+ * æ‰‹å‹•ã§è‰¯ã„ã®ã§ã€è² è·ãƒ†ã‚¹ãƒˆã‚’å®Ÿè¡Œã—ã¦ãŠãã“ã¨ã€‚
  * 
  * @author tannakaken
  *
@@ -33,46 +33,46 @@ import android.os.AsyncTask;
 class AsyncCalculatingTask extends AsyncTask<String, Void, String> 
 								  implements OnCancelListener {
 	/**
-	 * ŒvZ‚ğˆ—‚·‚éƒCƒ“ƒXƒ^ƒ“ƒXB
+	 * è¨ˆç®—ã‚’å‡¦ç†ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã€‚
 	 */
 	private Calculator mCalc;
 	/**
-	 * ‚±‚Ì”ñ“¯Šúƒ^ƒXƒN‚ğŠJn‚µ‚½A{@link MainActivity}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠi”[‚·‚éB
+	 * ã“ã®éåŒæœŸã‚¿ã‚¹ã‚¯ã‚’é–‹å§‹ã—ãŸã€{@link MainActivity}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ ¼ç´ã™ã‚‹ã€‚
 	 */
 	private MainActivity mMain;
 	/**
-	 * ƒ^ƒXƒN‚Ìis’†‚Å‚ ‚é‚±‚Æ‚ğ•\‚·{@link android.app.Dialog}B
+	 * ã‚¿ã‚¹ã‚¯ã®é€²è¡Œä¸­ã§ã‚ã‚‹ã“ã¨ã‚’è¡¨ã™{@link android.app.Dialog}ã€‚
 	 */
 	private ProgressDialog mDialog;
 	/**
-	 * “ü—Í‚³‚ê‚½ƒRƒ}ƒ“ƒhB
+	 * å…¥åŠ›ã•ã‚ŒãŸã‚³ãƒãƒ³ãƒ‰ã€‚
 	 */
 	private String mCommand;
 	/**
-	 * ƒGƒ‰[‚ª‹N‚«‚½‚©‚Ç‚¤‚©B
+	 * ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‹ã©ã†ã‹ã€‚
 	 */
 	private boolean mErrorOccured = false;
 	/**
-	 * ”ñ“¯Šúˆ—‚ÌI—¹‚ğ’Ê’m‚·‚é‚½‚ß‚Ì{@link CountDownLatch}‚ÌƒŠƒXƒgB<br>
-	 * ‚½‚Æ‚¦‚ÎƒeƒXƒg‚È‚Ç‚Ég‚¤B
+	 * éåŒæœŸå‡¦ç†ã®çµ‚äº†ã‚’é€šçŸ¥ã™ã‚‹ãŸã‚ã®{@link CountDownLatch}ã®ãƒªã‚¹ãƒˆã€‚<br>
+	 * ãŸã¨ãˆã°ãƒ†ã‚¹ãƒˆãªã©ã«ä½¿ã†ã€‚
 	 */
 	private List<CountDownLatch> mLatchList = new ArrayList<CountDownLatch>();
 	/**
-	 * ŒvZ‚ÌŠJnŠÔB
+	 * è¨ˆç®—ã®é–‹å§‹æ™‚é–“ã€‚
 	 */
 	private long mStart;
 	/**
-	 * ƒ~ƒŠ•b‚Æ•b‚Ì”ä—¦B
+	 * ãƒŸãƒªç§’ã¨ç§’ã®æ¯”ç‡ã€‚
 	 */
 	private static final float MILLISECOND_TO_SECOND = 1000f;
 	/**
-	 * ‚±‚ÌŠÂ‹«‚Å‚Ì‰üsB
+	 * ã“ã®ç’°å¢ƒã§ã®æ”¹è¡Œã€‚
 	 */
 	private static final String NEW_LINE = System.getProperty("line.separator"); 
 	/**
-	 * @param aMain ‚±‚Ì”ñ“¯Šúƒ^ƒXƒN‚ğŠJn‚µ‚½A{@link MainActivity}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-	 * @param aCalc ƒoƒbƒNƒOƒ‰ƒEƒ“ƒh‚ÅŒvZ‚ğÀs‚·‚é{@link Calculator}
-	 * @param aLatchList ”ñ“¯Šúˆ—‚ÌI—¹‚ğ’Ê’m‚·‚é‚½‚ß‚Ì{@link CountDownLatch}‚ÌƒŠƒXƒg
+	 * @param aMain ã“ã®éåŒæœŸã‚¿ã‚¹ã‚¯ã‚’é–‹å§‹ã—ãŸã€{@link MainActivity}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	 * @param aCalc ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã§è¨ˆç®—ã‚’å®Ÿè¡Œã™ã‚‹{@link Calculator}
+	 * @param aLatchList éåŒæœŸå‡¦ç†ã®çµ‚äº†ã‚’é€šçŸ¥ã™ã‚‹ãŸã‚ã®{@link CountDownLatch}ã®ãƒªã‚¹ãƒˆ
 	 */
 	public AsyncCalculatingTask(final MainActivity aMain,
 								final Calculator aCalc,
@@ -130,7 +130,7 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 				+ "(" + getElapsedTime() + " " + mMain.getString(R.string.second) + ")" + NEW_LINE,
 				tColor);
 	    mMain.scrolldown();
-	    // “o˜^‚µ‚½CountDownLatch‚ÉI—¹‚ğ’Ê’m
+	    // ç™»éŒ²ã—ãŸCountDownLatchã«çµ‚äº†ã‚’é€šçŸ¥
 	    for (CountDownLatch tLatch: mLatchList) {
 			tLatch.countDown();
 		}
@@ -143,15 +143,15 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	}
 	/**
 	 * 
-	 * @return ŒvZ‚ÉŠ|‚©‚Á‚½ŠÔi•bj
+	 * @return è¨ˆç®—ã«æ›ã‹ã£ãŸæ™‚é–“ï¼ˆç§’ï¼‰
 	 */
 	private float getElapsedTime() {
 		return (System.currentTimeMillis() - mStart) / MILLISECOND_TO_SECOND;
 	}
 	/**
-	 * ƒLƒƒƒ“ƒZƒ‹ˆ—‚ğs‚¤B<br>
-	 * ˆÈ‘O‚ÌƒLƒƒƒ“ƒZƒ‹ˆ—‚ªI—¹‚µ‚Ä‚¨‚ç‚¸‚É—­‚Ü‚Á‚ÄA{@link AsyncTask}‚Ì“¯Às‚ÌŒÀŠE‚ÉŠ‚é‚È‚Ç‚µ‚ÄA
-	 * ŒvZƒ^ƒXƒN‚ª‘S‚­Às‚³‚ê‚È‚©‚Á‚½ê‡A‚»‚Ì|‚ÌƒƒbƒZ[ƒW‚ğo‚·B
+	 * ã‚­ãƒ£ãƒ³ã‚»ãƒ«å‡¦ç†ã‚’è¡Œã†ã€‚<br>
+	 * ä»¥å‰ã®ã‚­ãƒ£ãƒ³ã‚»ãƒ«å‡¦ç†ãŒçµ‚äº†ã—ã¦ãŠã‚‰ãšã«æºœã¾ã£ã¦ã€{@link AsyncTask}ã®åŒæ™‚å®Ÿè¡Œã®é™ç•Œã«è‡³ã‚‹ãªã©ã—ã¦ã€
+	 * è¨ˆç®—ã‚¿ã‚¹ã‚¯ãŒå…¨ãå®Ÿè¡Œã•ã‚Œãªã‹ã£ãŸå ´åˆã€ãã®æ—¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºã™ã€‚
 	 */
 	private void cancel() {
 		if (mCommand == null) {
@@ -166,7 +166,7 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 					Color.YELLOW);
 		}
 		mMain.scrolldown();
-		// “o˜^‚µ‚½CountDownLatch‚ÉI—¹‚ğ’Ê’m
+		// ç™»éŒ²ã—ãŸCountDownLatchã«çµ‚äº†ã‚’é€šçŸ¥
 	    for (CountDownLatch tLatch: mLatchList) {
 			tLatch.countDown();
 		}
