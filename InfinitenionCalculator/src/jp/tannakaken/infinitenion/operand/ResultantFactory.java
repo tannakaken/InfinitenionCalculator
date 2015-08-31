@@ -70,7 +70,7 @@ public final class ResultantFactory extends Factory {
 	}
 	/**
 	 * 
-	 * @return {@link VariableFactory}の<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>。
+	 * @return {@link ResultantFactory}の<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>。
 	 * 
 	 */
 	public static ResultantFactory getInstance() {
