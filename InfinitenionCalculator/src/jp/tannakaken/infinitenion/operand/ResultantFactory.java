@@ -187,7 +187,7 @@ public final class ResultantFactory extends Factory {
 			tStack.push(tOperand2.getReal());
 			tOperand1 = null;
 			tOperand2 = null;
-			return mImaginaryFactory.mixRealAndImaginary(add() , add(), tHeight1);
+			return mImaginaryFactory.mixRealAndImaginary(add(), add(), tHeight1);
 		}
 	}
 	/**

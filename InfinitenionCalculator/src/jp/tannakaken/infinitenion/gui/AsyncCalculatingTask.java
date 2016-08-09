@@ -74,7 +74,7 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	 * @param aCalc バックグラウンドで計算を実行する{@link Calculator}
 	 * @param aLatchList 非同期処理の終了を通知するための{@link CountDownLatch}のリスト
 	 */
-	public AsyncCalculatingTask(final MainActivity aMain,
+	AsyncCalculatingTask(final MainActivity aMain,
 								final Calculator aCalc,
 								final List<CountDownLatch> aLatchList) {
 		mMain = aMain;
