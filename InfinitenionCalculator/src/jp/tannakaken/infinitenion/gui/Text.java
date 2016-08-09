@@ -47,7 +47,7 @@ public class Text extends Activity {
 				setTitle(getText(R.string.about_this_app_label));
 				if (getResources().getConfiguration().locale.getLanguage().equals("ja")) {
 					tReader = new BufferedReader(new InputStreamReader(tManager.open("about_this_app_ja.txt"),
-							"MS932"));
+							"UTF-8"));
 				} else {
 					tReader = new BufferedReader(new InputStreamReader(tManager.open("about_this_app_en.txt")));
 				}
@@ -55,12 +55,12 @@ public class Text extends Activity {
 			case ABOUT_HYPERCOMPLEX_NUMBES:
 				setTitle(getText(R.string.about_hypercomplex_number_label));
 				tReader = new BufferedReader(new InputStreamReader(tManager.open("about_hypercomplex_number.txt"),
-						"MS932"));
+						"UTF-8"));
 				break;
 			case ABOUT_REVERSE_POLAND:
 				setTitle(getText(R.string.about_reverse_poland_label));
 				tReader = new BufferedReader(new InputStreamReader(tManager.open("about_reverse_poland.txt"),
-						"MS932"));
+						"UTF-8"));
 				break;
 			case HELP:
 				setTitle(getText(R.string.help_label));
