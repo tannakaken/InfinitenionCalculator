@@ -40,7 +40,7 @@ public class Web extends Activity {
 			return;
 		case STORY:
 			setTitle(getText(R.string.story_label));
-			tContent.loadUrl("http://tannakaken.utun.net/quarternion.html");
+			tContent.loadUrl("file:///android_asset/story.html");
 			return;
 		default:
 			throw new IllegalStateException("Unknown webResource exists.");
