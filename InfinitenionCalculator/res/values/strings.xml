@@ -2,6 +2,7 @@
 <resources>
 <!-- English localization -->
     <string name="app_name">Infinitenion</string>
+    <string name="ad_unit_id"> ca-app-pub-2965415045499808/1521137574</string>
     <string name="input_text">Input formula</string>
     <string name="calculateButton">Go</string>
     <!-- メニューのボタン -->

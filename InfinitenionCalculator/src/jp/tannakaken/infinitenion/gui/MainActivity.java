@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.concurrent.CountDownLatch;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import jp.tannakaken.infinitenion.calculator.Calculator;
 import jp.tannakaken.infinitenion.calculator.CalculatorException;
 import jp.tannakaken.infinitenion.operand.Factory;
@@ -29,12 +32,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 /**
  * 電卓画面。
  * @author tannakaken
  *
  */
 public class MainActivity extends ActionBarActivity implements OnClickListener {
+	/**
+	 * インタースティシャル広告。
+	 */
+	private InterstitialAd mInterstitialAd;
 	/**
 	 * 式の入力欄。
 	 */
@@ -95,11 +103,34 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		return mLatchList.remove(aLatch);
 	}
 	
+	
+	/**
+	 * インタースティシャル広告を表示する。
+	 */
+	private void showInterstitial() {
+		// Show the ad if it's ready. Otherwise toast and restart the game.
+		if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+			mInterstitialAd.show();
+		}
+	}
+	
 	@Override
 	protected final void onCreate(final Bundle aSavedInstanceState) {
 		super.onCreate(aSavedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		 // Create the interstitial.
+	    mInterstitialAd = new InterstitialAd(this);
+	    mInterstitialAd.setAdUnitId(getString(R.string.ad_unit_id));
+
+	    // Create ad request.
+	    AdRequest adRequest = new AdRequest.Builder()
+	    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+	    .build();
+
+	    // Begin loading your interstitial.
+	    mInterstitialAd.loadAd(adRequest);
+	    
 		Factory.setContext(this);
 		CalculatorException.setContext(this);
 		
@@ -134,6 +165,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
 	@Override
 	public final boolean onOptionsItemSelected(final MenuItem aItem) {
+		showInterstitial();
 		Intent i;
 		switch (aItem.getItemId()) {
 		case R.id.action_settings:
