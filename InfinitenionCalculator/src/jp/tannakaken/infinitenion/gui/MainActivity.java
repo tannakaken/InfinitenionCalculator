@@ -173,6 +173,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	}
 	
 	@Override
+	protected final void onStart() {
+		super.onStart();
+		mDotButton.setEnabled(mIsReal);
+	}
+	
+	@Override
 	protected final void onResume() {
 		super.onResume();
 		boolean tNewIsReal = Prefs.getIsReal(this);
@@ -180,7 +186,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			mIsReal = tNewIsReal;
 			VariableFactory.getInstance().clearVariable();
 			Toast.makeText(this, getString(R.string.notice_reset), Toast.LENGTH_SHORT).show();
-			mDotButton.setEnabled(Prefs.getIsReal(this));
+			mDotButton.setEnabled(mIsReal);
 		}
 	}
 
