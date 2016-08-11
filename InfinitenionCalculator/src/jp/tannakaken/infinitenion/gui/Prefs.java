@@ -1,6 +1,5 @@
 package jp.tannakaken.infinitenion.gui;
 
-import jp.tannakaken.infinitenion.operand.VariableFactory;
 import jp.tannakaken.infinitenion.R;
 import android.content.Context;
 import android.os.Bundle;
