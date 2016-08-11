@@ -98,4 +98,5 @@
 	<string name="substitution_not_variable_error">The first operand of \'&lt;=\' must be an variable, which is of the form: X or Xn(n is an positive integer).</string>
 	<string name="illegal_token">Illegal token</string>
 	<string name="radix_point_in_rational_mode">radix point \'.\' is available only in real mode</string>
+	<string name="see_help">see help in menu.</string>
 </resources>

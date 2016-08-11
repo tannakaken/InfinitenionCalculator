@@ -105,10 +105,12 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 			return mCalc.calc(mCommand, this);
 		} catch (CalculatorParseException e) {
 			mErrorOccured = true;
-			return mMain.getString(R.string.parse_error_message) + ": " + e.getMessage();
+			return mMain.getString(R.string.parse_error_message)
+					+ ": " + e.getMessage() + NEW_LINE + mMain.getString(R.string.see_help);
 		} catch (CalculatingException e) {
 			mErrorOccured = true;
-			return mMain.getString(R.string.calculation_error_message) + ": " + e.getMessage();
+			return mMain.getString(R.string.calculation_error_message)
+					+ ": " + e.getMessage() + NEW_LINE + mMain.getString(R.string.see_help);
 		} catch (BackgroundProcessCancelledException e) {
 			return null;
 		}
