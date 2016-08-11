@@ -28,7 +28,7 @@ X:XもしくはXnは変数
 使い方:Xn a <=（Xnは変数）
 
 negate:マイナス（単項演算子）
-使い方:a minus
+使い方:a negate
 
 inv:逆数（単項演算子）
 使い方: a inv
