@@ -99,4 +99,6 @@
 	<string name="illegal_token">Illegal token</string>
 	<string name="radix_point_in_rational_mode">radix point \'.\' is available only in real mode</string>
 	<string name="see_help">see help in menu.</string>
+	<string name="into_real_mode">Real Number mode now. Variables are reset.</string>
+	<string name="into_rational_mode">Rational Number mode now. Variables are reset.</string>
 </resources>

@@ -77,10 +77,10 @@ public class Prefs extends PreferenceActivity {
 		public final boolean onPreferenceChange(final Preference aPreference, final Object aNewValue) {
 			if (((Boolean) aNewValue).booleanValue()) {
 				VariableFactory.getInstance().clearVariable();
-				Toast.makeText(getActivity(), "実数モードに入りました。変数は全てクリアされます。", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), getString(R.string.into_real_mode), Toast.LENGTH_SHORT).show();
 			} else {
 				VariableFactory.getInstance().clearVariable();
-				Toast.makeText(getActivity(), "有理数モードに入りました。変数は全てクリアされます。", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), getString(R.string.into_rational_mode), Toast.LENGTH_SHORT).show();
 			}
 			return true;
 		}
