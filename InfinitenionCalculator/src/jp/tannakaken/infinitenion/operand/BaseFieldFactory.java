@@ -114,13 +114,12 @@ public final class BaseFieldFactory extends Factory {
 		if (isReal()) {
 			return new Real(BigDecimal.ONE);
 		} else {
-			return new Rational(BigInteger.ONE);
-			
+			return new Rational(BigInteger.ONE);	
 		}
 	}
 	/**
 	 * 
-	 * @return 現在有理数モードかどうか。
+	 * @return 現在実数モードかどうか。
 	 */
 	private static boolean isReal() {
 		return Prefs.getIsReal(getContext());

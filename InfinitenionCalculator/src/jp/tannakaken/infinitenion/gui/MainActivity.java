@@ -58,6 +58,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	 * 出力欄のスクロール。
 	 */
 	private ScrollView mScroll;
+	/**
+	 * 小数点のボタン。実数モードかどうかで有効化したり無効化したりするために保持。
+	 */
+	private static Button mDotButton;
 
 	/**
 	 * コマンドの履歴。
@@ -160,6 +164,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	public final boolean onCreateOptionsMenu(final Menu aMenu) {
 		getMenuInflater().inflate(R.menu.main, aMenu);
 		return true;
+	}
+	
+	@Override
+	protected final void onResume() {
+		super.onResume();
+		mDotButton.setEnabled(Prefs.getIsReal(this));
 	}
 
 	@Override
@@ -379,7 +389,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			aRootView.findViewById(R.id.keypad_8).setOnClickListener(mMain);
 			aRootView.findViewById(R.id.keypad_9).setOnClickListener(mMain);
 			aRootView.findViewById(R.id.keypad_0).setOnClickListener(mMain);
-			aRootView.findViewById(R.id.keypad_dot).setOnClickListener(mMain);
+			//小数点のボタンだけは、有効化したり無効化したりするために保持する。
+			mDotButton = (Button) aRootView.findViewById(R.id.keypad_dot);
+			mDotButton.setOnClickListener(mMain);
 			aRootView.findViewById(R.id.keypad_C).setOnClickListener(mMain);
 			aRootView.findViewById(R.id.keypad_bs).setOnClickListener(mMain);
 			aRootView.findViewById(R.id.keypad_up).setOnClickListener(mMain);

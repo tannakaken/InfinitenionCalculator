@@ -27,7 +27,7 @@ public class Prefs extends PreferenceActivity {
 	 */
 	private static final boolean OPT_REAL_DEF = false;
 	/**
-	 * 実数モードの精度。
+	 * 実数モードの精度を調整するオプション。
 	 */
 	private static final String OPT_SCALE = "scale";
 	/**
