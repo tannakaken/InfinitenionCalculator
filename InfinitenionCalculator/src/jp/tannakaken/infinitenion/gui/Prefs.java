@@ -75,13 +75,7 @@ public class Prefs extends PreferenceActivity {
 
 		@Override
 		public final boolean onPreferenceChange(final Preference aPreference, final Object aNewValue) {
-			if (((Boolean) aNewValue).booleanValue()) {
-				VariableFactory.getInstance().clearVariable();
-				Toast.makeText(getActivity(), getString(R.string.into_real_mode), Toast.LENGTH_SHORT).show();
-			} else {
-				VariableFactory.getInstance().clearVariable();
-				Toast.makeText(getActivity(), getString(R.string.into_rational_mode), Toast.LENGTH_SHORT).show();
-			}
+			Toast.makeText(getActivity(), getString(R.string.warn_reset), Toast.LENGTH_SHORT).show();
 			return true;
 		}
 	}

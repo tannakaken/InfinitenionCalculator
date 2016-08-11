@@ -60,6 +60,6 @@
 	<string name="illegal_token">不正なトークン</string>
 	<string name="radix_point_in_rational_mode">小数点\'.\'は実数モードの時にしか使えません。</string>
 	<string name="see_help">詳しくはメニューのヘルプを見てください。</string>
-	<string name="into_real_mode">実数モードに入りました。変数は全てクリアされました。</string>
-	<string name="into_rational_mode">有理数モードに入りました。変数は全てクリアされました。</string>
+	<string name="warn_reset">モード変更後メインページに戻るとすべての変数がリセットされます。</string>
+	<string name="notice_reset">すべての変数がリセットされました。</string>
 </resources>

@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 /**
  * 電卓画面。
  * @author tannakaken
@@ -79,6 +80,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	 * 生命、宇宙、全ての答え。文字数を42にあわせるために、lifeにTheが付いている。
 	 */
 	private static final String ANSWER = "TheAnswerToTheLifeTheUniverseAndEverything";
+	/**
+	 * 現在のモードが実数モードかどうか。
+	 */
+	private boolean mIsReal;
 	
 	/**
 	 * 計算を処理するインスタンス。
@@ -158,6 +163,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new KeypadFirst()).commit();
 		}
+		mIsReal = Prefs.getIsReal(this);
 	}
 
 	@Override
@@ -169,7 +175,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	@Override
 	protected final void onResume() {
 		super.onResume();
-		mDotButton.setEnabled(Prefs.getIsReal(this));
+		boolean tNewIsReal = Prefs.getIsReal(this);
+		if (mIsReal != tNewIsReal) {
+			mIsReal = tNewIsReal;
+			VariableFactory.getInstance().clearVariable();
+			Toast.makeText(this, getString(R.string.notice_reset), Toast.LENGTH_SHORT).show();
+			mDotButton.setEnabled(Prefs.getIsReal(this));
+		}
 	}
 
 	@Override
