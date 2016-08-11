@@ -101,10 +101,12 @@
             android:id="@+id/keypad_0"
             android:text="@string/keypad_0"
             style="?android:attr/buttonBarButtonStyle"/>
+
         <Button
             android:id="@+id/keypad_dot"
-            android:text="@string/keypad_dot"
-            style="?android:attr/buttonBarButtonStyle"/>
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/keypad_dot" />
+
     </TableRow>
     <TableRow
         android:showDividers="middle"

@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	 * 出力欄のスクロール。
 	 */
 	private ScrollView mScroll;
-	
+
 	/**
 	 * コマンドの履歴。
 	 */
@@ -165,7 +165,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	@Override
 	public final boolean onOptionsItemSelected(final MenuItem aItem) {
 		showInterstitial();
-		Intent i;
 		switch (aItem.getItemId()) {
 		case R.id.action_settings:
 			startActivity(new Intent(this, Prefs.class));
@@ -175,23 +174,19 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			scrolldown();
 			return true;
 		case R.id.action_about:
-			i = new Intent(this, About.class);
-			startActivity(i);
+			startActivity(new Intent(this, About.class));
 			return true;
 		case R.id.action_help:
 			Text.setResource(TextResource.HELP);
-			i = new Intent(this, Text.class);
-			startActivity(i);
+			startActivity(new Intent(this, Text.class));
 			return true;
 		case R.id.action_problem:
 			Text.setResource(TextResource.PROBLEM);
-			i = new Intent(this, Text.class);
-			startActivity(i);
+			startActivity(new Intent(this, Text.class));
 			return true;
 		case R.id.action_story:
 			Web.setResource(WebResource.STORY);
-			i = new Intent(this, Web.class);
-			startActivity(i);
+			startActivity(new Intent(this, Web.class));
 			return true;
 		case R.id.action_finish:
 			android.os.Process.killProcess(android.os.Process.myPid());
