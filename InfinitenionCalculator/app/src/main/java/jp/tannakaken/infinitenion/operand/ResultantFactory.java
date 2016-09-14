@@ -1,9 +1,13 @@
 package jp.tannakaken.infinitenion.operand;
 
+import android.util.Log;
+
 import java.math.BigInteger;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException;
@@ -47,7 +51,16 @@ public final class ResultantFactory extends Factory {
 	 * {@link Operator#ASSOC}のarityは3。
 	 */
 	private static final int ASSOC_ARRITY = 3;
-	
+
+	/**
+	 * 演算子をあらわす記号かどうかを判定する正規表現。
+	 */
+	private static String mRegex = "(^(\\+|\\-|\\*|/|\\^|<=|norm|conj|negate|inv|commu|assoc|normed))";
+	/**
+	 * 正規表現をコンパイル。
+	 */
+	private static Pattern mPattern = Pattern.compile(mRegex);
+
 	static {
 		OPERATORS.put("+", Operator.ADD);
 		OPERATORS.put("-", Operator.SUB);
@@ -77,15 +90,16 @@ public final class ResultantFactory extends Factory {
 		return mSingleton;
 	}
 	@Override
-	public boolean getReady(final String aToken) throws BackgroundProcessCancelledException {
+	public String getReady(final String aInput) throws BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
-		mOperator = OPERATORS.get(aToken);
-		if (mOperator == null) {
-			return false;
+		Matcher tMatcher = mPattern.matcher(aInput);
+		if (tMatcher.find()) {
+			mOperator = OPERATORS.get(tMatcher.group());
+			return aInput.substring(tMatcher.end());
 		}
-		return true;
+		return null;
 	}
 	@Override
 	public void calc() throws CalculatingException, BackgroundProcessCancelledException {

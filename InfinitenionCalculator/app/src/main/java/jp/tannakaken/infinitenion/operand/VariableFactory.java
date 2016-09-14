@@ -3,6 +3,7 @@ package jp.tannakaken.infinitenion.operand;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jp.tannakaken.infinitenion.R;
@@ -56,7 +57,7 @@ public final class VariableFactory extends Factory {
 	/**
 	 * {@link Variable}のトークンの一般形をあらわす正規表現。
 	 */
-	private static String mRegex = "^X$|^X[1-9][0-9]*$";
+	private static String mRegex = "(^X$|^X[1-9][0-9]*)";
 	/**
 	 * {@link Variable}が変数かどうかを判定する正規表現のパターン。
 	 */
@@ -79,15 +80,16 @@ public final class VariableFactory extends Factory {
 		return mSingleton;
 	}
 	@Override
-	public boolean getReady(final String aToken) throws BackgroundProcessCancelledException {
+	public String getReady(final String aInput) throws BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
-		if (mPattern.matcher(aToken).find()) {
-			mToken = aToken;
-			return true;
+		Matcher tMatcher = mPattern.matcher(aInput);
+		if (tMatcher.find()) {
+			mToken = tMatcher.group();
+			return aInput.substring(tMatcher.end());
 		}
-		return false;
+		return null;
 	}
 	@Override
 	public void calc() {

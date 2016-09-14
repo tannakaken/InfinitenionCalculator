@@ -36,7 +36,7 @@
 	<string name="hint7">En（nは正の自然数）でn番目の虚数単位を表します。E1は複素数のi、E2,E3は四元数のj,kです。</string>
 	<string name="hint8">Xn（nは正の自然数）でn番目の変数を表します。Xn 式 &lt;=で式の値を代入す、そのあとは値として使えます。</string>
 	<string name="hint9">「1 + 1」という式は逆ポーランド記法では「1 1 +」と書かれます。</string>
-	<string name="hint0">数字や記号の間には空白を入れてください。（例　「1 1+」はダメ。「1 1 +」は良い）</string>
+	<string name="hint0">「1 + 1」という式は逆ポーランド記法では「1 1 +」と書かれます。</string>
     <!-- aboutのラベル -->
     <string name="about_label">アバウト</string>
     <string name="about_this_app_button_label">このアプリについて</string>

@@ -13,10 +13,10 @@ import jp.tannakaken.infinitenion.operand.ResultantFactory;
 /**
  * 入力された文字列を解釈し、実行し、出力される文字列を返すクラス。<br>
  * 実際の計算は、さまざまなクラスに委譲される。<br>
- * 具体的には、各種{@link Operand}のインスタンス生成は、それに対応した{@link Factory}のサブクラスに、委譲され、<br>
- * 演算の型チェックは{@link Operator}のインスタンスが行い、計算は{@link Constant}のインスタンスが自分で行う。<br>
+ * 具体的には、各種{@link jp.tannakaken.infinitenion.operand.Operand}のインスタンス生成は、それに対応した{@link Factory}のサブクラスに、委譲され、<br>
+ * 演算の型チェックは{@link jp.tannakaken.infinitenion.operand.Operator}のインスタンスが行い、計算は{@link jp.tannakaken.infinitenion.operand.Constant}のインスタンスが自分で行う。<br>
  * これによって、このクラス自身は、非常に単純になっている。<br>
- * これは、{@link MainActivity}をクライアントとした、Facadeパターンの利用によるものである。
+ * これは、{@link jp.tannakaken.infinitenion.gui.MainActivity}をクライアントとした、Facadeパターンの利用によるものである。
  * 
  * @author tannakaken
  * 
@@ -53,27 +53,28 @@ public class Calculator {
 	public final String calc(final String aFormula, final AsyncTask<String, Void, String> aTask)
 			throws CalculatorParseException, CalculatingException, BackgroundProcessCancelledException {
 		try {
-			String tTrimed =  aFormula.replaceFirst("^[　]*", "");
-			if (tTrimed == "") { // イースターエッグ
+			String tRestString =  aFormula.replaceFirst("^[　]*", "");
+			if (tRestString == "") { // イースターエッグ
 				return randomAphorism();
 			}
-			String[] tTokens = tTrimed.split("[　]+");
 			Factory.setTask(aTask);
-			for (String tToken: tTokens) {
+			while (!tRestString.equals("")) {
+				String tNextRestString;
 				if (aTask.isCancelled()) {
 					throw new BackgroundProcessCancelledException();
 				}
-				if (mResultantFactory.getReady(tToken)) {
+				if ((tNextRestString = mResultantFactory.getReady(tRestString)) != null) {
 					mResultantFactory.calc();
-				} else if (mVariableFactory.getReady(tToken)) {
+				} else if ((tNextRestString = mVariableFactory.getReady(tRestString)) != null) {
 					mVariableFactory.calc();
-				} else if (mConstantFactory.getReady(tToken)) {
+				} else if ((tNextRestString = mConstantFactory.getReady(tRestString)) != null) {
 					mConstantFactory.calc();
-				} else if (mNumberFactory.getReady(tToken)) {
+				} else if ((tNextRestString = mNumberFactory.getReady(tRestString)) != null) {
 					mNumberFactory.calc();
 				} else {
-					throw new CalculatorParseException(R.string.illegal_token, tToken);
+					throw new CalculatorParseException(R.string.illegal_token, tRestString.split("[　]+")[0]);
 				}
+				tRestString = tNextRestString.replaceFirst("^[　]*", "");
 			}
 			return Factory.getResult();
 		} catch (CalculatorParseException | CalculatingException | BackgroundProcessCancelledException e) {

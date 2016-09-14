@@ -2,6 +2,7 @@ package jp.tannakaken.infinitenion.operand;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jp.tannakaken.infinitenion.R;
@@ -25,7 +26,7 @@ public final class BaseFieldFactory extends Factory {
 	/**
 	 * 整数を表す正規表現。
 	 */
-	private static String mIntegerRegexp = "^0$|^-?[1-9]\\d*$";
+	private static String mIntegerRegexp = "(^0$|^-?[1-9]\\d*)";
 	/**
 	 * 整数を表すパターン。
 	 */
@@ -33,7 +34,7 @@ public final class BaseFieldFactory extends Factory {
 	/**
 	 * 実数を表す正規表現。
 	 */
-	private static String mRealRegexp = "^(0|(-?[1-9]\\d*))(\\.\\d*)?$";
+	private static String mRealRegexp = "(^(0|(-?[1-9]\\d*))(\\.\\d*)?)";
 	/**
 	 * 実数を表すパターン。
 	 */
@@ -59,38 +60,41 @@ public final class BaseFieldFactory extends Factory {
 	}
 	
 	@Override
-	public boolean getReady(final String aToken)
+	public String getReady(final String aInput)
 			throws CalculatorParseException, BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
-		if (aToken.equals("TheAnswerToTheLifeTheUniverseAndEverything")) {
-			mToken = String.valueOf(aToken.length());
+		if (aInput.equals("TheAnswerToTheLifeTheUniverseAndEverything")) {
+			mToken = String.valueOf(aInput.length());
 			mIsInteger = true;
-			return true;
+			return "";
 		}
 		// 検査の順番に注意　自然数かどうかをチェックしてから、実数かどうかをチェックする。
 		if (isReal()) {
-			if (mIntegerPattern.matcher(aToken).find()) {
+			Matcher tMatcher = mIntegerPattern.matcher(aInput);
+			if (tMatcher.find()) {
 				mIsInteger = true;
-				mToken = aToken;
-				return true;
+				mToken = tMatcher.group();
+				return aInput.substring(tMatcher.end());
 			}
-			if (mRealPattern.matcher(aToken).find()) {
+			tMatcher = mRealPattern.matcher(aInput);
+			if (tMatcher.find()) {
 				mIsInteger = false;
-				mToken = aToken;
-				return true;
+				mToken = tMatcher.group();
+				return aInput.substring(tMatcher.end());
 			}
-			return false;
+			return null;
 		} else {
-			if (mIntegerPattern.matcher(aToken).find()) {
-				mToken = aToken;
-				return true;
+			Matcher tMatcher = mIntegerPattern.matcher(aInput);
+			if (tMatcher.find()) {
+				mToken = tMatcher.group();
+				return aInput.substring(tMatcher.end());
 			}
-			if (mRealPattern.matcher(aToken).find()) {
-				throw new CalculatorParseException(R.string.radix_point_in_rational_mode, aToken);
+			if (mRealPattern.matcher(aInput).find()) {
+				throw new CalculatorParseException(R.string.radix_point_in_rational_mode, aInput);
 			}
-			return false;
+			return null;
 		}
 	}
 

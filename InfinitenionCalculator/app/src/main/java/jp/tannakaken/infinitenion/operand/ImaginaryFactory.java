@@ -1,6 +1,7 @@
 package jp.tannakaken.infinitenion.operand;
 
 import java.math.BigInteger;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException;
@@ -21,7 +22,7 @@ public final class ImaginaryFactory extends Factory {
 	/**
 	 * 実数以外のConstantをあらわす記号化どうかを判定する正規表現。
 	 */
-	private static String mRegex = "^E[1-9][0-9]*$";
+	private static String mRegex = "(^E[1-9][0-9]*)";
 	/**
 	 * 正規表現をコンパイル。
 	 */
@@ -52,15 +53,16 @@ public final class ImaginaryFactory extends Factory {
 		return mSingleton;
 	}
 	@Override
-	public boolean getReady(final String aToken) throws BackgroundProcessCancelledException {
+	public String getReady(final String aInput) throws BackgroundProcessCancelledException {
 		if (super.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
-		if (mPattern.matcher(aToken).find()) {
-			mToken = aToken;
-			return true;
+		Matcher tMatcher = mPattern.matcher(aInput);
+		if (tMatcher.find()) {
+			mToken = tMatcher.group();
+			return aInput.substring(tMatcher.end());
 		}
-		return false;
+		return null;
 	}
 	@Override
 	public void calc() throws CalculatingException, BackgroundProcessCancelledException {

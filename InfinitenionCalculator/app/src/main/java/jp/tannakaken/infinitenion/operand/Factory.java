@@ -77,16 +77,17 @@ public abstract class Factory {
 	/**
 	 * 必ず{@link Factory#getOperand}する前に、このメソッドで検査すること。<br>
 	 * もし、それがこのFactoryによって、{@link Operand}に変換できるなら、
-	 * このメソッドによって、Factoryが準備状態に入り、
+	 * このメソッドによって、トークンが切り出されてFactoryが準備状態に入り、
+	 * トークンを切りだされた残りの文字列が出力され、
 	 * {@link Factory#calc()}によって、{@link Operand}が生成され、
 	 * {@link Factory#mStack}に追加される。<br>
 	 * それを守らなかった場合の挙動は一切保証しない。
-	 * @param aToken 検査されるトークン。
-	 * @return そのトークンが需要可能かどうか。
+	 * @param aInput トークンを切り出そうとする文字列。
+	 * @return 残りの文字列。切り出せなかった時はnull
 	 * @throws CalculatorParseException 現在のモードでは仕えないトークンが使用されることによる例外。
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
-	public abstract boolean getReady(String aToken)
+	public abstract String getReady(String aInput)
 			throws CalculatorParseException, BackgroundProcessCancelledException;
 	
 	/**

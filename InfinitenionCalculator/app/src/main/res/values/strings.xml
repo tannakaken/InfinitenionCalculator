@@ -36,7 +36,7 @@
 	<string name="hint7">En(n is positive integer) represent nth imaginary unit. E1 is imaginary unit of Complex Numbers i, and E2. E3 are imaginary units of Quarternion j,k.</string>
 	<string name="hint8">Xn(n is positive integer) represent nth variable. You can substitute value with "Xn formula &lt;=" and after substitution you use this as value.</string>
 	<string name="hint9">formula "1 + 1" is represented "1 1 +" in reverse polish notation.</string>
-	<string name="hint0">insert space between tokens.(e.g. "1 1+" is bad. "1 1 +" is good)</string>
+	<string name="hint0">formula "1 + 1" is represented "1 1 +" in reverse polish notation.</string>
     <!-- aboutのラベル -->
     <string name="about_label">About</string>
     <string name="about_this_app_button_label">about this app</string>
