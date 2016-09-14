@@ -54,7 +54,7 @@ public final class ImaginaryFactory extends Factory {
 	}
 	@Override
 	public String getReady(final String aInput) throws BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Matcher tMatcher = mPattern.matcher(aInput);
@@ -83,7 +83,7 @@ public final class ImaginaryFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。 
 	 */
 	private Constant buildConstant(final BigInteger aNumber) throws CalculatingException,BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		// 目的の枝にたどり着いたら、係数に1を代入。

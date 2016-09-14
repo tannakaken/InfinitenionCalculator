@@ -27,7 +27,7 @@ public class Text extends Activity {
 	private static final String NEW_LINE = System.getProperty("line.separator"); 
 	/**
 	 * このActivityがどのテキストを表示するかを決める。<br>
-	 * {@link onCreate}する前に必ずこのメソッドをすること。
+	 * {@link this.onCreate}する前に必ずこのメソッドをすること。
 	 * @param aTextResource 表示するテキストを表す{@link TextResource}。
 	 */
 	public static void setResource(final TextResource aTextResource) {

@@ -18,10 +18,9 @@ import jp.tannakaken.infinitenion.R;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -42,7 +41,7 @@ import android.widget.Toast;
  * @author tannakaken
  *
  */
-public class MainActivity extends ActionBarActivity implements OnClickListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener {
 	/**
 	 * インタースティシャル広告。
 	 */
@@ -51,10 +50,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	 * 式の入力欄。
 	 */
 	private EditText mInputText;
-	/**
-	 * 計算開始のボタン。
-	 */
-	private Button mCalcButton;
 	/**
 	 * 計算結果の出力欄。
 	 */
@@ -71,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	/**
 	 * コマンドの履歴。
 	 */
-	private LinkedList<String> mCommandHistory = new LinkedList<String>();
+	private LinkedList<String> mCommandHistory = new LinkedList<>();
 	/**
 	 * コマンド履歴のイテレータ。
 	 */
@@ -97,25 +92,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	 * 非同期処理の終了を通知するための{@link CountDownLatch}のリスト。<br>
 	 * たとえばテストなどに使う。
 	 */
-	private List<CountDownLatch> mLatchList = new ArrayList<CountDownLatch>();
-	/**
-	 * 非同期処理の終了を通知するための{@link CountDownLatch}をリストに加える。<br>
-	 * テストなどに使う。
-	 * @param aLatch 加えられる{@link CountDownLatch}
-	 */
-	public final void addLatch(final CountDownLatch aLatch) {
-		mLatchList.add(aLatch);
-	}
-	/**
-	 * 非同期処理の終了を通知するための{@link CountDownLatch}をリストからさ駆除する。
-	 * @param aLatch 削除する{@link CountDownLatch}
-	 * @return aLatchがリスト内にあればtrue、なければfalseを返す。
-	 */
-	public final boolean removeLatch(final CountDownLatch aLatch) {
-		return mLatchList.remove(aLatch);
-	}
-	
-	
+	private List<CountDownLatch> mLatchList = new ArrayList<>();
+
 	/**
 	 * インタースティシャル広告を表示する。
 	 */
@@ -147,14 +125,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		CalculatorException.setContext(this);
 		
 		mInputText = (EditText) findViewById(R.id.input_text);
-		mCalcButton = (Button) findViewById(R.id.calculate_button);
+		Button tCalcButton = (Button) findViewById(R.id.calculate_button);
 		mOutputText = (TextView) findViewById(R.id.output_text);
 		
 		mScroll = (ScrollView) findViewById(R.id.scroll);
 		
 		mCalc = new Calculator();
 		
-		mCalcButton.setOnClickListener(this);
+		tCalcButton.setOnClickListener(this);
 		// ソフトキーボードは出さない。
 		mInputText.setRawInputType(InputType.TYPE_NULL); 
 		mInputText.setCursorVisible(true);

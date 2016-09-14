@@ -1,7 +1,5 @@
 package jp.tannakaken.infinitenion.operand;
 
-import android.util.Log;
-
 import java.math.BigInteger;
 import java.util.Deque;
 import java.util.HashMap;
@@ -36,7 +34,7 @@ public final class ResultantFactory extends Factory {
 	/**
 	 * {@link Operator}と、それをを表すトークンの対応。
 	 */
-	private static final Map<String, Operator> OPERATORS = new HashMap<String, Operator>(16, 1.0f);
+	private static final Map<String, Operator> OPERATORS = new HashMap<>(16, 1.0f);
 	/**
 	 * 一つしか必要ないので<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>。
 	 * 
@@ -75,7 +73,7 @@ public final class ResultantFactory extends Factory {
 		OPERATORS.put("commu", Operator.COMMU);
 		OPERATORS.put("assoc", Operator.ASSOC);
 		OPERATORS.put("normed", Operator.NORMED);
-	};
+	}
 	/**
 	 * 外部からインスタンス化できないようにしておく。
 	 */
@@ -91,7 +89,7 @@ public final class ResultantFactory extends Factory {
 	}
 	@Override
 	public String getReady(final String aInput) throws BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Matcher tMatcher = mPattern.matcher(aInput);
@@ -155,7 +153,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant add() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -178,8 +176,6 @@ public final class ResultantFactory extends Factory {
 			// 演算されるもの
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2);
-			tOperand1 = null;
-			tOperand2 = null;
 			return mImaginaryFactory.mixRealAndImaginary(add(), tStack.pop().getInterior(), tHeight1);
 		} else if (tHeight2 > tHeight1) {
 			// 最後に出されるもの。
@@ -187,8 +183,6 @@ public final class ResultantFactory extends Factory {
 			// 演算されるもの。
 			tStack.push(tOperand1);
 			tStack.push(tOperand2.getReal());
-			tOperand1 = null;
-			tOperand2 = null;
 			return mImaginaryFactory.mixRealAndImaginary(add(), tStack.pop().getInterior(), tHeight2);
 		} else if (tHeight1 == 0) {
 			return tOperand1.add(tOperand2);
@@ -199,8 +193,6 @@ public final class ResultantFactory extends Factory {
 			// 最初に演算されるもの
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2.getReal());
-			tOperand1 = null;
-			tOperand2 = null;
 			return mImaginaryFactory.mixRealAndImaginary(add(), add(), tHeight1);
 		}
 	}
@@ -211,7 +203,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant mul() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -236,8 +228,6 @@ public final class ResultantFactory extends Factory {
 			// 最初に演算されるもの
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2);
-			tOperand1 = null;
-			tOperand2 = null;
 			return mImaginaryFactory.mixRealAndImaginary(mul(), mul(), tHeight1);
 		} else if (tHeight2 > tHeight1) { // 相手のほうが次元が高いとき。
 			// 最後に演算されるもの
@@ -246,8 +236,6 @@ public final class ResultantFactory extends Factory {
 			// 最初に演算されるもの
 			tStack.push(tOperand1);
 			tStack.push(tOperand2.getReal());
-			tOperand1 = null;
-			tOperand2 = null;
 			return mImaginaryFactory.mixRealAndImaginary(mul(), mul(), tHeight2);
 		} else if (tHeight1 == 0) {
 			return tOperand1.mul(tOperand2);
@@ -267,8 +255,6 @@ public final class ResultantFactory extends Factory {
 			tStack.push(tOperand2.getImag());
 			tStack.push(conj());
 			tStack.push(tOperand1.getImag());
-			tOperand1 = null;
-			tOperand2 = null;
 			tStack.push(mul());
 			tStack.push(negate()); // s^* qを格納
 			return mImaginaryFactory.mixRealAndImaginary(add(), add(), tHeight1);
@@ -292,15 +278,15 @@ public final class ResultantFactory extends Factory {
 			throw new CalculatingException(R.string.power_not_integer_error);
 		}
 		BigInteger tPow = tOperand2.getInteger();
-		tOperand2 = null;
 		Operand tBase = tStack.pop();
 		Constant tResult = BaseFieldFactory.getInstance().getOne();
 		if (tPow.compareTo(BigInteger.ZERO) < 0) {
 			tPow = tPow.negate();
-			tBase = tBase.inv();
+			tStack.push(tBase);
+			tBase = inv();
 		}
 		while (tPow.compareTo(BigInteger.ZERO) > 0) {
-			if (super.isCanceled()) {
+			if (Factory.isCanceled()) {
 				throw new BackgroundProcessCancelledException();
 			}
 			if (tPow.getLowestSetBit() == 0) { // ２進数表記で一番右が埋まっている、ということはこれが奇数であることを意味する。
@@ -324,7 +310,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant negate() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -338,7 +324,6 @@ public final class ResultantFactory extends Factory {
 		} else {
 			tStack.push(tOperand.getImag());
 			tStack.push(tOperand.getReal());
-			tOperand = null;
 			return mImaginaryFactory.mixRealAndImaginary(negate(), negate(), tHeight);
 		}
 	}
@@ -349,7 +334,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant sub() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -366,7 +351,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant conj() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -380,7 +365,6 @@ public final class ResultantFactory extends Factory {
 		} else {
 			tStack.push(tOperand.getImag());
 			tStack.push(tOperand.getReal());
-			tOperand = null;
 			return mImaginaryFactory.mixRealAndImaginary(conj(), negate(), tHeight);
 		}
 	}
@@ -391,7 +375,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant norm() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -405,7 +389,6 @@ public final class ResultantFactory extends Factory {
 			tStack.push(tOperand.getImag());
 			tStack.push(norm());
 			tStack.push(tOperand.getReal());
-			tOperand = null;
 			tStack.push(norm());
 			return tStack.pop().add(tStack.pop());
 		}
@@ -417,7 +400,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant inv() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -432,7 +415,6 @@ public final class ResultantFactory extends Factory {
 		tStack.push(conj());
 		tStack.push(tOperand);
 		tStack.push(norm());
-		tOperand = null;
 		return div();
 	}
 	/**
@@ -442,7 +424,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant div() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -465,7 +447,6 @@ public final class ResultantFactory extends Factory {
 			// 最初に演算されるもの。
 			tStack.push(tOperand1.getReal());
 			tStack.push(tOperand2);
-			tOperand1 = null;
 			return mImaginaryFactory.mixRealAndImaginary(div(), div(), tHeight);
 		}
 		tStack.push(inv());
@@ -478,7 +459,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant commu() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -491,8 +472,6 @@ public final class ResultantFactory extends Factory {
 		tStack.push(mul());
 		tStack.push(tOperand2);
 		tStack.push(tOperand1);
-		tOperand1 = null;
-		tOperand2 = null;
 		tStack.push(mul());
 		return sub();
 	}
@@ -503,7 +482,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant assoc() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -520,9 +499,6 @@ public final class ResultantFactory extends Factory {
 		tStack.push(tOperand1);
 		tStack.push(tOperand2);
 		tStack.push(tOperand3);
-		tOperand1 = null;
-		tOperand2 = null;
-		tOperand3 = null;
 		tStack.push(mul());
 		tStack.push(mul());
 		return sub();
@@ -534,7 +510,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Constant normed() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();
@@ -549,8 +525,6 @@ public final class ResultantFactory extends Factory {
 		tStack.push(tOperand1);
 		tStack.push(norm());
 		tStack.push(tOperand2);
-		tOperand1 = null;
-		tOperand2 = null;
 		tStack.push(norm());
 		tStack.push(mul());
 		return sub();
@@ -562,7 +536,7 @@ public final class ResultantFactory extends Factory {
 	 * @throws BackgroundProcessCancelledException バックグラウンド処理がキャンセルされたときの例外。
 	 */
 	private Operand substitution() throws CalculatingException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Deque<Operand> tStack = getStack();

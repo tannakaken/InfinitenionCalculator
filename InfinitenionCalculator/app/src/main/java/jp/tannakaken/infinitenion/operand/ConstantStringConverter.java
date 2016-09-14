@@ -65,12 +65,12 @@ final class ConstantStringConverter {
 					if (mNthBase.equals(BigInteger.ZERO)) {
 						mResult.append(aConstant.toString());
 					} else {
-						mResult.append(" " + sign(mNthBase));
+						mResult.append(" ").append(sign(mNthBase));
 					}
 				} else {
-					mResult.append(" " + aConstant.toString());
+					mResult.append(" ").append(aConstant.toString());
 					if (mNthBase.compareTo(BigInteger.ZERO) > 0) {
-						mResult.append(" " + sign(mNthBase) + " *");
+						mResult.append(" ").append(sign(mNthBase)).append(" *");
 					}
 				}
 				mCount++;

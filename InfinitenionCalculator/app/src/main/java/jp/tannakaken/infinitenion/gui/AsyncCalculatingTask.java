@@ -15,10 +15,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.v4.content.res.ResourcesCompat;
+
 /**
  * 計算をbackgroundで非同期に行い、時間が掛かりすぎる場合には、キャンセルが出来るようにする。<br>
  * そのために、{@link Calculator}を{@link AsyncTask}のサブクラスでラッピングする。<br>
- * {@link SryncTask#onCancelled()}は使わず、キャンセル操作後すぐに、
+ * {@link AsyncTask#onCancelled()}は使わず、キャンセル操作後すぐに、
  * {@link ProgressDialog}を消し、キャンセルを行った旨のメッセージを表示する。<br>
  * {@link java.math.BigInteger}や{@link java.math.BigDecimal}の演算など、
  * こちらで作ったフラグの届かない場所で計算に時間が掛かっている場合、
@@ -56,7 +58,7 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	 * 非同期処理の終了を通知するための{@link CountDownLatch}のリスト。<br>
 	 * たとえばテストなどに使う。
 	 */
-	private List<CountDownLatch> mLatchList = new ArrayList<CountDownLatch>();
+	private List<CountDownLatch> mLatchList = new ArrayList<>();
 	/**
 	 * 計算の開始時間。
 	 */
@@ -86,7 +88,7 @@ class AsyncCalculatingTask extends AsyncTask<String, Void, String>
 	protected final void onPreExecute() {
 	    mDialog = new ProgressDialog(mMain);
 	    mDialog.setMessage(mMain.getText(R.string.calculation_running_label));
-	    mDialog.setIndeterminateDrawable(mMain.getResources().getDrawable(R.drawable.progress_bar));
+	    mDialog.setIndeterminateDrawable(ResourcesCompat.getDrawable(mMain.getResources(), R.drawable.progress_bar, null));
 	    mDialog.setOnCancelListener(this);
 	    mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, mMain.getText(R.string.calculation_cancel_label),
 	            new DialogInterface.OnClickListener() {

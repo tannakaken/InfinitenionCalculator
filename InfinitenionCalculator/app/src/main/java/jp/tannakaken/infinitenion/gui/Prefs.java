@@ -2,7 +2,6 @@ package jp.tannakaken.infinitenion.gui;
 
 import jp.tannakaken.infinitenion.R;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;

@@ -47,10 +47,10 @@ public abstract class Factory {
 	/**
 	 * 作った{@link Operand}を保管していくために、{@link Deque}をスタックとして使う。
 	 */
-	private static Deque<Operand> mStack = new ArrayDeque<Operand>();
+	private static Deque<Operand> mStack = new ArrayDeque<>();
 	/**
-	 *  プログラムの開始すぐに、{@link Factory#setStack(Deque<Operand>)}をすること。<br>
-	 *  それを怠った場合の挙動は一切保証しない。
+	 *
+	 *
 	 * @return {@link Operand}を貯蔵するためのスタック。 
 	 */
 	static Deque<Operand> getStack() {
@@ -64,18 +64,18 @@ public abstract class Factory {
 	 * 
 	 * @param aTask 計算を実行している非同期タスク。
 	 */
-	public static final void setTask(final AsyncTask<String, Void, String> aTask) {
+	public static void setTask(final AsyncTask<String, Void, String> aTask) {
 		mTask = aTask;
 	}
 	/**
 	 * 
 	 * @return 非同期タスクがキャンセルされると、このメソッドの返り血がtrueになる。
 	 */
-	public static final boolean isCanceled() {
+	public static boolean isCanceled() {
 		return mTask.isCancelled();
 	}
 	/**
-	 * 必ず{@link Factory#getOperand}する前に、このメソッドで検査すること。<br>
+	 * 必ず{@link Factory#calc}する前に、このメソッドで検査すること。<br>
 	 * もし、それがこのFactoryによって、{@link Operand}に変換できるなら、
 	 * このメソッドによって、トークンが切り出されてFactoryが準備状態に入り、
 	 * トークンを切りだされた残りの文字列が出力され、

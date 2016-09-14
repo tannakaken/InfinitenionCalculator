@@ -127,11 +127,8 @@ class Rational extends Constant {
 			return false;
 		}
 		Rational tOtherRational = (Rational) aOther;
-		if (this.mNumerator.equals(tOtherRational.mNumerator)
-				&& this.mDenominator.equals(tOtherRational.mDenominator)) {
-			return true;
-		}
-		return false;
+		return this.mNumerator.equals(tOtherRational.mNumerator)
+					&& this.mDenominator.equals(tOtherRational.mDenominator);
 	}
 	@Override
 	public final int hashCode() {

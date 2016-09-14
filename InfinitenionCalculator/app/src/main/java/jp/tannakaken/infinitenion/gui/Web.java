@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.webkit.WebView;
 
 /**
- * 内部や外部のhtml文書を閲覧するための{@link activity}。
+ * 内部や外部のhtml文書を閲覧するための{@link Activity}。
  * @author tannakaken
  *
  */
@@ -17,7 +17,7 @@ public class Web extends Activity {
 	private static WebResource mWebResource;
 	/**
 	 * このActivityがどのhtml文書を表示するかを決める。<br>
-	 * {@link onCreate}する前に必ずこのメソッドをすること。
+	 * {@link this.onCreate}する前に必ずこのメソッドをすること。
 	 * @param aWebResource 表示するテキストを表す{@link WebResource}。
 	 */
 	public static final void setResource(final WebResource aWebResource) {

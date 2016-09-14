@@ -40,7 +40,7 @@ public final class VariableFactory extends Factory {
 	 * {@link Variable}を格納しておくプール。
 	 * {@link Variable}を表すトークン「XもしくはXn（nは正の整数)」の添え字による順序で整列させる。
 	 */
-	private static Map<String, Variable> mPool = new TreeMap<String, Variable>(new Comparator<String>() {
+	private static Map<String, Variable> mPool = new TreeMap<>(new Comparator<String>() {
 		@Override
 		public int compare(final String aLeft, final String aRight) {
 			int tLeftLength = aLeft.length();
@@ -81,7 +81,7 @@ public final class VariableFactory extends Factory {
 	}
 	@Override
 	public String getReady(final String aInput) throws BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		Matcher tMatcher = mPattern.matcher(aInput);
@@ -131,12 +131,12 @@ public final class VariableFactory extends Factory {
 	 */
 	public String variablesToString(final Context aContext) {
 		StringBuilder tBuffer = new StringBuilder();
-		tBuffer.append(mPool.size() + aContext.getString(R.string.the_number_of_variables) + NEW_LINE);
+		tBuffer.append(mPool.size()).append(aContext.getString(R.string.the_number_of_variables)).append(NEW_LINE);
 		for (Map.Entry<String, Variable> tEntry : mPool.entrySet()) {
-			tBuffer.append(tEntry.getKey());
-			tBuffer.append(" : ");
-			tBuffer.append(tEntry.getValue());
-			tBuffer.append(NEW_LINE);
+			tBuffer.append(tEntry.getKey())
+				.append(" : ")
+				.append(tEntry.getValue())
+				.append(NEW_LINE);
 		}
 		return tBuffer.toString();
 	}

@@ -3,6 +3,7 @@ package jp.tannakaken.infinitenion.calculator;
 import java.util.Random;
 
 import android.os.AsyncTask;
+
 import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.operand.Factory;
 import jp.tannakaken.infinitenion.operand.ImaginaryFactory;
@@ -54,7 +55,7 @@ public class Calculator {
 			throws CalculatorParseException, CalculatingException, BackgroundProcessCancelledException {
 		try {
 			String tRestString =  aFormula.replaceFirst("^[　]*", "");
-			if (tRestString == "") { // イースターエッグ
+			if (tRestString.equals("")) { // イースターエッグ
 				return randomAphorism();
 			}
 			Factory.setTask(aTask);
@@ -63,22 +64,20 @@ public class Calculator {
 				if (aTask.isCancelled()) {
 					throw new BackgroundProcessCancelledException();
 				}
-				if ((tNextRestString = mResultantFactory.getReady(tRestString)) != null) {
-					mResultantFactory.calc();
-				} else if ((tNextRestString = mVariableFactory.getReady(tRestString)) != null) {
-					mVariableFactory.calc();
+				if ((tNextRestString = mNumberFactory.getReady(tRestString)) != null) {
+					mNumberFactory.calc();
 				} else if ((tNextRestString = mConstantFactory.getReady(tRestString)) != null) {
 					mConstantFactory.calc();
-				} else if ((tNextRestString = mNumberFactory.getReady(tRestString)) != null) {
-					mNumberFactory.calc();
+				} else if ((tNextRestString = mVariableFactory.getReady(tRestString)) != null) {
+					mVariableFactory.calc();
+				} else if ((tNextRestString = mResultantFactory.getReady(tRestString)) != null) {
+					mResultantFactory.calc();
 				} else {
 					throw new CalculatorParseException(R.string.illegal_token, tRestString.split("[　]+")[0]);
 				}
 				tRestString = tNextRestString.replaceFirst("^[　]*", "");
 			}
 			return Factory.getResult();
-		} catch (CalculatorParseException | CalculatingException | BackgroundProcessCancelledException e) {
-			throw e;
 		} finally {
 			Factory.clearStack();
 		}

@@ -83,11 +83,11 @@ class Real extends Constant {
 
 	@Override
 	public final boolean isZero() {
-		return mNumber.equals(BigDecimal.ZERO.setScale(getCalculationScale()));
+		return mNumber.equals(BigDecimal.ZERO.setScale(getCalculationScale(),BigDecimal.ROUND_DOWN));
 	}
 	@Override
 	final boolean isOne() {
-		return mNumber.equals(BigDecimal.ONE.setScale(getCalculationScale()));
+		return mNumber.equals(BigDecimal.ONE.setScale(getCalculationScale(),BigDecimal.ROUND_DOWN));
 	}
 
 	@Override
@@ -124,7 +124,7 @@ class Real extends Constant {
 	@Override
 	public final String toString() {
 		if (isInteger(mNumber)) {
-			return mNumber.setScale(0).toString();
+			return mNumber.setScale(0,BigDecimal.ROUND_DOWN).toString();
 		} else {
 			return mNumber.setScale(getOutputScale(), BigDecimal.ROUND_DOWN).toString();
 		}
@@ -138,7 +138,7 @@ class Real extends Constant {
 			return false;
 		}
 		Real tOtherReal = (Real) aOther;
-		return mNumber == tOtherReal.mNumber;
+		return mNumber.equals(tOtherReal.mNumber);
 	}
 	@Override
 	public final int hashCode() {

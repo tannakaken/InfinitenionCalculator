@@ -26,7 +26,7 @@ public final class BaseFieldFactory extends Factory {
 	/**
 	 * 整数を表す正規表現。
 	 */
-	private static String mIntegerRegexp = "(^0$|^-?[1-9]\\d*)";
+	private static String mIntegerRegexp = "(^0|^-?[1-9]\\d*)";
 	/**
 	 * 整数を表すパターン。
 	 */
@@ -34,7 +34,7 @@ public final class BaseFieldFactory extends Factory {
 	/**
 	 * 実数を表す正規表現。
 	 */
-	private static String mRealRegexp = "(^(0|(-?[1-9]\\d*))(\\.\\d*)?)";
+	private static String mRealRegexp = "(^-?(0|([1-9]\\d*))(\\.\\d*)?)";
 	/**
 	 * 実数を表すパターン。
 	 */
@@ -62,7 +62,7 @@ public final class BaseFieldFactory extends Factory {
 	@Override
 	public String getReady(final String aInput)
 			throws CalculatorParseException, BackgroundProcessCancelledException {
-		if (super.isCanceled()) {
+		if (Factory.isCanceled()) {
 			throw new BackgroundProcessCancelledException();
 		}
 		if (aInput.equals("TheAnswerToTheLifeTheUniverseAndEverything")) {
@@ -72,15 +72,15 @@ public final class BaseFieldFactory extends Factory {
 		}
 		// 検査の順番に注意　自然数かどうかをチェックしてから、実数かどうかをチェックする。
 		if (isReal()) {
-			Matcher tMatcher = mIntegerPattern.matcher(aInput);
+			Matcher tMatcher = mRealPattern.matcher(aInput);
 			if (tMatcher.find()) {
-				mIsInteger = true;
+				mIsInteger = false;
 				mToken = tMatcher.group();
 				return aInput.substring(tMatcher.end());
 			}
-			tMatcher = mRealPattern.matcher(aInput);
+			tMatcher = mIntegerPattern.matcher(aInput);
 			if (tMatcher.find()) {
-				mIsInteger = false;
+				mIsInteger = true;
 				mToken = tMatcher.group();
 				return aInput.substring(tMatcher.end());
 			}

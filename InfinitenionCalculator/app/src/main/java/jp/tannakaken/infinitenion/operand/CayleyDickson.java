@@ -12,7 +12,6 @@ import java.math.BigInteger;
  * 実際、これをimmutableにした設計でも、デスクトップアプリなら、十分なスピードで動くが、androidだと、E11111111の10乗程度でも止まってしまう。<br>
  * よって、このクラスはmutableにしてあり、演算をすると、operandに破壊的な副作用が起こる。<br>
  * どのoperandに破壊的副作用が起こるかはわからないので、演算に使ったObjectは再利用してはいけない。<br>
- * もう一度、使用しなくてはいけないときは、{@link Constant#copy()}を行う。
  * 
  * @author tannakaken
  *
@@ -39,8 +38,6 @@ class CayleyDickson extends Constant {
 	private final int mHeight;
 	/**
 	 * このクラスを{@link Object#toString}するためのクラス。Visitorパターンを使用。<br>
-	 * しかもこれはSingletonなので、他の場所でこのインスタンスに{@link ConstantStringConverter#setLimited(boolean)}すると、
-	 * このインスタンスにも影響する。
 	 * 
 	 * @see 
 	 * <a href="http://en.wikipedia.org/wiki/Visitor_pattern">http://en.wikipedia.org/wiki/Visitor_pattern</a><br>
