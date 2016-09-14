@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 日本語ローカライズ -->
+<resources>
+    <string name="app_name">Infinitenion</string>
+	<string name="ad_unit_id"> ca-app-pub-2965415045499808/1521137574</string>
+    <string name="input_text">式を入力してください。</string>
+    <string name="calculateButton">開始</string>
+    <!-- メニューのボタン -->
+    <string name="action_settings">設定</string>
+    <string name="action_show_variables">変数を確認</string>
+    <string name="action_about">アバウト</string>
+    <string name="action_help">ヘルプ</string>
+    <string name="action_problem">問題集</string>
+    <string name="action_story">数学小説</string>
+    <string name="action_finish">アプリの強制終了</string>
+    <!-- settingsのラベル -->
+    <string name="setting_label">設定</string>
+	<string name="real_key">real</string>
+    <string name="real_title">実数モード</string>
+    <string name="real_summary">実数モードか有理数モードかを変更。モード変更時に変数はリセットされる。</string>
+	<string name="scale_key">scale</string>
+    <string name="scale_title">実数の精度</string>
+    <string name="scale_summary">実数計算の精度を設定する。</string>
+	<string name="hint_key">hint</string>
+	<string name="hint_title">ヒントモード</string>
+	<string name="hint_summary">操作のヒントを出すかどうかを変更。</string>
+	<string name="hint_dialog_title">ヒント</string>
+	<string name="hint_display">ヒントを表示し続ける</string>
+	<string name="hint_donot_display">ヒントを表示しない</string>
+	<string name="hint1">「1 + 1」という式は逆ポーランド記法では「1 1 +」と書かれます。</string>
+	<string name="hint2">En（nは正の自然数）でn番目の虚数単位を表します。E1は複素数のi、E2,E3は四元数のj,kです。</string>
+	<string name="hint3">Xn（nは正の自然数）でn番目の変数を表します。Xn 式 &lt;=で式の値を代入す、そのあとは値として使えます。</string>
+	<string name="hint4">↑や↓などのキーで入力の履歴を見られます。</string>
+	<string name="hint5">→や←などのキーでキーパッドを変更できます。</string>
+	<string name="hint6">二つ目のキーパッドでは可換則や結合則等のチェック用の演算が使えます。詳しくはヘルプを見てください。</string>
+	<string name="hint7">En（nは正の自然数）でn番目の虚数単位を表します。E1は複素数のi、E2,E3は四元数のj,kです。</string>
+	<string name="hint8">Xn（nは正の自然数）でn番目の変数を表します。Xn 式 &lt;=で式の値を代入す、そのあとは値として使えます。</string>
+	<string name="hint9">「1 + 1」という式は逆ポーランド記法では「1 1 +」と書かれます。</string>
+	<string name="hint0">数字や記号の間には空白を入れてください。（例　「1 1+」はダメ。「1 1 +」は良い）</string>
+    <!-- aboutのラベル -->
+    <string name="about_label">アバウト</string>
+    <string name="about_this_app_button_label">このアプリについて</string>
+    <string name="about_hypercomplex_number_button_label">超複素数について</string>
+    <string name="about_reverse_poland_button_label">逆ポーランド記法について</string>
+    <string name="about_author">このアプリの作者について</string>
+    <!-- Textのラベル -->
+	<string name="about_this_app_label">このアプリについて</string>
+	<string name="about_hypercomplex_number_label">超複素数について</string>
+    <string name="about_reverse_poland_label">逆ポーランド記法について</string>
+    <string name="help_label">ヘルプ</string>
+    <string name="problem_label">問題集</string>
+    <string name="story_label">数学小説</string>
+	<!-- キーパッドのボタンのラベル -->
+	<string name="keypad_1">1</string>
+	<string name="keypad_2">2</string>
+	<string name="keypad_3">3</string>
+	<string name="keypad_4">4</string>
+	<string name="keypad_5">5</string>
+	<string name="keypad_6">6</string>
+	<string name="keypad_7">7</string>
+	<string name="keypad_8">8</string>
+	<string name="keypad_9">9</string>
+	<string name="keypad_E">E</string>
+	<string name="keypad_X">X</string>
+	<string name="keypad_add">+</string>
+	<string name="keypad_sub">-</string>
+	<string name="keypad_mul">*</string>
+	<string name="keypad_div">/</string>
+	<string name="keypad_pow">^</string>
+	<string name="keypad_substitution">&lt;=</string>
+	<string name="keypad_0">0</string>
+	<string name="keypad_C">C</string>
+	<string name="keypad_up">↑</string>
+	<string name="keypad_down">↓</string>
+	<string name="keypad_next">⇒</string>
+	<string name="keypad_dot">.</string>
+	<string name="keypad_sp">　</string>
+	<string name="keypad_bs">BS</string>
+	<!-- 二つ目のキーパッドのボタンのラベル -->
+	<string name="keypad_negate">negate</string>
+	<string name="keypad_inv">inv</string>
+	<string name="keypad_conj">conj</string>
+	<string name="keypad_norm">norm</string>
+	<string name="keypad_normed">normed</string>
+	<string name="keypad_commu">commu</string>
+	<string name="keypad_assoc">assoc</string>
+	<string name="keypad_alter">alter</string>
+	<string name="keypad_prev">⇐</string>
+	<!-- プログレスダイアログのラベル -->
+	<string name="calculation_running_label">ただいま計算中…</string>
+	<string name="calculation_cancel_label">キャンセル</string>
+	<!-- 出力メッセージ -->
+	<string name="parse_error_message">パースの失敗</string>
+	<string name="calculation_error_message">計算の失敗</string>
+	<string name="calculation_canceled_message">計算がキャンセルされました。</string>
+	<string name="calculation_can_not_start">計算の実行が開始できませんでした。おそらく過去のキャンセル処理が終了できていないのが原因です。少し経ってからもう一度操作してください。それでもだめならアプリを強制終了したのち再起動してください。</string>
+	<string name="second">秒</string>
+	<string name="the_number_of_variables">個の変数</string>
+	<string name="divide_by_zero">0による除算です。</string>
+	<string name="add_arity_error">+ は2つの被演算子を必要とする演算子です。</string>
+	<string name="multiply_arity_error">* は2つの被演算子を必要とする演算子です。</string>
+	<string name="divide_arity_error">/ は2つの被演算子を必要とする演算子です。</string>
+	<string name="power_arity_error">^ は2つの被演算子を必要とする演算子です。</string>
+	<string name="power_not_integer_error">^ の2番目の被演算子は整数でなければいけません。</string>
+	<string name="negate_arity_error">negate は1つの被演算子を必要とする演算子です。</string>
+	<string name="substruct_arity_error">- は2つの被演算子を必要とする演算子です。</string>
+	<string name="conj_arity_error">conj は1つの被演算子を必要とする演算子です。</string>
+	<string name="norm_arity_error">norm は1つの被演算子を必要とする演算子です。</string>
+	<string name="inv_arity_error">inv は1つの被演算子を必要とする演算子です。</string>
+	<string name="commu_arity_error">commu は2つの被演算子を必要とする演算子です。</string>
+	<string name="assoc_arity_error">assoc は3つの被演算子を必要とする演算子です。</string>
+	<string name="normed_arity_error">normed は2つの被演算子を必要とする演算子です。</string>
+	<string name="substitution_arity_error">&lt;= は2つの被演算子を必要とする演算子です。</string>
+	<string name="substitution_not_variable_error">&lt;= の1番目の被演算子は変数でなければいけません。変数はXかXに正の整数をつけたものであらわされます。</string>
+	<string name="illegal_token">不正なトークン</string>
+	<string name="radix_point_in_rational_mode">小数点\'.\'は実数モードの時にしか使えません。</string>
+	<string name="too_big">数が大きすぎます。</string>
+	<string name="see_help">詳しくはメニューのヘルプを見てください。</string>
+	<string name="warn_reset">モード変更後メインページに戻るとすべての変数がリセットされます。</string>
+	<string name="notice_reset">すべての変数がリセットされました。</string>
+</resources>

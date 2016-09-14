@@ -1,0 +1,16 @@
+*.apk
+*.ap_
+*.dex
+*.class
+local.properties
+InfinitenionCalculator/.classpath
+.project
+proguard/
+*.iml
+*.ipr
+*.iws
+InfinitenionCalculator/.idea/workspace.xml
+InfinitenionCalculator/.idea/libraries/
+.gradle
+InfinitenionCalculator/app/build/
+.DS_Store

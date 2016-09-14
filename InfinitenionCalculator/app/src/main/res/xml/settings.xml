@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference 
+        android:key="@string/real_key"
+        android:title="@string/real_title"
+        android:summary="@string/real_summary"
+        android:defaultValue="false"/>
+    <EditTextPreference 
+        android:dependency="@string/real_key"
+        android:layout="?android:attr/preferenceLayoutChild"
+        android:key="@string/scale_key"
+        android:title="@string/scale_title"
+        android:summary="@string/scale_summary"
+        android:dialogTitle="@string/scale_title"
+        android:inputType="number"
+        android:defaultValue="7"/>
+    <CheckBoxPreference
+        android:key="@string/hint_key"
+        android:title="@string/hint_title"
+        android:summary="@string/hint_summary"
+        android:defaultValue="true"/>
+</PreferenceScreen>

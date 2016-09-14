@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip">
+    <Button 
+    	    android:id="@+id/about_this_app"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/about_this_app_button_label" />
+    <Button 
+    	    android:id="@+id/about_hypercomplex_number"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/about_hypercomplex_number_button_label" />
+    <Button 
+    	    android:id="@+id/about_reverse_poland"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/about_reverse_poland_button_label" />
+    <Button 
+    	    android:id="@+id/about_author"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/about_author" />
+</LinearLayout>
