@@ -1,5 +1,7 @@
 package jp.tannakaken.infinitenion.operand;
 
+import android.util.Log;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.regex.Matcher;
@@ -48,10 +50,6 @@ public final class BaseFieldFactory extends Factory {
 	 */
 	private String mToken;
 	/**
-	 * 実数モードのとき、与えられたトークンが整数かどうかを判定。
-	 */
-	private boolean mIsInteger;
-	/**
 	 * 
 	 * @return {@link BaseFieldFactory}の<a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>
 	 */
@@ -67,45 +65,20 @@ public final class BaseFieldFactory extends Factory {
 		}
 		if (aInput.equals("TheAnswerToTheLifeTheUniverseAndEverything")) {
 			mToken = String.valueOf(aInput.length());
-			mIsInteger = true;
 			return "";
 		}
-		// 検査の順番に注意　自然数かどうかをチェックしてから、実数かどうかをチェックする。
-		if (isReal()) {
-			Matcher tMatcher = mRealPattern.matcher(aInput);
-			if (tMatcher.find()) {
-				mIsInteger = false;
-				mToken = tMatcher.group();
-				return aInput.substring(tMatcher.end());
-			}
-			tMatcher = mIntegerPattern.matcher(aInput);
-			if (tMatcher.find()) {
-				mIsInteger = true;
-				mToken = tMatcher.group();
-				return aInput.substring(tMatcher.end());
-			}
-			return null;
-		} else {
-			Matcher tMatcher = mIntegerPattern.matcher(aInput);
-			if (tMatcher.find()) {
-				mToken = tMatcher.group();
-				return aInput.substring(tMatcher.end());
-			}
-			if (mRealPattern.matcher(aInput).find()) {
-				throw new CalculatorParseException(R.string.radix_point_in_rational_mode, aInput);
-			}
-			return null;
+		Matcher tMatcher = isReal() ? mRealPattern.matcher(aInput) : mIntegerPattern.matcher(aInput);
+		if (tMatcher.find()) {
+			mToken = tMatcher.group();
+			return aInput.substring(tMatcher.end());
 		}
+		return null;
 	}
 
 	@Override
 	public void calc() throws CalculatingException {
 		if (isReal()) {
-			if (mIsInteger) {
-				getStack().push(new Real(new BigDecimal(mToken)));
-			} else {
-				getStack().push(new Real(new BigDecimal(mToken), Prefs.getScale(getContext())));
-			}
+			getStack().push(new Real(new BigDecimal(mToken), Prefs.getScale(getContext())));
 		} else {
 			getStack().push(new Rational(new BigInteger(mToken)));
 		}

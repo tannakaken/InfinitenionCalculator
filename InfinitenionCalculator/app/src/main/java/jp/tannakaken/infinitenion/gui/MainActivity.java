@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 		if (mIsReal != tNewIsReal) {
 			mIsReal = tNewIsReal;
 			VariableFactory.getInstance().clearVariable();
+			mInputText.setText("");
 			Toast.makeText(this, getString(R.string.notice_reset), Toast.LENGTH_SHORT).show();
 			mDotButton.setEnabled(mIsReal);
 		} else if (Prefs.getIsHint(this)) {

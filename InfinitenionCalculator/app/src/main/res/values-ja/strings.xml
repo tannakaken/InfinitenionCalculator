@@ -113,9 +113,8 @@
 	<string name="substitution_arity_error">&lt;= は2つの被演算子を必要とする演算子です。</string>
 	<string name="substitution_not_variable_error">&lt;= の1番目の被演算子は変数でなければいけません。変数はXかXに正の整数をつけたものであらわされます。</string>
 	<string name="illegal_token">不正なトークン</string>
-	<string name="radix_point_in_rational_mode">小数点\'.\'は実数モードの時にしか使えません。</string>
 	<string name="too_big">数が大きすぎます。</string>
 	<string name="see_help">詳しくはメニューのヘルプを見てください。</string>
-	<string name="warn_reset">モード変更後メインページに戻るとすべての変数がリセットされます。</string>
-	<string name="notice_reset">すべての変数がリセットされました。</string>
+	<string name="warn_reset">モード変更後メインページに戻るとすべての変数と入力欄がリセットされます。</string>
+	<string name="notice_reset">すべての変数と入力欄がリセットされました。</string>
 </resources>
