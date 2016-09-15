@@ -1,7 +1,5 @@
 package jp.tannakaken.infinitenion.operand;
 
-import android.util.Log;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.regex.Matcher;

@@ -24,8 +24,8 @@ enum TextResource {
 	 */
 	HELP,
 	/**
-	 * assets/problem.txt.
+	 * assets/exercise.txt.
 	 * 探したり考えたりするための問題集。
 	 */
-	PROBLEM,
+	EXERCISE,
 }

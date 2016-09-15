@@ -10,7 +10,7 @@
     <string name="action_show_variables">show variables</string>
     <string name="action_about">about</string>
     <string name="action_help">help</string>
-    <string name="action_problem">problem collection</string>
+    <string name="action_exercise">exercise collection</string>
     <string name="action_story">math novel(japanese only)</string>
     <string name="action_finish">terminate this app forcefully</string>
     <!-- settingsのラベル -->
@@ -48,7 +48,7 @@
 	<string name="about_hypercomplex_number_label">about Hyperconmplex numbers</string>
     <string name="about_reverse_poland_label">about reverse polish notation</string>
     <string name="help_label">help</string>
-    <string name="problem_label">problem collection</string>
+    <string name="exercise_label">exercise collection</string>
     <string name="story_label">math novel</string>
 	<!-- キーパッドのボタンのラベル -->
 	<string name="keypad_1">1</string>

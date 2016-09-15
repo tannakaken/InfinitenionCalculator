@@ -24,9 +24,9 @@
         android:title="@string/action_help"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/action_problem"
+        android:id="@+id/action_exercise"
         android:orderInCategory="100"
-        android:title="@string/action_problem"
+        android:title="@string/action_exercise"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_story"

@@ -2,6 +2,7 @@ package jp.tannakaken.infinitenion.gui;
 
 import jp.tannakaken.infinitenion.R;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebView;
 
@@ -20,7 +21,7 @@ public class Web extends Activity {
 	 * {@link this.onCreate}する前に必ずこのメソッドをすること。
 	 * @param aWebResource 表示するテキストを表す{@link WebResource}。
 	 */
-	public static final void setResource(final WebResource aWebResource) {
+	public static void setResource(final WebResource aWebResource) {
 		mWebResource = aWebResource;
 	}
 	
@@ -29,13 +30,19 @@ public class Web extends Activity {
 		super.onCreate(aSavedInstanceState);
 		setContentView(R.layout.web);
 		WebView tContent = (WebView) findViewById(R.id.web_content);
+		String tLanguage;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+			tLanguage = getResources().getConfiguration().getLocales().get(0).getLanguage();
+		} else {
+			tLanguage = getResources().getConfiguration().locale.getLanguage();
+		}
 		switch (mWebResource) {
 		case ABOUT_AUTHOR:
 			setTitle(getText(R.string.about_author));
-			if (getResources().getConfiguration().locale.getLanguage().equals("ja")) {
+			if (tLanguage.equals("ja")) {
 				tContent.loadUrl("file:///android_asset/about_author_ja.html");
 			} else {
-				tContent.loadUrl("file:///android.asset/about_author_en.html");
+				tContent.loadUrl("file:///android_asset/about_author_en.html");
 			}
 			return;
 		case STORY:

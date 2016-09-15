@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import jp.tannakaken.infinitenion.R;
 import android.app.Activity;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,11 +42,17 @@ public class Text extends Activity {
 		TextView tContent = (TextView) findViewById(R.id.text_content);
 		AssetManager tManager = getResources().getAssets();
 		BufferedReader tReader;
+		String tLanguage;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+			tLanguage = getResources().getConfiguration().getLocales().get(0).getLanguage();
+		} else {
+			tLanguage = getResources().getConfiguration().locale.getLanguage();
+		}
 		try {
 			switch (mTextResource) {
 			case ABOUT_THIS_APP:
 				setTitle(getText(R.string.about_this_app_label));
-				if (getResources().getConfiguration().locale.getLanguage().equals("ja")) {
+				if (tLanguage.equals("ja")) {
 					tReader = new BufferedReader(new InputStreamReader(tManager.open("about_this_app_ja.txt"),
 							"UTF-8"));
 				} else {
@@ -64,16 +71,16 @@ public class Text extends Activity {
 				break;
 			case HELP:
 				setTitle(getText(R.string.help_label));
-				if (getResources().getConfiguration().locale.getLanguage().equals("ja")) {
+				if (tLanguage.equals("ja")) {
 					tReader = new BufferedReader(new InputStreamReader(tManager.open("help_ja.txt"), "UTF-8"));
 				} else {
 					tReader = new BufferedReader(new InputStreamReader(tManager.open("help_en.txt"), "UTF-8"));
 				}
 				
 				break;
-			case PROBLEM:
-				setTitle(getText(R.string.problem_label));
-				tReader = new BufferedReader(new InputStreamReader(tManager.open("problem.txt"), "UTF-8"));
+			case EXERCISE:
+				setTitle(getText(R.string.exercise_label));
+				tReader = new BufferedReader(new InputStreamReader(tManager.open("exercise.txt"), "UTF-8"));
 				break;
 			default:
 				throw new IllegalStateException("Unknow text resource.");

@@ -3,6 +3,7 @@ package jp.tannakaken.infinitenion.operand;
 import java.math.BigInteger;
 
 import android.content.Context;
+
 import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.calculator.CalculatingException;
 
@@ -16,8 +17,7 @@ import jp.tannakaken.infinitenion.calculator.CalculatingException;
  * また、Cayley-Dicksonの構成法に必要なメソッド、
  * および{@link ConstantStringConverter}による{@link Object#toString}に必要なメソッドも全て抽象メソッドとして用意されている。<br>
  * また{@link Constant#drop()}により、いつでも、無駄なメモリのない最適な状態に保たれている。<br>
- * なぜなら{@link ImaginaryFactory}で生成されたときは最適で、{@link Constant#calc(Operand[], String)}の計算の最後の{@link Constant#drop()}
- * により、最適化されているからである。<br>
+ * なぜなら{@link ImaginaryFactory}で生成されたときにいつも最適化されているからである。<br>
  * これを実装したクラスは、{@link Object#equals}を適切にoverrideするべきである。
  * @author tannakaken
  *

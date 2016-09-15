@@ -1,6 +1,6 @@
 Algebra of Hypercomplex number is number system which is extension of Complex number field.
 Real numbers are, as you know(?), continuous numbers that express length.
 Complex numbers are numbers can be expressed in the form  a + bi, where a and b are real numbers and i is the imaginary unit, which satisfy  the equation i^2 = -1. you must have seen these numbers before.
-William Rowan Hamilton(1805Å`1865), Irish mathematician, realized that complex number is not so mysterious thing but just tuple of two real numbersÅ@(a,b), in other words just point on plane,  with suitable rules of calculation.
+William Rowan Hamilton(1805-1865), Irish mathematician, realized that complex number is not so mysterious thing but just tuple of two real numbers (a,b), in other words just point on plane,  with suitable rules of calculation.
 So Hamilton tried to construct rules of calculation for tuple of three real numbers (a,b,c). But his work was going in vain.
 Trying and trying hard, finally crucial idea struck him. the right establishment for extending complex numbers is not tuple of three real numbers but tuples of four real numbers. 

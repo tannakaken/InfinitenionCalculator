@@ -10,7 +10,7 @@
     <string name="action_show_variables">変数を確認</string>
     <string name="action_about">アバウト</string>
     <string name="action_help">ヘルプ</string>
-    <string name="action_problem">問題集</string>
+    <string name="action_exercise">問題集</string>
     <string name="action_story">数学小説</string>
     <string name="action_finish">アプリの強制終了</string>
     <!-- settingsのラベル -->
@@ -48,7 +48,7 @@
 	<string name="about_hypercomplex_number_label">超複素数について</string>
     <string name="about_reverse_poland_label">逆ポーランド記法について</string>
     <string name="help_label">ヘルプ</string>
-    <string name="problem_label">問題集</string>
+    <string name="exercise_label">問題集</string>
     <string name="story_label">数学小説</string>
 	<!-- キーパッドのボタンのラベル -->
 	<string name="keypad_1">1</string>

@@ -229,8 +229,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 			Text.setResource(TextResource.HELP);
 			startActivity(new Intent(this, Text.class));
 			return true;
-		case R.id.action_problem:
-			Text.setResource(TextResource.PROBLEM);
+		case R.id.action_exercise:
+			Text.setResource(TextResource.EXERCISE);
 			startActivity(new Intent(this, Text.class));
 			return true;
 		case R.id.action_story:
