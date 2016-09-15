@@ -5,7 +5,6 @@ import java.math.BigInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.calculator.BackgroundProcessCancelledException;
 import jp.tannakaken.infinitenion.calculator.CalculatingException;
 import jp.tannakaken.infinitenion.calculator.CalculatorParseException;

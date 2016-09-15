@@ -23,16 +23,13 @@ class Real extends Constant {
 	 * このインスタンスが表す数。
 	 */
 	private final BigDecimal mNumber;
-	/**
-	 * 上限。
-	 */
-	private static final BigDecimal MAX = new BigDecimal(MAX_NUM);
+
 	/**
 	 * 
 	 * @param aNumber ラッピングされる実数型。
 	 */
 	Real(final BigDecimal aNumber) throws CalculatingException {
-		if (aNumber.compareTo(MAX) > 0) {
+		if (aNumber.compareTo(MAX_DECIMAL) > 0) {
 			throw new CalculatingException(R.string.too_big);
 		}
 		mNumber = aNumber.setScale(getCalculationScale(), BigDecimal.ROUND_DOWN);
@@ -43,7 +40,7 @@ class Real extends Constant {
 	 * @param aScale 新しく設定されるスケール。
 	 */
 	Real(final BigDecimal aNumber, final int aScale) throws CalculatingException {
-		if (aNumber.compareTo(MAX) > 0) {
+		if (aNumber.compareTo(MAX_DECIMAL) > 0) {
 			throw new CalculatingException(R.string.too_big);
 		}
 		mNumber = aNumber.setScale(aScale, BigDecimal.ROUND_DOWN);

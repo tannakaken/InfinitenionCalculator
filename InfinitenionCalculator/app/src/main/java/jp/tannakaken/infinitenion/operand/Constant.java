@@ -1,5 +1,6 @@
 package jp.tannakaken.infinitenion.operand;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import android.content.Context;
@@ -42,13 +43,11 @@ abstract class Constant implements Operand {
 	/**
 	 * 数字の上限
 	 */
-	protected static final String MAX_NUM;
+	protected static final BigInteger MAX_INTEGER;
+	protected static final BigDecimal MAX_DECIMAL;
 	static {
-		StringBuilder tBuilder = new StringBuilder();
-		for (int i = 0; i < MAX_LENGTH; i++) {
-			tBuilder.append('9');
-		}
-		MAX_NUM = tBuilder.toString();
+		MAX_INTEGER = BigInteger.TEN.pow(MAX_LENGTH);
+		MAX_DECIMAL = new BigDecimal(MAX_INTEGER);
 	}
 	/**
 	 * 
