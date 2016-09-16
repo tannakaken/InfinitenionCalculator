@@ -17,7 +17,7 @@
     <string name="setting_label">設定</string>
 	<string name="real_key">real</string>
     <string name="real_title">実数モード</string>
-    <string name="real_summary">実数モードか有理数モードかを変更。モード変更時に変数はリセットされる。</string>
+    <string name="real_summary">実数モードか有理数モードかを変更。モード変更時に変数と入力欄はリセットされる。</string>
 	<string name="scale_key">scale</string>
     <string name="scale_title">実数の精度</string>
     <string name="scale_summary">実数計算の精度を設定する。</string>

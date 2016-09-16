@@ -17,7 +17,7 @@
     <string name="setting_label">setting</string>
     <string name="real_key">real</string>
     <string name="real_title">Real mode</string>
-    <string name="real_summary">Toggle between real number mode and rational number mode. Variables will be reset.</string>
+    <string name="real_summary">Toggle between real number mode and rational number mode. All variables and entry field will be reset.</string>
     <string name="scale_key">scale</string>
     <string name="scale_title">Scale of real numbers</string>
     <string name="scale_summary">Set scale of real numbers.</string>

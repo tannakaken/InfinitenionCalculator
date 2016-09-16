@@ -50,7 +50,8 @@
         <Button
             android:id="@+id/keypad_sp_2"
             android:text="@string/keypad_sp"
-            style="?android:attr/borderlessButtonStyle"/>
+            style="?android:attr/borderlessButtonStyle"
+            android:background="#ff00ddff" />
     </TableRow>
     <TableRow
         android:showDividers="middle"
@@ -58,18 +59,22 @@
         <Button
             android:id="@+id/keypad_bs_2"
             android:text="@string/keypad_bs"
-            style="?android:attr/borderlessButtonStyle"/>
+            style="?android:attr/borderlessButtonStyle"
+            android:background="#ffff8800" />
         <Button
             android:id="@+id/keypad_up_2"
             android:text="@string/keypad_up"
-            style="?android:attr/borderlessButtonStyle"/>
+            style="?android:attr/borderlessButtonStyle"
+            android:background="#ffff8800" />
         <Button
             android:id="@+id/keypad_down_2"
             android:text="@string/keypad_down"
-            style="?android:attr/borderlessButtonStyle"/>
+            style="?android:attr/borderlessButtonStyle"
+            android:background="#ffff8800" />
         <Button
             android:id="@+id/keypad_prev"
             android:text="@string/keypad_prev"
-            style="?android:attr/borderlessButtonStyle"/>
+            style="?android:attr/borderlessButtonStyle"
+            android:background="#ffff8800" />
     </TableRow>
 </TableLayout>
