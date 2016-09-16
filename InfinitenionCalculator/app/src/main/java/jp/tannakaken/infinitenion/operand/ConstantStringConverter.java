@@ -12,6 +12,7 @@ import java.math.BigInteger;
  *　<a href="http://en.wikipedia.org/wiki/Singleton_pattern">http://en.wikipedia.org/wiki/Singleton_pattern</a>
  */
 final class ConstantStringConverter {
+
 	/**
 	 * 今、いくつめの基底を文字にしているか。
 	 */

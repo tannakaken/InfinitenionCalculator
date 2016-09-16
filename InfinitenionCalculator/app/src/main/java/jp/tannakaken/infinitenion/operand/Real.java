@@ -29,7 +29,12 @@ class Real extends Constant {
 	 * @param aNumber ラッピングされる実数型。
 	 */
 	Real(final BigDecimal aNumber) throws CalculatingException {
+		/*
 		if (aNumber.compareTo(MAX_DECIMAL) > 0) {
+			throw new CalculatingException(R.string.too_big);
+		}
+		*/
+		if (isOverLimit(aNumber)) {
 			throw new CalculatingException(R.string.too_big);
 		}
 		mNumber = aNumber.setScale(getCalculationScale(), BigDecimal.ROUND_DOWN);
@@ -40,7 +45,12 @@ class Real extends Constant {
 	 * @param aScale 新しく設定されるスケール。
 	 */
 	Real(final BigDecimal aNumber, final int aScale) throws CalculatingException {
+		/*
 		if (aNumber.compareTo(MAX_DECIMAL) > 0) {
+			throw new CalculatingException(R.string.too_big);
+		}
+		*/
+		if (isOverLimit(aNumber)) {
 			throw new CalculatingException(R.string.too_big);
 		}
 		mNumber = aNumber.setScale(aScale, BigDecimal.ROUND_DOWN);
@@ -80,11 +90,11 @@ class Real extends Constant {
 
 	@Override
 	public final boolean isZero() {
-		return mNumber.equals(BigDecimal.ZERO.setScale(getCalculationScale(),BigDecimal.ROUND_DOWN));
+		return mNumber.compareTo(BigDecimal.ZERO) == 0;
 	}
 	@Override
 	final boolean isOne() {
-		return mNumber.equals(BigDecimal.ONE.setScale(getCalculationScale(),BigDecimal.ROUND_DOWN));
+		return mNumber.compareTo(BigDecimal.ONE) == 0;
 	}
 
 	@Override

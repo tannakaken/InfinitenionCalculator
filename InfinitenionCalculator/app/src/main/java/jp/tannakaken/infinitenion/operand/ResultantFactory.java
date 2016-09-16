@@ -449,6 +449,7 @@ public final class ResultantFactory extends Factory {
 			tStack.push(tOperand2);
 			return mImaginaryFactory.mixRealAndImaginary(div(), div(), tHeight);
 		}
+		tStack.push(tOperand2);
 		tStack.push(inv());
 		return mul();
 	}

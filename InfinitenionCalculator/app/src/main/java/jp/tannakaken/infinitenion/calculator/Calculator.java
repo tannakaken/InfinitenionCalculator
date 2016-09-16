@@ -3,6 +3,7 @@ package jp.tannakaken.infinitenion.calculator;
 import java.util.Random;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import jp.tannakaken.infinitenion.R;
 import jp.tannakaken.infinitenion.operand.Factory;
@@ -54,6 +55,7 @@ public class Calculator {
 	public final String calc(final String aFormula, final AsyncTask<String, Void, String> aTask)
 			throws CalculatorParseException, CalculatingException, BackgroundProcessCancelledException {
 		try {
+			long start = System.currentTimeMillis();
 			String tRestString =  aFormula.replaceFirst("^[　]*", "");
 			if (tRestString.equals("")) { // イースターエッグ
 				return randomAphorism();
@@ -77,6 +79,7 @@ public class Calculator {
 				}
 				tRestString = tNextRestString.replaceFirst("^[　]*", "");
 			}
+			long end = System.currentTimeMillis();
 			return Factory.getResult();
 		} finally {
 			Factory.clearStack();

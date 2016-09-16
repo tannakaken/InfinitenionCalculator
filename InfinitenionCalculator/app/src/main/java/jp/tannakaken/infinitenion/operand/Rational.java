@@ -1,5 +1,6 @@
 package jp.tannakaken.infinitenion.operand;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import jp.tannakaken.infinitenion.R;
@@ -19,50 +20,67 @@ class Rational extends Constant {
 	/**
 	 * 分子。省メモリ化のためにfinalにはしない。
 	 */
-	private final BigInteger mNumerator;
+	private final BigDecimal mNumerator;
 	/**
 	 * 分母。省メモリ化のためにfinalにはしない。
 	 */
-	private final BigInteger mDenominator;
+	private final BigDecimal mDenominator;
 
-	
+	static private BigDecimal gcd(BigDecimal a,BigDecimal b) {
+		if (b.equals(BigDecimal.ZERO)) {
+			return a;
+		} else {
+			return gcd(b, a.remainder(b));
+		}
+	}
+
 	/**
 	 * 与えられた分子と分母を約分して収納する。符号は分子につける。
 	 * @param aNumerator 分子。
 	 * @param aDenominator 分母。
 	 * 
 	 */
-	Rational(final BigInteger aNumerator, final BigInteger aDenominator) throws CalculatingException {
+	Rational(final BigDecimal aNumerator, final BigDecimal aDenominator) throws CalculatingException {
+		/*
 		if (aNumerator.compareTo(MAX_INTEGER) > 0 || aDenominator.compareTo(MAX_INTEGER) > 0) {
 			throw new CalculatingException(R.string.too_big);
 		}
-		if (aDenominator.equals(BigInteger.ZERO)) {
+		*/
+		if (isOverLimit(aNumerator) || isOverLimit(aDenominator)) {
+			throw new CalculatingException(R.string.too_big);
+		}
+		if (aDenominator.equals(BigDecimal.ZERO)) {
 			throw new IllegalArgumentException("分母が0の有理数は作成できません。");
 		}
-		if (aNumerator.equals(BigInteger.ZERO)) {
-			mNumerator = BigInteger.ZERO;
-			mDenominator = BigInteger.ONE;
+		if (aNumerator.equals(BigDecimal.ZERO)) {
+			mNumerator = BigDecimal.ZERO;
+			mDenominator = BigDecimal.ONE;
 			return;
 		}
-		BigInteger tNum = aNumerator.abs();
-		BigInteger tDen = aDenominator.abs();
-		BigInteger tCommon = aNumerator.gcd(aDenominator);
+		BigDecimal tNum = aNumerator.abs();
+		BigDecimal tDen = aDenominator.abs();
+		BigDecimal tCommon = gcd(aNumerator,aDenominator);
 		// tSigはこの分数の符号。
-		BigInteger tSig = BigInteger.valueOf(aNumerator.signum() * aDenominator.signum());
+		BigDecimal tSig = BigDecimal.valueOf(aNumerator.signum() * aDenominator.signum());
 		// 分子に符号をつけ、分母分子を約分する。 
-		mNumerator = tSig.multiply(tNum).divide(tCommon);
-		mDenominator = tDen.divide(tCommon);
+		mNumerator = tSig.multiply(tNum).divide(tCommon,0,BigDecimal.ROUND_DOWN);
+		mDenominator = tDen.divide(tCommon,0,BigDecimal.ROUND_DOWN);
 	}
 	/**
 	 * 
 	 * @param aInteger 有理数とみなされる整数。
 	 */
-	Rational(final BigInteger aInteger) throws CalculatingException {
+	Rational(final BigDecimal aInteger) throws CalculatingException {
+		/*
 		if (aInteger.compareTo(MAX_INTEGER) > 0) {
 			throw new CalculatingException(R.string.too_big);
 		}
+		*/
+		if (isOverLimit(aInteger)) {
+			throw new CalculatingException(R.string.too_big);
+		}
 		mNumerator = aInteger;
-		mDenominator = BigInteger.ONE;
+		mDenominator = BigDecimal.ONE;
 	}
 	
 	@Override
@@ -107,12 +125,12 @@ class Rational extends Constant {
 	}
 	@Override
 	public final boolean isZero() {
-		return mNumerator.equals(BigInteger.ZERO);
+		return mNumerator.compareTo(BigDecimal.ZERO) == 0;
 	}
 
 	@Override
 	final boolean isOne() {
-		return mNumerator.multiply(mDenominator).equals(BigInteger.ONE);
+		return mNumerator.multiply(mDenominator).compareTo(BigDecimal.ONE) == 0;
 	}
 	
 	@Override
@@ -133,10 +151,10 @@ class Rational extends Constant {
 	}
 	@Override
 	public final String toString() {
-		if (mNumerator.equals(BigInteger.ZERO)) {
+		if (mNumerator.equals(BigDecimal.ZERO)) {
 			return "0";
 		}
-		if (mDenominator.equals(BigInteger.ONE)) {
+		if (mDenominator.equals(BigDecimal.ONE)) {
 			return "" + mNumerator;
 		}
 		return mNumerator + " " + mDenominator + " /";
@@ -161,11 +179,11 @@ class Rational extends Constant {
 	}
 	@Override
 	public final boolean isInteger() {
-		return mDenominator.equals(BigInteger.ONE);
+		return mDenominator.equals(BigDecimal.ONE);
 	}
 	@Override
 	public final BigInteger getInteger() {
-		return mNumerator;
+		return mNumerator.toBigInteger();
 	}
 	
 }

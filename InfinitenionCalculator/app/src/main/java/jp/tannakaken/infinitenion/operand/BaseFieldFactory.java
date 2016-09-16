@@ -1,7 +1,6 @@
 package jp.tannakaken.infinitenion.operand;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +24,7 @@ public final class BaseFieldFactory extends Factory {
 	/**
 	 * 整数を表す正規表現。
 	 */
-	private static String mIntegerRegexp = "(^0|^-?[1-9]\\d*)";
+	private static String mIntegerRegexp = "(^-?(0|[1-9]\\d*))";
 	/**
 	 * 整数を表すパターン。
 	 */
@@ -72,12 +71,22 @@ public final class BaseFieldFactory extends Factory {
 		return null;
 	}
 
+	/**
+	 * ゼロを表す正規表現。
+	 */
+	private static String mZeroRegexp = "-?0+(\\.0+)?";
+	/**
+	 * ゼロを表すパターン。
+	 */
+	private static Pattern mZeroPattern = Pattern.compile(mZeroRegexp);
 	@Override
 	public void calc() throws CalculatingException {
-		if (isReal()) {
+		if (mZeroPattern.matcher(mToken).matches()) {
+			getStack().push(Zero.ZERO);
+		} else if (isReal()) {
 			getStack().push(new Real(new BigDecimal(mToken), Prefs.getScale(getContext())));
 		} else {
-			getStack().push(new Rational(new BigInteger(mToken)));
+			getStack().push(new Rational(new BigDecimal(mToken)));
 		}
 	}
 	
@@ -89,7 +98,7 @@ public final class BaseFieldFactory extends Factory {
 		if (isReal()) {
 			return new Real(BigDecimal.ONE);
 		} else {
-			return new Rational(BigInteger.ONE);	
+			return new Rational(BigDecimal.ONE);
 		}
 	}
 	/**
