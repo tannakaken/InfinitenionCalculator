@@ -29,11 +29,6 @@ class Real extends Constant {
 	 * @param aNumber ラッピングされる実数型。
 	 */
 	Real(final BigDecimal aNumber) throws CalculatingException {
-		/*
-		if (aNumber.compareTo(MAX_DECIMAL) > 0) {
-			throw new CalculatingException(R.string.too_big);
-		}
-		*/
 		if (isOverLimit(aNumber)) {
 			throw new CalculatingException(R.string.too_big);
 		}
@@ -45,11 +40,6 @@ class Real extends Constant {
 	 * @param aScale 新しく設定されるスケール。
 	 */
 	Real(final BigDecimal aNumber, final int aScale) throws CalculatingException {
-		/*
-		if (aNumber.compareTo(MAX_DECIMAL) > 0) {
-			throw new CalculatingException(R.string.too_big);
-		}
-		*/
 		if (isOverLimit(aNumber)) {
 			throw new CalculatingException(R.string.too_big);
 		}

@@ -39,7 +39,7 @@ abstract class Constant implements Operand {
 	/**
 	 * 数字の桁の上限。
 	 */
-	protected static final int MAX_LENGTH = 1000000;
+	private static final int MAX_LENGTH = 1000000;
 	/**
 	 * 入力された数字が入力限界を超えていないかチェックする。
 	 * @param aDecimal 入力された数字。
@@ -48,17 +48,15 @@ abstract class Constant implements Operand {
 	static protected boolean isOverLimit(BigDecimal aDecimal) {
 		return aDecimal.precision() - aDecimal.scale() >= MAX_LENGTH;
 	}
-
 	/**
-	 * 数字の上限
+	 * 入力された数字が入力限界を超えていないかスケールなしでチェックする。
+	 * @param aDecimal 入力された数字。
+	 * @return 入力限界を超えていないかどうか。
 	 */
-	/*
-	protected static final BigInteger MAX_INTEGER;
-	protected static final BigDecimal MAX_DECIMAL;
-	static {
-		MAX_INTEGER = BigInteger.TEN.pow(MAX_LENGTH);
-		MAX_DECIMAL = new BigDecimal(MAX_INTEGER);
+	static protected boolean isOverLimitWithoutScale(BigDecimal aDecimal) {
+		return aDecimal.precision() >= MAX_LENGTH;
 	}
+
 	/**
 	 * 
 	 * @return 積の単位元かどうか。

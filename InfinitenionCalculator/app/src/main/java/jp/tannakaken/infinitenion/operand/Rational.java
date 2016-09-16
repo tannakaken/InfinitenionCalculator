@@ -41,12 +41,7 @@ class Rational extends Constant {
 	 * 
 	 */
 	Rational(final BigDecimal aNumerator, final BigDecimal aDenominator) throws CalculatingException {
-		/*
-		if (aNumerator.compareTo(MAX_INTEGER) > 0 || aDenominator.compareTo(MAX_INTEGER) > 0) {
-			throw new CalculatingException(R.string.too_big);
-		}
-		*/
-		if (isOverLimit(aNumerator) || isOverLimit(aDenominator)) {
+		if (isOverLimitWithoutScale(aNumerator) || isOverLimitWithoutScale(aDenominator)) {
 			throw new CalculatingException(R.string.too_big);
 		}
 		if (aDenominator.equals(BigDecimal.ZERO)) {
@@ -71,12 +66,7 @@ class Rational extends Constant {
 	 * @param aInteger 有理数とみなされる整数。
 	 */
 	Rational(final BigDecimal aInteger) throws CalculatingException {
-		/*
-		if (aInteger.compareTo(MAX_INTEGER) > 0) {
-			throw new CalculatingException(R.string.too_big);
-		}
-		*/
-		if (isOverLimit(aInteger)) {
+		if (isOverLimitWithoutScale(aInteger)) {
 			throw new CalculatingException(R.string.too_big);
 		}
 		mNumerator = aInteger;
